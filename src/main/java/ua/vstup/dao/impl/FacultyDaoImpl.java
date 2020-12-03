@@ -9,6 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
+import static ua.vstup.dao.utility.ResultSetToEntityMapper.extractFacultyEntityFromResultSet;
+
+
 public class FacultyDaoImpl extends AbstractDao<FacultyEntity> implements FacultyDao {
     public static final String INSERT_QUERY = "INSERT INTO faculty VALUES (DEFAULT,?,?,?)";
     public static final String DELETE_QUERY = "DELETE FROM faculty WHERE id=?";
@@ -31,7 +34,7 @@ public class FacultyDaoImpl extends AbstractDao<FacultyEntity> implements Facult
 
     @Override
     protected FacultyEntity extractFromResultSet(ResultSet resultSet) throws SQLException {
-        return null;
+        return extractFacultyEntityFromResultSet(resultSet);
     }
 
     @Override

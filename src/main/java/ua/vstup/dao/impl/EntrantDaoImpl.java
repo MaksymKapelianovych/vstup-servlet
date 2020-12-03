@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
+import static ua.vstup.dao.utility.ResultSetToEntityMapper.extractEntrantEntityFromResultSet;
+
 public class EntrantDaoImpl extends AbstractDao<EntrantEntity> implements EntrantDao {
     public static final String INSERT_QUERY = "INSERT INTO entrant VALUES (DEFAULT,?,?,?,?,?,?,?)"; //TODO add region
     public static final String DELETE_QUERY = "DELETE FROM entrant WHERE id=?";
@@ -31,7 +33,7 @@ public class EntrantDaoImpl extends AbstractDao<EntrantEntity> implements Entran
 
     @Override
     protected EntrantEntity extractFromResultSet(ResultSet resultSet) throws SQLException {
-        return null;
+        return extractEntrantEntityFromResultSet(resultSet);
     }
 
     @Override
