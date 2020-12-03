@@ -1,7 +1,5 @@
 package ua.vstup.entity;
 
-
-
 public class EntrantEntity {
     private final Integer id;
     private final String firstname;

@@ -7,6 +7,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+
+/**
+ * An implementation of {@link ConnectionManager}
+ */
 public class DbManager implements ConnectionManager {
     private static final Logger LOGGER = Logger.getLogger(DbManager.class);
 
@@ -21,7 +25,11 @@ public class DbManager implements ConnectionManager {
     private DbConfig config = new DbConfig();
     private Connection connection;
 
-
+    /**
+     * Instantiates new manager from resource file
+     * @param filename path to resource file
+     * @throws SQLException
+     */
     public DbManager(String filename) throws SQLException {
         ResourceBundle resource = ResourceBundle.getBundle(filename);
         config.setDriverClassName(resource.getString(DB_DRIVER));
