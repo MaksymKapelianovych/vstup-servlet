@@ -7,6 +7,8 @@ public class EntrantEntity {
     private final String surname;
     private final String email;
     private final String city;
+    private final String school;
+    private final RoleEntity roleEntity;
 
     public Integer getId() {
         return id;
@@ -40,8 +42,7 @@ public class EntrantEntity {
         return roleEntity;
     }
 
-    private final String school;
-    private final RoleEntity roleEntity;
+
 
     private EntrantEntity(Builder builder) {
         id = builder.id;
