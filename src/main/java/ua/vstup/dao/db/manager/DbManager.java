@@ -1,6 +1,8 @@
 package ua.vstup.dao.db.manager;
 
 import org.apache.log4j.Logger;
+import ua.vstup.dao.db.manager.pool.ConnectionPool;
+import ua.vstup.dao.db.manager.pool.impl.ConnectionPoolImpl;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -23,7 +25,7 @@ public class DbManager implements ConnectionManager {
     private static final String ERROR_MESSAGE = "Connection wasn't set %s";
 
     private DbConfig config = new DbConfig();
-    private Connection connection;
+    private ConnectionPool pool;
 
     /**
      * Instantiates new manager from resource file
@@ -39,17 +41,13 @@ public class DbManager implements ConnectionManager {
         config.setMaximumPoolSize(getIntProperty(resource, DB_POOL_SIZE));
         config.setConnectionTimeout(getIntProperty(resource, DB_TIMEOUT));
 
-        connection = DriverManager.getConnection(config.getJdbcUrl(), config.getUsername(), config.getPassword());
+        pool = new ConnectionPoolImpl(config);
     }
 
     @Override
     public Connection getConnection() {
         try{
-            if (connection.isClosed()) {
-                throw new SQLException(ERROR_MESSAGE);
-            }else{
-                return connection;
-            }
+            return pool.getConnection();
         }catch (SQLException exception){
             LOGGER.error(ERROR_MESSAGE, exception);
             throw new IllegalStateException(String.format(ERROR_MESSAGE, ""), exception);
@@ -58,7 +56,7 @@ public class DbManager implements ConnectionManager {
 
     @Override
     public void shutdown() throws SQLException {
-        connection.close();
+        pool.shutdown();
     }
 
     private int getIntProperty(ResourceBundle resource, String dbPoolSize) {
