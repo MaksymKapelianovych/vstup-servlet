@@ -12,10 +12,10 @@ import java.util.Optional;
 import static ua.vstup.dao.utility.ResultSetToEntityMapper.extractEntrantEntityFromResultSet;
 
 public class EntrantDaoImpl extends AbstractDao<EntrantEntity> implements EntrantDao {
-    public static final String INSERT_QUERY = "INSERT INTO entrant VALUES (DEFAULT,?,?,?,?,?,?,?)"; //TODO add region
+    public static final String INSERT_QUERY = "INSERT INTO entrant VALUES (DEFAULT,?,?,?,?)"; //TODO add region
     public static final String DELETE_QUERY = "DELETE FROM entrant WHERE id=?";
-    public static final String UPDATE_QUERY = "UPDATE entrant SET id=?, firstname=?, lastname=?, surname=?, email=?, city=?, school=?, role=? WHERE id=?"; //TODO add region
-    public static final String FIND_BY_ID_QUERY = "SELECT * FROM entrant WHERE id=?";
+    public static final String UPDATE_QUERY = "UPDATE entrant SET id=?, fullname=?, email=?, school_id=?, role=? WHERE id=?"; //TODO add region
+    public static final String FIND_BY_ID_QUERY = "SELECT * FROM entrant LEFT JOIN school ON entrant.school_id=school.id WHERE id=?";
 
     public EntrantDaoImpl(ConnectionHolder connectionHolder) { super(connectionHolder); }
 
@@ -36,15 +36,13 @@ public class EntrantDaoImpl extends AbstractDao<EntrantEntity> implements Entran
         return extractEntrantEntityFromResultSet(resultSet);
     }
 
+    //TODO
     @Override
     protected void prepareData(EntrantEntity entity, PreparedStatement ps) throws SQLException {
         ps.setObject(1, entity.getId());
-        ps.setObject(2, entity.getFirstname());
-        ps.setObject(3, entity.getLastname());
-        ps.setObject(4, entity.getSurname());
-        ps.setObject(5, entity.getEmail());
-        ps.setObject(6, entity.getCity());
-        ps.setObject(7, entity.getSchool());
+        ps.setObject(2, entity.getFullname());
+        ps.setObject(3, entity.getEmail());
+        ps.setObject(4, entity.getSchoolEntity().getId());
         ps.setObject(8, entity.getRoleEntity().name());
     }
 

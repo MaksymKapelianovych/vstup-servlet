@@ -1,6 +1,6 @@
-package ua.vstup.entity;
+package ua.vstup.domain;
 
-public class RequestEntity {
+public class Request {
     private final Integer id;
     private final Integer entrantId;
     private final Integer facultyId;
@@ -8,7 +8,7 @@ public class RequestEntity {
     private final Integer secondRate;
     private final Integer thirdRate;
 
-    private RequestEntity(Builder builder) {
+    private Request(Builder builder) {
         id = builder.id;
         entrantId = builder.entrantId;
         facultyId = builder.facultyId;
@@ -76,7 +76,7 @@ public class RequestEntity {
             return this;
         }
 
-        public RequestEntity build(){ return new RequestEntity(this); }
+        public Request build(){ return new Request(this); }
     }
 
 }

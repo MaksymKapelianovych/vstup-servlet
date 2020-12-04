@@ -1,8 +1,6 @@
 package ua.vstup.dao.utility;
 
-import ua.vstup.entity.EntrantEntity;
-import ua.vstup.entity.FacultyEntity;
-import ua.vstup.entity.RoleEntity;
+import ua.vstup.entity.*;
 import ua.vstup.exception.DatabaseInteractionException;
 
 import java.sql.ResultSet;
@@ -19,12 +17,9 @@ public class ResultSetToEntityMapper {
     public static EntrantEntity extractEntrantEntityFromResultSet(ResultSet resultSet) throws SQLException {
         EntrantEntity entity = EntrantEntity.builder()
                 .withId(resultSet.getInt("entrant.id"))
-                .withFirstname(resultSet.getString("entrant.firstname"))
-                .withLastname(resultSet.getString("entrant.lastname"))
-                .withSurname(resultSet.getString("entrant.surname"))
+                .withFullname(resultSet.getString("entrant.firstname"))
                 .withEmail(resultSet.getString("entrant.email"))
-                .withCity(resultSet.getString("entrant.city"))
-                .withSchool(resultSet.getString("entrant.school"))
+                .withSchoolEntity(extractSchoolEntityFromResultSet(resultSet))
                 .withRoleEntity(RoleEntity.valueOf(resultSet.getString("entrant.role")))
                 .build();
         if(entity.getId() == 0){
@@ -39,6 +34,36 @@ public class ResultSetToEntityMapper {
                 .withName(resultSet.getString("faculty.name"))
                 .withMaxBudgetPlace(resultSet.getInt("faculty.maxBudgetPlace"))
                 .withMaxPlace(resultSet.getInt("faculty.maxPlace"))
+                .withFacultyRequirementEntity(extractFacultyRequirementEntityFromResultSet(resultSet))
+                .build();
+        if(entity.getId() == 0){
+            throw new DatabaseInteractionException(ERROR_MESSAGE);
+        }
+        return entity;
+    }
+
+    public static FacultyRequirementEntity extractFacultyRequirementEntityFromResultSet(ResultSet resultSet) throws SQLException {
+        FacultyRequirementEntity entity = FacultyRequirementEntity.builder()
+                .withId(resultSet.getInt("facultyRequirement.id"))
+                .withFirstSubject(SubjectEntity.valueOf(resultSet.getString("facultyRequirement.firstSubject")))
+                .withFirstRate(resultSet.getInt("facultyRequirement.firstRate"))
+                .withSecondSubject(SubjectEntity.valueOf(resultSet.getString("facultyRequirement..secondSubject")))
+                .withSecondRate(resultSet.getInt("facultyRequirement.secondRate"))
+                .withThirdSubject(SubjectEntity.valueOf(resultSet.getString("facultyRequirement.thirdSubject")))
+                .withThirdRate(resultSet.getInt("facultyRequirement.thirdRate"))
+                .build();
+        if(entity.getId() == 0){
+            throw new DatabaseInteractionException(ERROR_MESSAGE);
+        }
+        return entity;
+    }
+
+    public static SchoolEntity extractSchoolEntityFromResultSet(ResultSet resultSet) throws SQLException {
+        SchoolEntity entity = SchoolEntity.builder()
+                .withId(resultSet.getInt("school.id"))
+                .withName(resultSet.getString("school.name"))
+                .withCity(resultSet.getString("school.city"))
+                .withRegionEntity(RegionEntity.valueOf(resultSet.getString("school.region")))
                 .build();
         if(entity.getId() == 0){
             throw new DatabaseInteractionException(ERROR_MESSAGE);

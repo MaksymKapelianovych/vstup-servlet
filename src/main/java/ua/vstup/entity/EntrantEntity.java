@@ -1,57 +1,42 @@
 package ua.vstup.entity;
 
+//TODO додати таблицю шкіл, редагує адмін, область винести в таблицю школи, міста просто колонка
+//TODO мінімально на факультет 3 предмети, максимально 5
+//TODO відомість зберігати після фіналізації
+
 public class EntrantEntity {
     private final Integer id;
-    private final String firstname;
-    private final String lastname;
-    private final String surname;
+    private final String fullname;
     private final String email;
-    private final String city;
-    private final String school;
+    private final SchoolEntity schoolEntity;
     private final RoleEntity roleEntity;
 
     public Integer getId() {
         return id;
     }
 
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public String getSurname() {
-        return surname;
+    public String getFullname() {
+        return fullname;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public String getCity() {
-        return city;
-    }
 
-    public String getSchool() {
-        return school;
+    public SchoolEntity getSchoolEntity() {
+        return schoolEntity;
     }
 
     public RoleEntity getRoleEntity() {
         return roleEntity;
     }
 
-
-
     private EntrantEntity(Builder builder) {
         id = builder.id;
-        firstname = builder.firstname;
-        lastname = builder.lastname;
-        surname = builder.surname;
+        fullname = builder.fullname;
         email = builder.email;
-        city = builder.city;
-        school = builder.school;
+        schoolEntity = builder.schoolEntity;
         roleEntity = builder.roleEntity;
     }
 
@@ -59,12 +44,9 @@ public class EntrantEntity {
 
     public static class Builder {
         private Integer id;
-        private String firstname;
-        private String lastname;
-        private String surname;
+        private String fullname;
         private String email;
-        private String city;
-        private String school;
+        private SchoolEntity schoolEntity;
         private RoleEntity roleEntity;
 
         private Builder(){}
@@ -73,28 +55,16 @@ public class EntrantEntity {
             this.id = id;
             return this;
         }
-        public Builder withFirstname(String firstname){
-            this.firstname = firstname;
+        public Builder withFullname(String fullname){
+            this.fullname = fullname;
             return this;
         }
-        public Builder withLastname(String lastname){
-            this.lastname = lastname;
-            return this;
-        }
-        public Builder withSurname(String surname){
-            this.surname = surname;
-            return this;
-        }
-        public Builder withEmail(String email){
+        public Builder withEmail(String email) {
             this.email = email;
             return this;
         }
-        public Builder withCity(String city){
-            this.city = city;
-            return this;
-        }
-        public Builder withSchool(String school){
-            this.school = school;
+        public Builder withSchoolEntity(SchoolEntity schoolEntity){
+            this.schoolEntity = schoolEntity;
             return this;
         }
         public Builder withRoleEntity(RoleEntity roleEntity){
