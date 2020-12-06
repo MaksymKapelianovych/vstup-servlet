@@ -1,10 +1,7 @@
 package ua.vstup.reflection.loader;
 
 import org.apache.log4j.Logger;
-import ua.vstup.annotation.Autowired;
-import ua.vstup.annotation.CommandMapping;
-import ua.vstup.annotation.Dao;
-import ua.vstup.annotation.Service;
+import ua.vstup.annotation.*;
 import ua.vstup.command.Command;
 import ua.vstup.dao.TransactionHandler;
 import ua.vstup.dao.db.holder.ConnectionHolder;
@@ -65,6 +62,9 @@ public class ContextLoader extends AbstractContextLoader{
         if (c.isAnnotationPresent(CommandMapping.class)) {
             loadCommandMapping(c);
         }
+        if(c.isAnnotationPresent(Validator.class)){
+            loadValidator(c);
+        }
     }
 
     private void loadDao(Class<?> c) throws ReflectiveOperationException {
@@ -102,6 +102,17 @@ public class ContextLoader extends AbstractContextLoader{
                 urlToCommand.put(pattern, (Command) commandImpl);
             }
         }
+    }
+
+    private void loadValidator(Class<?> c) throws ReflectiveOperationException {
+        Constructor<?> constructor = c.getConstructor();
+        Object validatorImpl = constructor.newInstance();
+        String name = getNameByImplType(validatorImpl, "Validator");
+        if (name != null) {
+            beans.put(name, validatorImpl);
+            return;
+        }
+        LOGGER.debug(String.format("Validator %s wasn't logged Because its not validator", validatorImpl));
     }
 
     private void autowireBeans() throws IllegalAccessException {
