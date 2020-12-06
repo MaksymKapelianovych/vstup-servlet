@@ -18,6 +18,7 @@ public class EntrantDaoImpl extends AbstractDao<EntrantEntity> implements Entran
     //private static final String DELETE_QUERY = "DELETE FROM entrant WHERE id=?";
     private static final String UPDATE_QUERY = "UPDATE entrant SET id=?, name=?, password=?, email=?, school_id=?, role=?, requirement_id=?, active=? WHERE id=?"; //TODO add region
     private static final String FIND_BY_ID_QUERY = "SELECT * FROM entrant WHERE id=?";
+    private static final String FIND_BY_EMAIL_QUERY = "SELECT * FROM entrant WHERE email=?";
 
     public EntrantDaoImpl(ConnectionHolder connectionHolder) { super(connectionHolder); }
 
@@ -26,6 +27,9 @@ public class EntrantDaoImpl extends AbstractDao<EntrantEntity> implements Entran
 
     @Override
     public Optional<EntrantEntity> findById(Integer id) { return findByParam(id, FIND_BY_ID_QUERY); }
+
+    @Override
+    public Optional<EntrantEntity> findByEmail(String email) { return findByParam(email, FIND_BY_EMAIL_QUERY); }
 
     @Override
     public boolean update(EntrantEntity entity) { return update(entity, UPDATE_QUERY); }
@@ -56,4 +60,6 @@ public class EntrantDaoImpl extends AbstractDao<EntrantEntity> implements Entran
         prepareData(entity, ps);
         ps.setObject(9, entity.getId());
     }
+
+
 }

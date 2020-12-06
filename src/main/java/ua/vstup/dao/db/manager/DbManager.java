@@ -29,9 +29,8 @@ public class DbManager implements ConnectionManager {
     /**
      * Instantiates new manager from resource file
      * @param filename path to resource file
-     * @throws SQLException
      */
-    public DbManager(String filename) throws SQLException {
+    public DbManager(String filename) {
         ResourceBundle resource = ResourceBundle.getBundle(filename);
         config.setDriverClassName(resource.getString(DB_DRIVER));
         config.setJdbcUrl(resource.getString(DB_URL));

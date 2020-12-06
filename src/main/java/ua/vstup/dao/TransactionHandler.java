@@ -3,6 +3,7 @@ package ua.vstup.dao;
 import org.apache.log4j.Logger;
 import ua.vstup.annotation.Transactional;
 import ua.vstup.dao.db.holder.ConnectionHolder;
+import ua.vstup.dao.db.manager.ConnectionManager;
 import ua.vstup.dao.db.manager.DbManager;
 import ua.vstup.exception.DatabaseInteractionException;
 
@@ -19,7 +20,7 @@ public class TransactionHandler implements InvocationHandler {
     private static final String INVOCATION_FAILED = "Invocation failed";
     private static final String ROLLBACK_FAILED = "Rollback failed";
     private static final String CLOSING_CONNECTION_FAILED = "Closing connection failed";
-    private final DbManager connectionManager;
+    private final ConnectionManager connectionManager;
     private final ConnectionHolder connectionHolder;
     private final Object serviceToInvoke;
 
@@ -30,7 +31,7 @@ public class TransactionHandler implements InvocationHandler {
      * @param serviceToInvoke service to invoke
      * @param manager         connection manager
      */
-    public TransactionHandler(ConnectionHolder holder, Object serviceToInvoke, DbManager manager) {
+    public TransactionHandler(ConnectionHolder holder, Object serviceToInvoke, ConnectionManager manager) {
         this.connectionManager = manager;
         this.serviceToInvoke = serviceToInvoke;
         this.connectionHolder = holder;
