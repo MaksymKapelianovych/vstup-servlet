@@ -27,6 +27,7 @@ CREATE TABLE school
     name varchar(255) NOT NULL,
     city varchar(255) NOT NULL,
     region varchar(255) NOT NULL,
+    active boolean DEFAULT TRUE,
     PRIMARY KEY (id)
 );
 

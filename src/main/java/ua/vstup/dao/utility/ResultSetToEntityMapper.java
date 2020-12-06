@@ -23,6 +23,7 @@ public class ResultSetToEntityMapper {
                 .withSchoolEntityId(resultSet.getInt("entrant.school_id"))
                 .withRoleEntity(RoleEntity.valueOf(resultSet.getString("entrant.role")))
                 .withRequirementEntityId(resultSet.getInt("entrant.requirement_id"))
+                .withActive(resultSet.getBoolean("entrant.active"))
                 .build();
         if(entity.getId() == 0){
             throw new DatabaseInteractionException(ERROR_MESSAGE);
@@ -37,6 +38,7 @@ public class ResultSetToEntityMapper {
                 .withMaxBudgetPlace(resultSet.getInt("faculty.maxBudgetPlace"))
                 .withMaxPlace(resultSet.getInt("faculty.maxPlace"))
                 .withRequirementEntityId(resultSet.getInt("faculty.requirement_id"))
+                .withActive(resultSet.getBoolean("faculty.active"))
                 .build();
         if(entity.getId() == 0){
             throw new DatabaseInteractionException(ERROR_MESSAGE);
@@ -76,6 +78,7 @@ public class ResultSetToEntityMapper {
                 .withName(resultSet.getString("school.name"))
                 .withCity(resultSet.getString("school.city"))
                 .withRegionEntity(RegionEntity.valueOf(resultSet.getString("school.region")))
+                .withActive(resultSet.getBoolean("school.active"))
                 .build();
         if(entity.getId() == 0){
             throw new DatabaseInteractionException(ERROR_MESSAGE);

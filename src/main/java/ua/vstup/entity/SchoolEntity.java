@@ -5,12 +5,14 @@ public class SchoolEntity {
     private final String name;
     private final String city;
     private final RegionEntity regionEntity;
+    private final Boolean active;
 
     private SchoolEntity(Builder builder) {
         this.id = builder.id;
         this.name = builder.name;
         this.city = builder.city;
         this.regionEntity = builder.regionEntity;
+        this.active = builder.active;
     }
 
     public Integer getId() {
@@ -28,6 +30,8 @@ public class SchoolEntity {
         return regionEntity;
     }
 
+    public Boolean getActive() { return active; }
+
     public static Builder builder() { return new Builder(); }
 
     public static class Builder{
@@ -35,6 +39,7 @@ public class SchoolEntity {
         private String name;
         private String city;
         private RegionEntity regionEntity;
+        private Boolean active;
 
         private Builder(){}
 
@@ -52,6 +57,10 @@ public class SchoolEntity {
         }
         public Builder withRegionEntity(RegionEntity regionEntity){
             this.regionEntity = regionEntity;
+            return this;
+        }
+        public Builder withActive(Boolean active){
+            this.active = active;
             return this;
         }
 
