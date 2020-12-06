@@ -3,11 +3,15 @@ package ua.vstup.dao.db;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import ua.vstup.dao.db.manager.DbConfig;
 import ua.vstup.dao.db.manager.DbManager;
+import ua.vstup.dao.db.manager.pool.ConnectionPool;
+import ua.vstup.dao.db.manager.pool.impl.ConnectionPoolImpl;
 
 import java.sql.SQLException;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 
 public class DbManagerTest {
