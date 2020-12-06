@@ -15,7 +15,7 @@ import static ua.vstup.dao.utility.ResultSetToEntityMapper.extractRequirementEnt
 public class RequirementDaoImpl extends AbstractDao<RequirementEntity> implements RequirementDao {
     private static String INSERT_QUERY = "INSERT INTO requirement VALUES(DEFAULT,?,?,?,?,?)";
     private static String UPDATE_QUERY = "UPDATE requirement SET id=?, first_subject_id=?, second_subject_id=?, third_subject_id=?, fourth_subject_id=?, fifth_subject_id=? WHERE id=?";
-    private static String DELETE_QUERY = "DELETE FROM requirement WHERE id=?";
+    //private static String DELETE_QUERY = "DELETE FROM requirement WHERE id=?";
     private static String FIND_BY_ID_QUERY = "SELECT * FROM requirement WHERE id=?";
 
     private SubjectDao subjectDao;
@@ -45,9 +45,7 @@ public class RequirementDaoImpl extends AbstractDao<RequirementEntity> implement
     }
 
     @Override
-    public boolean deleteById(Integer id) {
-        return delete(id, DELETE_QUERY);
-    }
+    public boolean deleteById(Integer id) { throw new UnsupportedOperationException("delete.by.id.for.requirement.unsupported"); }
 
     @Override
     protected RequirementEntity extractFromResultSet(ResultSet resultSet) throws SQLException {

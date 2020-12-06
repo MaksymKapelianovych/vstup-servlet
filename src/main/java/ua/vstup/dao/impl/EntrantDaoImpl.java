@@ -13,7 +13,7 @@ import static ua.vstup.dao.utility.ResultSetToEntityMapper.extractEntrantEntityF
 
 public class EntrantDaoImpl extends AbstractDao<EntrantEntity> implements EntrantDao {
     private static final String INSERT_QUERY = "INSERT INTO entrant VALUES (DEFAULT,?,?,?,?,?,?)"; //TODO add region
-    private static final String DELETE_QUERY = "DELETE FROM entrant WHERE id=?";
+    //private static final String DELETE_QUERY = "DELETE FROM entrant WHERE id=?";
     private static final String UPDATE_QUERY = "UPDATE entrant SET id=?, name=?, password=?, email=?, school_id=?, role=?, requirement_id=? WHERE id=?"; //TODO add region
     private static final String FIND_BY_ID_QUERY = "SELECT * FROM entrant WHERE id=?";
 
@@ -29,7 +29,7 @@ public class EntrantDaoImpl extends AbstractDao<EntrantEntity> implements Entran
     public boolean update(EntrantEntity entity) { return update(entity, UPDATE_QUERY); }
 
     @Override
-    public boolean deleteById(Integer id) { return delete(id, DELETE_QUERY); }
+    public boolean deleteById(Integer id) { throw new UnsupportedOperationException("delete.by.id.for.entrant.unsupported");}
 
     @Override
     protected EntrantEntity extractFromResultSet(ResultSet resultSet) throws SQLException {

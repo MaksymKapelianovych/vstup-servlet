@@ -14,7 +14,7 @@ import static ua.vstup.dao.utility.ResultSetToEntityMapper.extractSubjectEntityF
 public class SubjectDaoImpl extends AbstractDao<SubjectEntity> implements SubjectDao {
     private static final String INSERT_QUERY = "INSERT INTO subject VALUES (DEFAULT,?,?)";
     private static final String UPDATE_QUERY = "UPDATE subject SET id=?, name=?, rate=? WHERE id=?";
-    private static final String DELETE_QUERY = "DELETE FROM subject WHERE id=?";
+    //private static final String DELETE_QUERY = "DELETE FROM subject WHERE id=?";
     private static final String FIND_BY_ID_QUERY = "SELECT * FROM subject WHERE id=?";
 
     /**
@@ -42,9 +42,7 @@ public class SubjectDaoImpl extends AbstractDao<SubjectEntity> implements Subjec
     }
 
     @Override
-    public boolean deleteById(Integer id) {
-        return delete(id, DELETE_QUERY);
-    }
+    public boolean deleteById(Integer id) { throw new UnsupportedOperationException("delete.by.id.for.subject.unsupported"); }
 
     @Override
     protected SubjectEntity extractFromResultSet(ResultSet resultSet) throws SQLException {
