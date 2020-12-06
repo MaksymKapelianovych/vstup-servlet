@@ -38,6 +38,9 @@ public class ContextLoader extends AbstractContextLoader{
     public void load(String... packagesNames) {
         try {
             loadBeans(packagesNames);
+            autowireBeans();
+            manageServices();
+            manageCommands();
         }catch (Exception e){
             LOGGER.error("Cannot load beans. ", e);
         }
@@ -84,7 +87,7 @@ public class ContextLoader extends AbstractContextLoader{
             services.put(name, serviceImpl);
             beans.put(name, serviceImpl);
         }else{
-            LOGGER.debug(String.format("Service %s wasn't logged because it's not service"));
+            LOGGER.debug(String.format("Service %s wasn't logged because it's not service", serviceImpl));
         }
     }
     private void loadCommandMapping(Class<?> c) throws ReflectiveOperationException {
@@ -99,6 +102,36 @@ public class ContextLoader extends AbstractContextLoader{
                 urlToCommand.put(pattern, (Command) commandImpl);
             }
         }
+    }
+
+    private void autowireBeans() throws IllegalAccessException {
+        for(Object bean : beans.values()){
+            for(Field field : bean.getClass().getDeclaredFields()){
+                field.setAccessible(true);
+                if(field.isAnnotationPresent(Autowired.class)){
+                    Object beanToAutowire = beans.get(field.getType().getName());
+                    if(beanToAutowire != null){
+                        field.set(bean, beanToAutowire);
+                    }
+                }
+            }
+        }
+    }
+
+    private void manageServices() {
+        for (Map.Entry<String, Object> entry : services.entrySet()) {
+            Object service = entry.getValue();
+            Object proxy = Proxy.newProxyInstance(
+                    this.getClass().getClassLoader(),
+                    service.getClass().getInterfaces(),
+                    new TransactionHandler(connectionHolder, service, connectionManager)
+            );
+            servletContext.setAttribute(entry.getKey(), proxy);
+        }
+    }
+
+    private void manageCommands() {
+        servletContext.setAttribute("urlToCommandMap", urlToCommand);
     }
 
     private String getNameByImplType(Object o, String name) {
