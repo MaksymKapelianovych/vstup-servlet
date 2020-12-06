@@ -6,23 +6,36 @@ package ua.vstup.entity;
 
 public class EntrantEntity {
     private final Integer id;
-    private final String fullname;
+    private final String name;
+    private final String password;
     private final String email;
     private final SchoolEntity schoolEntity;
     private final RoleEntity roleEntity;
+    private final RequirementEntity requirementEntity;
+
+    private EntrantEntity(Builder builder) {
+        id = builder.id;
+        name = builder.name;
+        password = builder.password;
+        email = builder.email;
+        schoolEntity = builder.schoolEntity;
+        roleEntity = builder.roleEntity;
+        requirementEntity = builder.requirementEntity;
+    }
 
     public Integer getId() {
         return id;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getName() {
+        return name;
     }
+
+    public String getPassword() { return password; }
 
     public String getEmail() {
         return email;
     }
-
 
     public SchoolEntity getSchoolEntity() {
         return schoolEntity;
@@ -32,22 +45,19 @@ public class EntrantEntity {
         return roleEntity;
     }
 
-    private EntrantEntity(Builder builder) {
-        id = builder.id;
-        fullname = builder.fullname;
-        email = builder.email;
-        schoolEntity = builder.schoolEntity;
-        roleEntity = builder.roleEntity;
-    }
+    public RequirementEntity getRequirementEntity() { return requirementEntity; }
 
     public static Builder builder() { return new Builder(); }
 
     public static class Builder {
         private Integer id;
-        private String fullname;
+        private String name;
+        private String password;
         private String email;
         private SchoolEntity schoolEntity;
         private RoleEntity roleEntity;
+        private RequirementEntity requirementEntity;
+
 
         private Builder(){}
 
@@ -55,8 +65,12 @@ public class EntrantEntity {
             this.id = id;
             return this;
         }
-        public Builder withFullname(String fullname){
-            this.fullname = fullname;
+        public Builder withName(String name){
+            this.name = name;
+            return this;
+        }
+        public Builder withPassword(String password){
+            this.password = password;
             return this;
         }
         public Builder withEmail(String email) {
@@ -69,6 +83,10 @@ public class EntrantEntity {
         }
         public Builder withRoleEntity(RoleEntity roleEntity){
             this.roleEntity = roleEntity;
+            return this;
+        }
+        public Builder withRequirementEntity(RequirementEntity requirementEntity){
+            this.requirementEntity = requirementEntity;
             return this;
         }
 

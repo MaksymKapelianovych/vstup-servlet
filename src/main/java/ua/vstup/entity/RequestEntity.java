@@ -4,17 +4,21 @@ public class RequestEntity {
     private final Integer id;
     private final Integer entrantId;
     private final Integer facultyId;
-    private final Integer firstRate;
-    private final Integer secondRate;
-    private final Integer thirdRate;
+    private final SubjectEntity firstSubjectEntity;
+    private final SubjectEntity secondSubjectEntity;
+    private final SubjectEntity thirdSubjectEntity;
+    private final Integer statementId;
+    private final StateEntity stateEntity;
 
     private RequestEntity(Builder builder) {
         id = builder.id;
         entrantId = builder.entrantId;
         facultyId = builder.facultyId;
-        firstRate = builder.firstRate;
-        secondRate = builder.secondRate;
-        thirdRate = builder.thirdRate;
+        firstSubjectEntity = builder.firstSubjectEntity;
+        secondSubjectEntity = builder.secondSubjectEntity;
+        thirdSubjectEntity = builder.thirdSubjectEntity;
+        statementId = builder.statementId;
+        stateEntity = builder.stateEntity;
     }
 
     public Integer getId() {
@@ -29,25 +33,33 @@ public class RequestEntity {
         return facultyId;
     }
 
-    public Integer getFirstRate() {
-        return firstRate;
+    public SubjectEntity getFirstSubjectEntity() {
+        return firstSubjectEntity;
     }
 
-    public Integer getSecondRate() {
-        return secondRate;
+    public SubjectEntity getSecondSubjectEntity() {
+        return secondSubjectEntity;
     }
 
-    public Integer getThirdRate() {
-        return thirdRate;
+    public SubjectEntity getThirdSubjectEntity() {
+        return thirdSubjectEntity;
     }
+
+    public Integer getStatementId() { return statementId; }
+
+    public StateEntity getStateEntity() { return stateEntity; }
+
+    public static Builder builder() { return new Builder(); }
 
     public static class Builder{
         private Integer id;
         private Integer entrantId;
         private Integer facultyId;
-        private Integer firstRate;
-        private Integer secondRate;
-        private Integer thirdRate;
+        private SubjectEntity firstSubjectEntity;
+        private SubjectEntity secondSubjectEntity;
+        private SubjectEntity thirdSubjectEntity;
+        private Integer statementId;
+        private StateEntity stateEntity;
 
         private Builder(){}
 
@@ -63,16 +75,24 @@ public class RequestEntity {
             this.facultyId = facultyId;
             return this;
         }
-        public Builder withFirstRate(Integer firstRate){
-            this.firstRate = firstRate;
+        public Builder withFirstSubjectEntity(SubjectEntity firstSubjectEntity){
+            this.firstSubjectEntity = firstSubjectEntity;
             return this;
         }
-        public Builder withSecondRate(Integer secondRate){
-            this.secondRate = secondRate;
+        public Builder withSecondSubjectEntity(SubjectEntity secondSubjectEntity){
+            this.secondSubjectEntity = secondSubjectEntity;
             return this;
         }
-        public Builder withThirdRate(Integer thirdRate){
-            this.thirdRate = thirdRate;
+        public Builder withThirdSubjectEntity(SubjectEntity thirdSubjectEntity){
+            this.thirdSubjectEntity = thirdSubjectEntity;
+            return this;
+        }
+        public Builder withStatementId(Integer statementId){
+            this.statementId = statementId;
+            return this;
+        }
+        public Builder withStateEntity(StateEntity stateEntity){
+            this.stateEntity = stateEntity;
             return this;
         }
 

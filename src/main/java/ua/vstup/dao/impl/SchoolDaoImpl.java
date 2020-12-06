@@ -14,10 +14,10 @@ import java.util.Optional;
 import static ua.vstup.dao.utility.ResultSetToEntityMapper.extractSchoolEntityFromResultSet;
 
 public class SchoolDaoImpl extends AbstractDao<SchoolEntity> implements SchoolDao {
-    public static final String INSERT_QUERY = "INSERT INTO school VALUES (DEFAULT,?,?,?)";
-    public static final String UPDATE_QUERY = "UPDATE school SET id=?, name=?, city=?, region=? WHERE id=?";
-    public static final String DELETE_QUERY = "DELETE FROM school WHERE id=?";
-    public static final String FIND_BY_ID_QUERY = "SELECT * FROM school WHERE id=?";
+    private static final String INSERT_QUERY = "INSERT INTO school VALUES (DEFAULT,?,?,?)";
+    private static final String UPDATE_QUERY = "UPDATE school SET id=?, name=?, city=?, region=? WHERE id=?";
+    private static final String DELETE_QUERY = "DELETE FROM school WHERE id=?";
+    private static final String FIND_BY_ID_QUERY = "SELECT * FROM school WHERE id=?";
     /**
      * Creates a new dao.
      *

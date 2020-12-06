@@ -1,21 +1,21 @@
 package ua.vstup.domain;
 
-import ua.vstup.entity.SubjectEntity;
+import ua.vstup.entity.SubjectNameEntity;
 
-public class FacultyRequirement {
+public class Requirement {
     private final Integer id;
-    private final SubjectEntity firstSubject;
+    private final SubjectNameEntity firstSubject;
     private final Integer firstRate;
-    private final SubjectEntity secondSubject;
+    private final SubjectNameEntity secondSubject;
     private final Integer secondRate;
-    private final SubjectEntity thirdSubject;
+    private final SubjectNameEntity thirdSubject;
     private final Integer thirdRate;
-    private final SubjectEntity fourthSubject;
+    private final SubjectNameEntity fourthSubject;
     private final Integer fourthRate;
-    private final SubjectEntity fifthSubject;
+    private final SubjectNameEntity fifthSubject;
     private final Integer fifthRate;
 
-    private FacultyRequirement(Builder builder) {
+    private Requirement(Builder builder) {
         id = builder.id;
         firstSubject = builder.firstSubject;
         firstRate = builder.firstRate;
@@ -33,7 +33,7 @@ public class FacultyRequirement {
         return id;
     }
 
-    public SubjectEntity getFirstSubject() {
+    public SubjectNameEntity getFirstSubject() {
         return firstSubject;
     }
 
@@ -41,7 +41,7 @@ public class FacultyRequirement {
         return firstRate;
     }
 
-    public SubjectEntity getSecondSubject() {
+    public SubjectNameEntity getSecondSubject() {
         return secondSubject;
     }
 
@@ -49,7 +49,7 @@ public class FacultyRequirement {
         return secondRate;
     }
 
-    public SubjectEntity getThirdSubject() {
+    public SubjectNameEntity getThirdSubject() {
         return thirdSubject;
     }
 
@@ -57,25 +57,25 @@ public class FacultyRequirement {
         return thirdRate;
     }
 
-    public SubjectEntity getFourthSubject() { return fourthSubject; }
+    public SubjectNameEntity getFourthSubject() { return fourthSubject; }
 
     public Integer getFourthRate() { return fourthRate; }
 
-    public SubjectEntity getFifthSubject() { return fifthSubject; }
+    public SubjectNameEntity getFifthSubject() { return fifthSubject; }
 
     public Integer getFifthRate() { return fifthRate; }
 
     public static class Builder{
         private Integer id;
-        private SubjectEntity firstSubject;
+        private SubjectNameEntity firstSubject;
         private Integer firstRate;
-        private SubjectEntity secondSubject;
+        private SubjectNameEntity secondSubject;
         private Integer secondRate;
-        private SubjectEntity thirdSubject;
+        private SubjectNameEntity thirdSubject;
         private Integer thirdRate;
-        private SubjectEntity fourthSubject;
+        private SubjectNameEntity fourthSubject;
         private Integer fourthRate;
-        private SubjectEntity fifthSubject;
+        private SubjectNameEntity fifthSubject;
         private Integer fifthRate;
 
         private Builder(){}
@@ -84,7 +84,7 @@ public class FacultyRequirement {
             this.id = id;
             return this;
         }
-        public Builder withFirstSubject(SubjectEntity firstSubject){
+        public Builder withFirstSubject(SubjectNameEntity firstSubject){
             this.firstSubject = firstSubject;
             return this;
         }
@@ -92,7 +92,7 @@ public class FacultyRequirement {
             this.firstRate = firstRate;
             return this;
         }
-        public Builder withSecondSubject(SubjectEntity secondSubject){
+        public Builder withSecondSubject(SubjectNameEntity secondSubject){
             this.secondSubject = secondSubject;
             return this;
         }
@@ -100,7 +100,7 @@ public class FacultyRequirement {
             this.secondRate = secondRate;
             return this;
         }
-        public Builder withThirdSubject(SubjectEntity thirdSubject){
+        public Builder withThirdSubject(SubjectNameEntity thirdSubject){
             this.thirdSubject = thirdSubject;
             return this;
         }
@@ -108,7 +108,7 @@ public class FacultyRequirement {
             this.thirdRate = thirdRate;
             return this;
         }
-        public Builder withFourthSubject(SubjectEntity fourthSubject){
+        public Builder withFourthSubject(SubjectNameEntity fourthSubject){
             this.fourthSubject = fourthSubject;
             return this;
         }
@@ -116,7 +116,7 @@ public class FacultyRequirement {
             this.fourthRate = fourthRate;
             return this;
         }
-        public Builder withFifthSubject(SubjectEntity fifthSubject){
+        public Builder withFifthSubject(SubjectNameEntity fifthSubject){
             this.fifthSubject = fifthSubject;
             return this;
         }
@@ -125,6 +125,6 @@ public class FacultyRequirement {
             return this;
         }
 
-        public FacultyRequirement build() { return new FacultyRequirement(this); }
+        public Requirement build() { return new Requirement(this); }
     }
 }

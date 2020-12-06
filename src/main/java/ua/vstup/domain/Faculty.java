@@ -1,20 +1,18 @@
 package ua.vstup.domain;
 
-import ua.vstup.entity.FacultyRequirementEntity;
-
 public class Faculty {
     private final Integer id;
     private final String name;
     private final Integer maxBudgetPlace;
     private final Integer maxPlace;
-    private final FacultyRequirement facultyRequirement;
+    private final Requirement requirement;
 
     private Faculty(Builder builder){
         id = builder.id;
         name = builder.name;
         maxBudgetPlace = builder.maxBudgetPlace;
         maxPlace = builder.maxPlace;
-        facultyRequirement = builder.facultyRequirement;
+        requirement = builder.requirement;
     }
 
     public Integer getId() {
@@ -33,7 +31,7 @@ public class Faculty {
         return maxPlace;
     }
 
-    public FacultyRequirement getFacultyRequirement() { return facultyRequirement; }
+    public Requirement getFacultyRequirement() { return requirement; }
 
     public static Builder builder() {
         return new Builder();
@@ -44,7 +42,7 @@ public class Faculty {
         private String name;
         private Integer maxBudgetPlace;
         private Integer maxPlace;
-        private FacultyRequirement facultyRequirement;
+        private Requirement requirement;
 
         private Builder(){}
 
@@ -64,8 +62,8 @@ public class Faculty {
             this.maxPlace = maxPlace;
             return this;
         }
-        public Builder withFacultyRequirement(FacultyRequirement facultyRequirement){
-            this.facultyRequirement = facultyRequirement;
+        public Builder withFacultyRequirement(Requirement requirement){
+            this.requirement = requirement;
             return this;
         }
         public Faculty build(){ return new Faculty(this);}

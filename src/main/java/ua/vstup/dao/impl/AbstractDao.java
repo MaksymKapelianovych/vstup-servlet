@@ -83,7 +83,7 @@ public abstract class AbstractDao<E> implements BaseDao<E> {
     protected <P> Optional<E> findByParam(P param, String query){
         try(final PreparedStatement ps = getConnection().prepareStatement(query)){
             ps.setObject(1, param);
-            try (final ResultSet resultSet = ps.getResultSet()){ //TODO maybe change to executeQuery
+            try (final ResultSet resultSet = ps.executeQuery()){
                 if(resultSet.next()){
                     return Optional.of(extractFromResultSet(resultSet));
                 }
@@ -97,7 +97,7 @@ public abstract class AbstractDao<E> implements BaseDao<E> {
 
     protected List<E> findAll(String query){
         try(PreparedStatement ps = getConnection().prepareStatement(query)){
-            try(ResultSet resultSet = ps.getResultSet()){ //TODO maybe change to executeQuery
+            try(ResultSet resultSet = ps.executeQuery()){
                 List<E> list = new ArrayList<>();
                 while(resultSet.next()){
                     list.add(extractFromResultSet(resultSet));
@@ -113,7 +113,7 @@ public abstract class AbstractDao<E> implements BaseDao<E> {
     protected <P> List<E> findAllByParam(P param, String query){
         try(PreparedStatement ps = getConnection().prepareStatement(query)){
             ps.setObject(1, param);
-            try(ResultSet resultSet = ps.getResultSet()){ //TODO maybe change to executeQuery
+            try(ResultSet resultSet = ps.executeQuery()){
                 List<E> list = new ArrayList<>();
                 while(resultSet.next()){
                     list.add(extractFromResultSet(resultSet));

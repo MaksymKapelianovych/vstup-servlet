@@ -6,16 +6,17 @@ import ua.vstup.dao.db.manager.pool.ConnectionPool;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class ConnectionPoolImpl implements ConnectionPool {
     private final static String POOL_ERROR = "Maximum pool size reached, no available connection";
+    private final static String GET_AFTER_SHUTDOWN_ERROR = "Pool was closed!";
     private static int INITIAL_POOL_SIZE = 16;
 
     private DbConfig config;
     private int poolSize;
+    private boolean closed;
 
     private List<Connection> connectionPool;
     private List<Connection> usedConnections = new ArrayList<>();
@@ -25,9 +26,10 @@ public class ConnectionPoolImpl implements ConnectionPool {
         DriverManager.setLoginTimeout(config.getConnectionTimeout());
         poolSize = config.getMaximumPoolSize() == 0 ? INITIAL_POOL_SIZE : config.getMaximumPoolSize();
         connectionPool = new ArrayList<>();
-//        for(int i = 0; i < poolSize; ++i){
-//            connectionPool.add(createConnection(config));
-//        }
+        for(int i = 0; i < poolSize; ++i){
+            connectionPool.add(createConnection(config));
+        }
+        setClosed(false);
     }
 
     private static Connection createConnection(DbConfig config) throws SQLException {
@@ -36,12 +38,8 @@ public class ConnectionPoolImpl implements ConnectionPool {
 
     @Override
     public Connection getConnection() throws SQLException {
-        if(connectionPool.isEmpty()){
-            if(usedConnections.size() < poolSize){
-                connectionPool.add(createConnection(config));
-            }else{
-                throw new RuntimeException(POOL_ERROR);
-            }
+        if(isClosed()){
+            throw new SQLException(GET_AFTER_SHUTDOWN_ERROR);
         }
 
         Connection connection = connectionPool.remove(connectionPool.size() - 1);
@@ -65,12 +63,23 @@ public class ConnectionPoolImpl implements ConnectionPool {
 
     @Override
     public void shutdown() throws SQLException {
-        usedConnections.forEach(this::releaseConnection);
-
+        for(int i = usedConnections.size() ; i > 0; --i ){
+            releaseConnection(usedConnections.get(i-1));
+        }
         for (Connection c : connectionPool) {
             c.close();
         }
 
         connectionPool.clear();
+
+        setClosed(true);
+    }
+
+    public boolean isClosed() {
+        return closed;
+    }
+
+    public void setClosed(boolean closed) {
+        this.closed = closed;
     }
 }
