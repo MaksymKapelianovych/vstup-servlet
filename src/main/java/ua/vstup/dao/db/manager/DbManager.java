@@ -1,11 +1,10 @@
 package ua.vstup.dao.db.manager;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import org.apache.log4j.Logger;
-import ua.vstup.dao.db.manager.pool.ConnectionPool;
-import ua.vstup.dao.db.manager.pool.impl.ConnectionPoolImpl;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -24,8 +23,8 @@ public class DbManager implements ConnectionManager {
     private static final String DB_TIMEOUT = "db.timeout";
     private static final String ERROR_MESSAGE = "Connection wasn't set %s";
 
-    private DbConfig config = new DbConfig();
-    private ConnectionPool pool;
+    private static HikariConfig config = new HikariConfig();
+    private HikariDataSource dataSource;
 
     /**
      * Instantiates new manager from resource file
@@ -41,13 +40,13 @@ public class DbManager implements ConnectionManager {
         config.setMaximumPoolSize(getIntProperty(resource, DB_POOL_SIZE));
         config.setConnectionTimeout(getIntProperty(resource, DB_TIMEOUT));
 
-        pool = new ConnectionPoolImpl(config);
+        dataSource = new HikariDataSource(config);
     }
 
     @Override
     public Connection getConnection() {
         try{
-            return pool.getConnection();
+            return dataSource.getConnection();
         }catch (SQLException exception){
             LOGGER.error(ERROR_MESSAGE, exception);
             throw new IllegalStateException(String.format(ERROR_MESSAGE, ""), exception);
@@ -55,8 +54,8 @@ public class DbManager implements ConnectionManager {
     }
 
     @Override
-    public void shutdown() throws SQLException {
-        pool.shutdown();
+    public void shutdown() {
+        dataSource.close();
     }
 
     private int getIntProperty(ResourceBundle resource, String dbPoolSize) {

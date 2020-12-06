@@ -38,7 +38,7 @@ public class FacultyDaoImpl extends AbstractDao<FacultyEntity> implements Facult
     }
 
     @Override
-    public boolean deleteById(Integer id) { throw new UnsupportedOperationException("delete.by.id.for.entrant.unsupported"); }
+    public boolean deleteById(Integer id) { throw new UnsupportedOperationException("delete.by.id.for.faculty.unsupported"); }
 
     @Override
     protected FacultyEntity extractFromResultSet(ResultSet resultSet) throws SQLException {
