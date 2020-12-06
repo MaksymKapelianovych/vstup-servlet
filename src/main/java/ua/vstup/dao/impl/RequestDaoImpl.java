@@ -31,9 +31,6 @@ public class RequestDaoImpl extends AbstractDao<RequestEntity> implements Reques
 
     @Override
     public Integer save(RequestEntity entity) {
-        subjectDao.save(entity.getFirstSubjectEntity());
-        subjectDao.save(entity.getSecondSubjectEntity());
-        subjectDao.save(entity.getThirdSubjectEntity());
         return save(entity, INSERT_QUERY);
     }
 
@@ -61,12 +58,12 @@ public class RequestDaoImpl extends AbstractDao<RequestEntity> implements Reques
     @Override
     protected void prepareData(RequestEntity entity, PreparedStatement ps) throws SQLException {
         ps.setObject(1, entity.getId());
-        ps.setObject(2, entity.getEntrantId());
-        ps.setObject(3, entity.getFacultyId());
-        ps.setObject(4, entity.getFirstSubjectEntity().getId());
-        ps.setObject(5, entity.getSecondSubjectEntity().getId());
-        ps.setObject(6, entity.getThirdSubjectEntity().getId());
-        ps.setObject(7, entity.getStatementId());
+        ps.setObject(2, entity.getEntrantEntityId());
+        ps.setObject(3, entity.getFacultyEntityId());
+        ps.setObject(4, entity.getFirstSubjectEntityId());
+        ps.setObject(5, entity.getSecondSubjectEntityId());
+        ps.setObject(6, entity.getThirdSubjectEntityId());
+        ps.setObject(7, entity.getStatementEntityId());
         ps.setObject(8, entity.getStateEntity().name());
     }
 

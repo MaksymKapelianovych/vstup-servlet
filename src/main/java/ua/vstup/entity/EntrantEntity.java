@@ -9,18 +9,18 @@ public class EntrantEntity {
     private final String name;
     private final String password;
     private final String email;
-    private final SchoolEntity schoolEntity;
+    private final Integer schoolEntityId;
     private final RoleEntity roleEntity;
-    private final RequirementEntity requirementEntity;
+    private final Integer requirementEntityId;
 
     private EntrantEntity(Builder builder) {
         id = builder.id;
         name = builder.name;
         password = builder.password;
         email = builder.email;
-        schoolEntity = builder.schoolEntity;
+        schoolEntityId = builder.schoolEntityId;
         roleEntity = builder.roleEntity;
-        requirementEntity = builder.requirementEntity;
+        requirementEntityId = builder.requirementEntityId;
     }
 
     public Integer getId() {
@@ -37,15 +37,15 @@ public class EntrantEntity {
         return email;
     }
 
-    public SchoolEntity getSchoolEntity() {
-        return schoolEntity;
+    public Integer getSchoolEntityId() {
+        return schoolEntityId;
     }
 
     public RoleEntity getRoleEntity() {
         return roleEntity;
     }
 
-    public RequirementEntity getRequirementEntity() { return requirementEntity; }
+    public Integer getRequirementEntityId() { return requirementEntityId; }
 
     public static Builder builder() { return new Builder(); }
 
@@ -54,9 +54,9 @@ public class EntrantEntity {
         private String name;
         private String password;
         private String email;
-        private SchoolEntity schoolEntity;
+        private Integer schoolEntityId;
         private RoleEntity roleEntity;
-        private RequirementEntity requirementEntity;
+        private Integer requirementEntityId;
 
 
         private Builder(){}
@@ -77,16 +77,16 @@ public class EntrantEntity {
             this.email = email;
             return this;
         }
-        public Builder withSchoolEntity(SchoolEntity schoolEntity){
-            this.schoolEntity = schoolEntity;
+        public Builder withSchoolEntityId(Integer schoolEntity){
+            this.schoolEntityId = schoolEntity;
             return this;
         }
         public Builder withRoleEntity(RoleEntity roleEntity){
             this.roleEntity = roleEntity;
             return this;
         }
-        public Builder withRequirementEntity(RequirementEntity requirementEntity){
-            this.requirementEntity = requirementEntity;
+        public Builder withRequirementEntityId(Integer requirementEntity){
+            this.requirementEntityId = requirementEntity;
             return this;
         }
 

@@ -31,11 +31,6 @@ public class RequirementDaoImpl extends AbstractDao<RequirementEntity> implement
 
     @Override
     public Integer save(RequirementEntity entity) {
-        subjectDao.save(entity.getFirstSubject());
-        subjectDao.save(entity.getSecondSubject());
-        subjectDao.save(entity.getThirdSubject());
-        subjectDao.save(entity.getFourthSubject());
-        subjectDao.save(entity.getFifthSubject());
         return save(entity, INSERT_QUERY);
     }
 
@@ -46,11 +41,6 @@ public class RequirementDaoImpl extends AbstractDao<RequirementEntity> implement
 
     @Override
     public boolean update(RequirementEntity entity) {
-        subjectDao.update(entity.getFirstSubject());
-        subjectDao.update(entity.getSecondSubject());
-        subjectDao.update(entity.getThirdSubject());
-        subjectDao.update(entity.getFourthSubject());
-        subjectDao.update(entity.getFifthSubject());
         return update(entity, UPDATE_QUERY);
     }
 
@@ -67,11 +57,11 @@ public class RequirementDaoImpl extends AbstractDao<RequirementEntity> implement
     @Override
     protected void prepareData(RequirementEntity entity, PreparedStatement ps) throws SQLException {
         ps.setObject(1, entity.getId());
-        ps.setObject(2, entity.getFirstSubject().getId());
-        ps.setObject(3, entity.getSecondSubject().getId());
-        ps.setObject(4, entity.getThirdSubject().getId());
-        ps.setObject(5, entity.getFourthSubject().getId());
-        ps.setObject(6, entity.getFifthSubject().getId());
+        ps.setObject(2, entity.getFirstSubjectId());
+        ps.setObject(3, entity.getSecondSubjectId());
+        ps.setObject(4, entity.getThirdSubjectId());
+        ps.setObject(5, entity.getFourthSubjectId());
+        ps.setObject(6, entity.getFifthSubjectId());
     }
 
     @Override

@@ -58,7 +58,7 @@ CREATE TABLE 'entrant'
     'requirement_id' int(11) NOT NULL UNIQUE,
     PRIMARY KEY ('id'),
     CONSTRAINT 'entrant_fk_school_id' FOREIGN KEY ('school_id') REFERENCES 'school' ('id') ON UPDATE CASCADE,
-    CONSTRAINT 'entrant_fk_requirement_id' FOREIGN KEY ('requirement_id') REFERENCES 'requirement' ('id') ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT 'entrant_fk_requirement_id' FOREIGN KEY ('requirement_id') REFERENCES 'requirement' ('id') ON UPDATE CASCADE
 );
 
 CREATE TABLE 'faculty'

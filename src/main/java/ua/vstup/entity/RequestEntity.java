@@ -2,22 +2,22 @@ package ua.vstup.entity;
 
 public class RequestEntity {
     private final Integer id;
-    private final Integer entrantId;
-    private final Integer facultyId;
-    private final SubjectEntity firstSubjectEntity;
-    private final SubjectEntity secondSubjectEntity;
-    private final SubjectEntity thirdSubjectEntity;
-    private final Integer statementId;
+    private final Integer entrantEntityId;
+    private final Integer facultyEntityId;
+    private final Integer firstSubjectEntityId;
+    private final Integer secondSubjectEntityId;
+    private final Integer thirdSubjectEntityId;
+    private final Integer statementEntityId;
     private final StateEntity stateEntity;
 
     private RequestEntity(Builder builder) {
         id = builder.id;
-        entrantId = builder.entrantId;
-        facultyId = builder.facultyId;
-        firstSubjectEntity = builder.firstSubjectEntity;
-        secondSubjectEntity = builder.secondSubjectEntity;
-        thirdSubjectEntity = builder.thirdSubjectEntity;
-        statementId = builder.statementId;
+        entrantEntityId = builder.entrantEntityId;
+        facultyEntityId = builder.facultyEntityId;
+        firstSubjectEntityId = builder.firstSubjectEntityId;
+        secondSubjectEntityId = builder.secondSubjectEntityId;
+        thirdSubjectEntityId = builder.thirdSubjectEntityId;
+        statementEntityId = builder.statementEntityId;
         stateEntity = builder.stateEntity;
     }
 
@@ -25,27 +25,27 @@ public class RequestEntity {
         return id;
     }
 
-    public Integer getEntrantId() {
-        return entrantId;
+    public Integer getEntrantEntityId() {
+        return entrantEntityId;
     }
 
-    public Integer getFacultyId() {
-        return facultyId;
+    public Integer getFacultyEntityId() {
+        return facultyEntityId;
     }
 
-    public SubjectEntity getFirstSubjectEntity() {
-        return firstSubjectEntity;
+    public Integer getFirstSubjectEntityId() {
+        return firstSubjectEntityId;
     }
 
-    public SubjectEntity getSecondSubjectEntity() {
-        return secondSubjectEntity;
+    public Integer getSecondSubjectEntityId() {
+        return secondSubjectEntityId;
     }
 
-    public SubjectEntity getThirdSubjectEntity() {
-        return thirdSubjectEntity;
+    public Integer getThirdSubjectEntityId() {
+        return thirdSubjectEntityId;
     }
 
-    public Integer getStatementId() { return statementId; }
+    public Integer getStatementEntityId() { return statementEntityId; }
 
     public StateEntity getStateEntity() { return stateEntity; }
 
@@ -53,12 +53,12 @@ public class RequestEntity {
 
     public static class Builder{
         private Integer id;
-        private Integer entrantId;
-        private Integer facultyId;
-        private SubjectEntity firstSubjectEntity;
-        private SubjectEntity secondSubjectEntity;
-        private SubjectEntity thirdSubjectEntity;
-        private Integer statementId;
+        private Integer entrantEntityId;
+        private Integer facultyEntityId;
+        private Integer firstSubjectEntityId;
+        private Integer secondSubjectEntityId;
+        private Integer thirdSubjectEntityId;
+        private Integer statementEntityId;
         private StateEntity stateEntity;
 
         private Builder(){}
@@ -67,28 +67,28 @@ public class RequestEntity {
             this.id = id;
             return this;
         }
-        public Builder withEntrantId(Integer entrantId){
-            this.entrantId = entrantId;
+        public Builder withEntrantEntityId(Integer entrantId){
+            this.entrantEntityId = entrantId;
             return this;
         }
-        public Builder withFacultyId(Integer facultyId){
-            this.facultyId = facultyId;
+        public Builder withFacultyEntityId(Integer facultyId){
+            this.facultyEntityId = facultyId;
             return this;
         }
-        public Builder withFirstSubjectEntity(SubjectEntity firstSubjectEntity){
-            this.firstSubjectEntity = firstSubjectEntity;
+        public Builder withFirstSubjectEntityId(Integer firstSubjectEntity){
+            this.firstSubjectEntityId = firstSubjectEntity;
             return this;
         }
-        public Builder withSecondSubjectEntity(SubjectEntity secondSubjectEntity){
-            this.secondSubjectEntity = secondSubjectEntity;
+        public Builder withSecondSubjectEntityId(Integer secondSubjectEntity){
+            this.secondSubjectEntityId = secondSubjectEntity;
             return this;
         }
-        public Builder withThirdSubjectEntity(SubjectEntity thirdSubjectEntity){
-            this.thirdSubjectEntity = thirdSubjectEntity;
+        public Builder withThirdSubjectEntityId(Integer thirdSubjectEntity){
+            this.thirdSubjectEntityId = thirdSubjectEntity;
             return this;
         }
-        public Builder withStatementId(Integer statementId){
-            this.statementId = statementId;
+        public Builder withStatementEntityId(Integer statementId){
+            this.statementEntityId = statementId;
             return this;
         }
         public Builder withStateEntity(StateEntity stateEntity){

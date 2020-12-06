@@ -4,8 +4,6 @@ import ua.vstup.dao.FacultyDao;
 import ua.vstup.dao.RequirementDao;
 import ua.vstup.dao.db.holder.ConnectionHolder;
 import ua.vstup.entity.FacultyEntity;
-import ua.vstup.entity.RequirementEntity;
-import ua.vstup.exception.DatabaseInteractionException;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,14 +25,15 @@ public class FacultyDaoImpl extends AbstractDao<FacultyEntity> implements Facult
     public FacultyDaoImpl(ConnectionHolder connectionHolder) { super(connectionHolder); }
 
     @Override
-    public Integer save(FacultyEntity entity) { return save(entity, INSERT_QUERY); } //TODO save faculty requirements
+    public Integer save(FacultyEntity entity) {
+        return save(entity, INSERT_QUERY);
+    } //TODO save faculty requirements
 
     @Override
     public Optional<FacultyEntity> findById(Integer id) { return findByParam(id, FIND_BY_ID_QUERY); }
 
     @Override
     public boolean update(FacultyEntity entity) {
-        requirementDao.update(entity.getFacultyRequirementEntity());
         return update(entity, UPDATE_QUERY);
     }
 
@@ -52,7 +51,7 @@ public class FacultyDaoImpl extends AbstractDao<FacultyEntity> implements Facult
         ps.setObject(2, entity.getName());
         ps.setObject(3, entity.getMaxBudgetPlace());
         ps.setObject(4, entity.getMaxPlace());
-        ps.setObject(5, entity.getFacultyRequirementEntity().getId());
+        ps.setObject(5, entity.getRequirementEntityId());
     }
 
     @Override

@@ -2,50 +2,50 @@ package ua.vstup.entity;
 
 public class RequirementEntity {
     private final Integer id;
-    private final SubjectEntity firstSubject;
-    private final SubjectEntity secondSubject;
-    private final SubjectEntity thirdSubject;
-    private final SubjectEntity fourthSubject;
-    private final SubjectEntity fifthSubject;
+    private final Integer firstSubjectId;
+    private final Integer secondSubjectId;
+    private final Integer thirdSubjectId;
+    private final Integer fourthSubjectId;
+    private final Integer fifthSubjectId;
 
     private RequirementEntity(Builder builder) {
         id = builder.id;
-        firstSubject = builder.firstSubject;
-        secondSubject = builder.secondSubject;
-        thirdSubject = builder.thirdSubject;
-        fourthSubject = builder.fourthSubject;
-        fifthSubject = builder.fifthSubject;
+        firstSubjectId = builder.firstSubjectId;
+        secondSubjectId = builder.secondSubjectId;
+        thirdSubjectId = builder.thirdSubjectId;
+        fourthSubjectId = builder.fourthSubjectId;
+        fifthSubjectId = builder.fifthSubjectId;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public SubjectEntity getFirstSubject() {
-        return firstSubject;
+    public Integer getFirstSubjectId() {
+        return firstSubjectId;
     }
 
-    public SubjectEntity getSecondSubject() {
-        return secondSubject;
+    public Integer getSecondSubjectId() {
+        return secondSubjectId;
     }
 
-    public SubjectEntity getThirdSubject() {
-        return thirdSubject;
+    public Integer getThirdSubjectId() {
+        return thirdSubjectId;
     }
 
-    public SubjectEntity getFourthSubject() { return fourthSubject; }
+    public Integer getFourthSubjectId() { return fourthSubjectId; }
 
-    public SubjectEntity getFifthSubject() { return fifthSubject; }
+    public Integer getFifthSubjectId() { return fifthSubjectId; }
 
     public static Builder builder() { return new Builder(); }
 
     public static class Builder{
         private Integer id;
-        private SubjectEntity firstSubject;
-        private SubjectEntity secondSubject;
-        private SubjectEntity thirdSubject;
-        private SubjectEntity fourthSubject;
-        private SubjectEntity fifthSubject;
+        private Integer firstSubjectId;
+        private Integer secondSubjectId;
+        private Integer thirdSubjectId;
+        private Integer fourthSubjectId;
+        private Integer fifthSubjectId;
 
         private Builder(){}
 
@@ -53,24 +53,24 @@ public class RequirementEntity {
             this.id = id;
             return this;
         }
-        public Builder withFirstSubject(SubjectEntity firstSubject){
-            this.firstSubject = firstSubject;
+        public Builder withFirstSubjectId(Integer firstSubject){
+            this.firstSubjectId = firstSubject;
             return this;
         }
-        public Builder withSecondSubject(SubjectEntity secondSubject){
-            this.secondSubject = secondSubject;
+        public Builder withSecondSubjectId(Integer secondSubject){
+            this.secondSubjectId = secondSubject;
             return this;
         }
-        public Builder withThirdSubject(SubjectEntity thirdSubject){
-            this.thirdSubject = thirdSubject;
+        public Builder withThirdSubjectId(Integer thirdSubject){
+            this.thirdSubjectId = thirdSubject;
             return this;
         }
-        public Builder withFourthSubject(SubjectEntity fourthSubject){
-            this.fourthSubject = fourthSubject;
+        public Builder withFourthSubjectId(Integer fourthSubject){
+            this.fourthSubjectId = fourthSubject;
             return this;
         }
-        public Builder withFifthSubject(SubjectEntity fifthSubject){
-            this.fifthSubject = fifthSubject;
+        public Builder withFifthSubjectId(Integer fifthSubject){
+            this.fifthSubjectId = fifthSubject;
             return this;
         }
 

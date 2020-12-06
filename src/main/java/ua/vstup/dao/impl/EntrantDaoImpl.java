@@ -43,9 +43,9 @@ public class EntrantDaoImpl extends AbstractDao<EntrantEntity> implements Entran
         ps.setObject(2, entity.getName());
         ps.setObject(3, entity.getPassword());
         ps.setObject(4, entity.getEmail());
-        ps.setObject(5, entity.getSchoolEntity().getId());
+        ps.setObject(5, entity.getSchoolEntityId());
         ps.setObject(6, entity.getRoleEntity().name());
-        ps.setObject(7, entity.getRequirementEntity().getId());
+        ps.setObject(7, entity.getRequirementEntityId());
     }
 
     @Override

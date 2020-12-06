@@ -54,7 +54,7 @@ public class SubjectDaoImpl extends AbstractDao<SubjectEntity> implements Subjec
     @Override
     protected void prepareData(SubjectEntity entity, PreparedStatement ps) throws SQLException {
         ps.setObject(1, entity.getId());
-        ps.setObject(2, entity.getName());
+        ps.setObject(2, entity.getName().name());
         ps.setObject(3, entity.getRate());
     }
 
