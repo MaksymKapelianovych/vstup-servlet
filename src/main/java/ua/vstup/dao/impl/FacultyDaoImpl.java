@@ -1,5 +1,6 @@
 package ua.vstup.dao.impl;
 
+import ua.vstup.annotation.Dao;
 import ua.vstup.dao.FacultyDao;
 import ua.vstup.dao.RequirementDao;
 import ua.vstup.dao.db.holder.ConnectionHolder;
@@ -12,9 +13,8 @@ import java.util.Optional;
 
 import static ua.vstup.dao.utility.ResultSetToEntityMapper.extractFacultyEntityFromResultSet;
 
-
+@Dao
 public class FacultyDaoImpl extends AbstractDao<FacultyEntity> implements FacultyDao {
-    //TODO переписати запити
     private static final String INSERT_QUERY = "INSERT INTO faculty VALUES (DEFAULT,?,?,?,?,?)";
     private static final String DELETE_QUERY = "DELETE FROM faculty WHERE id=?";
     private static final String UPDATE_QUERY = "UPDATE faculty SET id=?, name=?, maxBudgetPlace=?, maxPlace=?, requirement_id=?, active=? WHERE id=?";

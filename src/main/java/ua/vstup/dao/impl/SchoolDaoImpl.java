@@ -1,9 +1,8 @@
 package ua.vstup.dao.impl;
 
-import ua.vstup.dao.BaseDao;
+import ua.vstup.annotation.Dao;
 import ua.vstup.dao.SchoolDao;
 import ua.vstup.dao.db.holder.ConnectionHolder;
-import ua.vstup.entity.RegionEntity;
 import ua.vstup.entity.SchoolEntity;
 
 import java.sql.PreparedStatement;
@@ -13,6 +12,7 @@ import java.util.Optional;
 
 import static ua.vstup.dao.utility.ResultSetToEntityMapper.extractSchoolEntityFromResultSet;
 
+@Dao
 public class SchoolDaoImpl extends AbstractDao<SchoolEntity> implements SchoolDao {
     private static final String INSERT_QUERY = "INSERT INTO school VALUES (DEFAULT,?,?,?,?)";
     private static final String UPDATE_QUERY = "UPDATE school SET id=?, name=?, city=?, region=?, active=? WHERE id=?";

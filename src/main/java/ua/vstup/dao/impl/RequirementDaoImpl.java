@@ -1,7 +1,7 @@
 package ua.vstup.dao.impl;
 
+import ua.vstup.annotation.Dao;
 import ua.vstup.dao.RequirementDao;
-import ua.vstup.dao.SubjectDao;
 import ua.vstup.dao.db.holder.ConnectionHolder;
 import ua.vstup.entity.RequirementEntity;
 
@@ -12,13 +12,12 @@ import java.util.Optional;
 
 import static ua.vstup.dao.utility.ResultSetToEntityMapper.extractRequirementEntityFromResultSet;
 
+@Dao
 public class RequirementDaoImpl extends AbstractDao<RequirementEntity> implements RequirementDao {
     private static String INSERT_QUERY = "INSERT INTO requirement VALUES(DEFAULT,?,?,?,?,?)";
     private static String UPDATE_QUERY = "UPDATE requirement SET id=?, first_subject_id=?, second_subject_id=?, third_subject_id=?, fourth_subject_id=?, fifth_subject_id=? WHERE id=?";
     //private static String DELETE_QUERY = "DELETE FROM requirement WHERE id=?";
     private static String FIND_BY_ID_QUERY = "SELECT * FROM requirement WHERE id=?";
-
-    private SubjectDao subjectDao;
 
     /**
      * Creates a new dao.

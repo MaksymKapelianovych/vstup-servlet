@@ -1,5 +1,6 @@
 package ua.vstup.dao.impl;
 
+import ua.vstup.annotation.Dao;
 import ua.vstup.dao.SubjectDao;
 import ua.vstup.dao.db.holder.ConnectionHolder;
 import ua.vstup.entity.SubjectEntity;
@@ -11,6 +12,7 @@ import java.util.Optional;
 
 import static ua.vstup.dao.utility.ResultSetToEntityMapper.extractSubjectEntityFromResultSet;
 
+@Dao
 public class SubjectDaoImpl extends AbstractDao<SubjectEntity> implements SubjectDao {
     private static final String INSERT_QUERY = "INSERT INTO subject VALUES (DEFAULT,?,?)";
     private static final String UPDATE_QUERY = "UPDATE subject SET id=?, name=?, rate=? WHERE id=?";

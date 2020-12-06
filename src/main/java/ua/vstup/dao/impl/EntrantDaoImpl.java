@@ -1,5 +1,6 @@
 package ua.vstup.dao.impl;
 
+import ua.vstup.annotation.Dao;
 import ua.vstup.dao.EntrantDao;
 import ua.vstup.dao.db.holder.ConnectionHolder;
 import ua.vstup.entity.EntrantEntity;
@@ -11,6 +12,7 @@ import java.util.Optional;
 
 import static ua.vstup.dao.utility.ResultSetToEntityMapper.extractEntrantEntityFromResultSet;
 
+@Dao
 public class EntrantDaoImpl extends AbstractDao<EntrantEntity> implements EntrantDao {
     private static final String INSERT_QUERY = "INSERT INTO entrant VALUES (DEFAULT,?,?,?,?,?,?,?)"; //TODO add region
     //private static final String DELETE_QUERY = "DELETE FROM entrant WHERE id=?";

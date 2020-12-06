@@ -1,7 +1,7 @@
 package ua.vstup.dao.impl;
 
+import ua.vstup.annotation.Dao;
 import ua.vstup.dao.RequestDao;
-import ua.vstup.dao.SubjectDao;
 import ua.vstup.dao.db.holder.ConnectionHolder;
 import ua.vstup.entity.RequestEntity;
 
@@ -12,13 +12,12 @@ import java.util.Optional;
 
 import static ua.vstup.dao.utility.ResultSetToEntityMapper.extractRequestEntityFromResultSet;
 
+@Dao
 public class RequestDaoImpl extends AbstractDao<RequestEntity> implements RequestDao {
     private final String INSERT_QUERY = "INSERT INTO request VALUES(DEFAULT,?,?,?,?,?,?,?)";
     private final String UPDATE_QUERY = "UPDATE request SET id=?, entrant_id=?, faculty_id=?, first_subject_id=?, second_subject_id=?, third_subject_id=?, statement_id=?, state=? WHERE id=?";
     private final String DELETE_QUERY = "DELETE FROM request WHERE id=?";
     private final String FIND_BY_ID_QUERY = "SELECT * FROM request WHERE id=?";
-
-    private SubjectDao subjectDao;
 
     /**
      * Creates a new dao.
