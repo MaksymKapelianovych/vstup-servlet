@@ -12,9 +12,9 @@ import java.util.Optional;
 import static ua.vstup.dao.utility.ResultSetToEntityMapper.extractEntrantEntityFromResultSet;
 
 public class EntrantDaoImpl extends AbstractDao<EntrantEntity> implements EntrantDao {
-    private static final String INSERT_QUERY = "INSERT INTO entrant VALUES (DEFAULT,?,?,?,?,?,?)"; //TODO add region
+    private static final String INSERT_QUERY = "INSERT INTO entrant VALUES (DEFAULT,?,?,?,?,?,?,?)"; //TODO add region
     //private static final String DELETE_QUERY = "DELETE FROM entrant WHERE id=?";
-    private static final String UPDATE_QUERY = "UPDATE entrant SET id=?, name=?, password=?, email=?, school_id=?, role=?, requirement_id=? WHERE id=?"; //TODO add region
+    private static final String UPDATE_QUERY = "UPDATE entrant SET id=?, name=?, password=?, email=?, school_id=?, role=?, requirement_id=?, active=? WHERE id=?"; //TODO add region
     private static final String FIND_BY_ID_QUERY = "SELECT * FROM entrant WHERE id=?";
 
     public EntrantDaoImpl(ConnectionHolder connectionHolder) { super(connectionHolder); }
@@ -46,11 +46,12 @@ public class EntrantDaoImpl extends AbstractDao<EntrantEntity> implements Entran
         ps.setObject(5, entity.getSchoolEntityId());
         ps.setObject(6, entity.getRoleEntity().name());
         ps.setObject(7, entity.getRequirementEntityId());
+        ps.setObject(8, entity.getActive());
     }
 
     @Override
     protected void prepareDataWithId(EntrantEntity entity, PreparedStatement ps) throws SQLException {
         prepareData(entity, ps);
-        ps.setObject(8, entity.getId());
+        ps.setObject(9, entity.getId());
     }
 }

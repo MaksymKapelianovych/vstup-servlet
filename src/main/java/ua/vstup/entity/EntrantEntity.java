@@ -4,6 +4,9 @@ package ua.vstup.entity;
 //TODO мінімально на факультет 3 предмети, максимально 5
 //TODO відомість зберігати після фіналізації
 
+
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 public class EntrantEntity {
     private final Integer id;
     private final String name;
@@ -12,6 +15,7 @@ public class EntrantEntity {
     private final Integer schoolEntityId;
     private final RoleEntity roleEntity;
     private final Integer requirementEntityId;
+    private final Boolean active;
 
     private EntrantEntity(Builder builder) {
         id = builder.id;
@@ -21,6 +25,7 @@ public class EntrantEntity {
         schoolEntityId = builder.schoolEntityId;
         roleEntity = builder.roleEntity;
         requirementEntityId = builder.requirementEntityId;
+        active = builder.active;
     }
 
     public Integer getId() {
@@ -47,6 +52,8 @@ public class EntrantEntity {
 
     public Integer getRequirementEntityId() { return requirementEntityId; }
 
+    public Boolean getActive() { return active; }
+
     public static Builder builder() { return new Builder(); }
 
     public static class Builder {
@@ -57,7 +64,7 @@ public class EntrantEntity {
         private Integer schoolEntityId;
         private RoleEntity roleEntity;
         private Integer requirementEntityId;
-
+        private Boolean active;
 
         private Builder(){}
 
@@ -87,6 +94,10 @@ public class EntrantEntity {
         }
         public Builder withRequirementEntityId(Integer requirementEntity){
             this.requirementEntityId = requirementEntity;
+            return this;
+        }
+        public Builder withActive(Boolean active){
+            this.active = active;
             return this;
         }
 

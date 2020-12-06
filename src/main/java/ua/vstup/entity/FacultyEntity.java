@@ -6,6 +6,7 @@ public class FacultyEntity {
     private final Integer maxBudgetPlace;
     private final Integer maxPlace;
     private final Integer requirementEntityId;
+    private final Boolean active;
 
     private FacultyEntity(Builder builder){
         id = builder.id;
@@ -13,6 +14,7 @@ public class FacultyEntity {
         maxBudgetPlace = builder.maxBudgetPlace;
         maxPlace = builder.maxPlace;
         requirementEntityId = builder.requirementEntityId;
+        active = builder.active;
     }
 
     public Integer getId() {
@@ -33,6 +35,8 @@ public class FacultyEntity {
 
     public Integer getRequirementEntityId() { return requirementEntityId; }
 
+    public Boolean getActive() { return active; }
+
     public static Builder builder() {
         return new Builder();
     }
@@ -43,6 +47,8 @@ public class FacultyEntity {
         private Integer maxBudgetPlace;
         private Integer maxPlace;
         private Integer requirementEntityId;
+        private Boolean active;
+
 
         private Builder(){}
 
@@ -64,6 +70,10 @@ public class FacultyEntity {
         }
         public Builder withRequirementEntityId(Integer requirementEntity){
             this.requirementEntityId = requirementEntity;
+            return this;
+        }
+        public Builder withActive(Boolean active){
+            this.active = active;
             return this;
         }
         public FacultyEntity build(){ return new FacultyEntity(this);}
