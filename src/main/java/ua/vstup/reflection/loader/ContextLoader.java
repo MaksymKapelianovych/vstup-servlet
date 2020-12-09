@@ -1,6 +1,7 @@
 package ua.vstup.reflection.loader;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ua.vstup.annotation.*;
 import ua.vstup.command.Command;
 import ua.vstup.dao.TransactionHandler;
@@ -17,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ContextLoader extends AbstractContextLoader{
-    private static final Logger LOGGER = Logger.getLogger(ContextLoader.class);
+   // private static final Logger LOGGER = LogManager.getLogger(ContextLoader.class);
     private ConnectionHolder connectionHolder;
     private ConnectionManager connectionManager;
     private ServletContext servletContext;
@@ -39,9 +40,9 @@ public class ContextLoader extends AbstractContextLoader{
             manageServices();
             manageCommands();
         }catch (Exception e){
-            LOGGER.error("Cannot load beans. ", e);
+            //LOGGER.error("Cannot load beans. ", e);
         }
-        LOGGER.info("All beans load successfully");
+        //LOGGER.info("All beans load successfully");
     }
 
     @Override
@@ -74,7 +75,7 @@ public class ContextLoader extends AbstractContextLoader{
         if(name != null){
             beans.put(name, daoImpl);
         }else{
-            LOGGER.debug(String.format("Dao %s wasn't logged because it's not dao", daoImpl));
+            //LOGGER.debug(String.format("Dao %s wasn't logged because it's not dao", daoImpl));
         }
     }
 
@@ -87,7 +88,7 @@ public class ContextLoader extends AbstractContextLoader{
             services.put(name, serviceImpl);
             beans.put(name, serviceImpl);
         }else{
-            LOGGER.debug(String.format("Service %s wasn't logged because it's not service", serviceImpl));
+            //LOGGER.debug(String.format("Service %s wasn't logged because it's not service", serviceImpl));
         }
     }
     private void loadCommandMapping(Class<?> c) throws ReflectiveOperationException {
@@ -112,7 +113,7 @@ public class ContextLoader extends AbstractContextLoader{
             beans.put(name, validatorImpl);
             return;
         }
-        LOGGER.debug(String.format("Validator %s wasn't logged Because its not validator", validatorImpl));
+        //LOGGER.debug(String.format("Validator %s wasn't logged Because its not validator", validatorImpl));
     }
 
     private void autowireBeans() throws IllegalAccessException {

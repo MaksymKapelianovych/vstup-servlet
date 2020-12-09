@@ -16,14 +16,16 @@ import static ua.vstup.dao.utility.ResultSetToEntityMapper.extractEntrantEntityF
 public class EntrantDaoImpl extends AbstractDao<EntrantEntity> implements EntrantDao {
     private static final String INSERT_QUERY = "INSERT INTO entrant VALUES (DEFAULT,?,?,?,?,?,?,?)"; //TODO add region
     //private static final String DELETE_QUERY = "DELETE FROM entrant WHERE id=?";
-    private static final String UPDATE_QUERY = "UPDATE entrant SET id=?, name=?, password=?, email=?, school_id=?, role=?, requirement_id=?, active=? WHERE id=?"; //TODO add region
+    private static final String UPDATE_QUERY = "UPDATE entrant SET name=?, password=?, email=?, school_id=?, role=?, requirement_id=?, active=? WHERE id=?"; //TODO add region
     private static final String FIND_BY_ID_QUERY = "SELECT * FROM entrant WHERE id=?";
     private static final String FIND_BY_EMAIL_QUERY = "SELECT * FROM entrant WHERE email=?";
 
     public EntrantDaoImpl(ConnectionHolder connectionHolder) { super(connectionHolder); }
 
     @Override
-    public Integer save(EntrantEntity entity) { return save(entity, INSERT_QUERY); }
+    public Integer save(EntrantEntity entity) {
+        return save(entity, INSERT_QUERY);
+    }
 
     @Override
     public Optional<EntrantEntity> findById(Integer id) { return findByParam(id, FIND_BY_ID_QUERY); }
@@ -45,20 +47,19 @@ public class EntrantDaoImpl extends AbstractDao<EntrantEntity> implements Entran
     //TODO
     @Override
     protected void prepareData(EntrantEntity entity, PreparedStatement ps) throws SQLException {
-        ps.setObject(1, entity.getId());
-        ps.setObject(2, entity.getName());
-        ps.setObject(3, entity.getPassword());
-        ps.setObject(4, entity.getEmail());
-        ps.setObject(5, entity.getSchoolEntityId());
-        ps.setObject(6, entity.getRoleEntity().name());
-        ps.setObject(7, entity.getRequirementEntityId());
-        ps.setObject(8, entity.getActive());
+        ps.setObject(1, entity.getName());
+        ps.setObject(2, entity.getPassword());
+        ps.setObject(3, entity.getEmail());
+        ps.setObject(4, entity.getSchoolEntityId());
+        ps.setObject(5, entity.getRoleEntity().name());
+        ps.setObject(6, entity.getRequirementEntityId());
+        ps.setObject(7, entity.getActive());
     }
 
     @Override
     protected void prepareDataWithId(EntrantEntity entity, PreparedStatement ps) throws SQLException {
         prepareData(entity, ps);
-        ps.setObject(9, entity.getId());
+        ps.setObject(8, entity.getId());
     }
 
 

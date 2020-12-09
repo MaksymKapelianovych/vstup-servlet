@@ -4,9 +4,6 @@ package ua.vstup.entity;
 //TODO мінімально на факультет 3 предмети, максимально 5
 //TODO відомість зберігати після фіналізації
 
-
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
 public class EntrantEntity {
     private final Integer id;
     private final String name;

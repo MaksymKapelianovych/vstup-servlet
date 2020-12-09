@@ -1,10 +1,11 @@
 package ua.vstup.dao;
 
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ua.vstup.annotation.Transactional;
 import ua.vstup.dao.db.holder.ConnectionHolder;
 import ua.vstup.dao.db.manager.ConnectionManager;
-import ua.vstup.dao.db.manager.DbManager;
 import ua.vstup.exception.DatabaseInteractionException;
 
 import java.lang.reflect.InvocationHandler;
@@ -15,7 +16,7 @@ import java.sql.SQLException;
 
 public class TransactionHandler implements InvocationHandler {
 
-    private static final Logger LOGGER = Logger.getLogger(TransactionHandler.class);
+    //private static final Logger LOGGER = LogManager.getLogger(TransactionHandler.class);
     private static final String COMMIT_FAILED = "Commit failed";
     private static final String INVOCATION_FAILED = "Invocation failed";
     private static final String ROLLBACK_FAILED = "Rollback failed";
@@ -45,7 +46,7 @@ public class TransactionHandler implements InvocationHandler {
     }
 
     private Object invokeWithoutTransaction(Method method, Object[] args) {
-        LOGGER.debug("Invoking without transaction");
+        //LOGGER.debug("Invoking without transaction");
         Connection connection = connectionManager.getConnection();
         connectionHolder.set(connection);
         try {
@@ -60,7 +61,7 @@ public class TransactionHandler implements InvocationHandler {
     }
 
     private Object invokeWithTransaction(Method method, Object[] args) {
-        LOGGER.debug("Invoking with transaction");
+        //LOGGER.debug("Invoking with transaction");
         Connection connection = connectionManager.getConnection();
         connectionHolder.set(connection);
         try {

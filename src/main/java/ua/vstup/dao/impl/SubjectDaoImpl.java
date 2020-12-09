@@ -15,7 +15,7 @@ import static ua.vstup.dao.utility.ResultSetToEntityMapper.extractSubjectEntityF
 @Dao
 public class SubjectDaoImpl extends AbstractDao<SubjectEntity> implements SubjectDao {
     private static final String INSERT_QUERY = "INSERT INTO subject VALUES (DEFAULT,?,?)";
-    private static final String UPDATE_QUERY = "UPDATE subject SET id=?, name=?, rate=? WHERE id=?";
+    private static final String UPDATE_QUERY = "UPDATE subject SET name=?, rate=? WHERE id=?";
     //private static final String DELETE_QUERY = "DELETE FROM subject WHERE id=?";
     private static final String FIND_BY_ID_QUERY = "SELECT * FROM subject WHERE id=?";
 
@@ -53,14 +53,13 @@ public class SubjectDaoImpl extends AbstractDao<SubjectEntity> implements Subjec
 
     @Override
     protected void prepareData(SubjectEntity entity, PreparedStatement ps) throws SQLException {
-        ps.setObject(1, entity.getId());
-        ps.setObject(2, entity.getName().name());
-        ps.setObject(3, entity.getRate());
+        ps.setObject(1, entity.getName().name());
+        ps.setObject(2, entity.getRate());
     }
 
     @Override
     protected void prepareDataWithId(SubjectEntity entity, PreparedStatement ps) throws SQLException {
         prepareData(entity, ps);
-        ps.setObject(4, entity.getId());
+        ps.setObject(3, entity.getId());
     }
 }

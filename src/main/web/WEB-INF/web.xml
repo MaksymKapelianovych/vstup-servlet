@@ -6,4 +6,5 @@
     <listener>
         <listener-class>ua.vstup.reflection.ContextLoadListener</listener-class>
     </listener>
+
 </web-app>
