@@ -11,15 +11,15 @@ import javax.servlet.http.HttpServletRequest;
 public class RegisterCommand extends AbstractCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
-        Subject subject1 = new Subject(0, SubjectName.valueOf(request.getParameter("subject_name1")),
+        Subject subject1 = new Subject(null, SubjectName.valueOf(request.getParameter("subject_name1")),
                 Integer.valueOf(request.getParameter("subject_rate1")));
-        Subject subject2 = new Subject(0, SubjectName.valueOf(request.getParameter("subject_name2")),
+        Subject subject2 = new Subject(null, SubjectName.valueOf(request.getParameter("subject_name2")),
                 Integer.valueOf(request.getParameter("subject_rate2")));
-        Subject subject3 = new Subject(0, SubjectName.valueOf(request.getParameter("subject_name3")),
+        Subject subject3 = new Subject(null, SubjectName.valueOf(request.getParameter("subject_name3")),
                 Integer.valueOf(request.getParameter("subject_rate3")));
-        Subject subject4 = new Subject(0, SubjectName.valueOf(request.getParameter("subject_name4")),
+        Subject subject4 = new Subject(null, SubjectName.valueOf(request.getParameter("subject_name4")),
                 Integer.valueOf(request.getParameter("subject_rate4")));
-        Subject subject5 = new Subject(0, SubjectName.valueOf(request.getParameter("subject_name5")),
+        Subject subject5 = new Subject(null, SubjectName.valueOf(request.getParameter("subject_name5")),
                 Integer.valueOf(request.getParameter("subject_rate5")));
 
         Requirement requirement = Requirement.builder()
