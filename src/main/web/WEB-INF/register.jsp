@@ -1,16 +1,12 @@
 <%@ page import="ua.vstup.constantutils.Parameter" %>
+<%@ page import="ua.vstup.constantutils.Url" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: zephyrus
-  Date: 09.12.20
-  Time: 07:30
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%@ include file="directive/directive.jsp"%>
 <html>
 <head>
-    <title>Register new entrant</title>
+    <title><fmt:message key="register.title"/></title>
 </head>
 <body>
     <form class="login-form" action="register" method="post">
@@ -43,17 +39,18 @@
                 </datalist>
             </div>
             <div>
-            <input class="input" type="text" name="name"/>
-            <input class="input" type="email" name="email"/>
-            <input class="input" type="password" name="password"/>
-            <input class="input" list="schools" name="school_id"/>
+            <input class="input" type="text" name="<%= Parameter.NAME%>" placeholder="<fmt:message key="input.name"/>"/>
+            <input class="input" type="email" name="<%= Parameter.EMAIL%>>" placeholder="<fmt:message key="input.email"/>"/>
+            <input class="input" type="password" name="<%= Parameter.PASSWORD%>>" placeholder="<fmt:message key="input.password"/>"/>
+            <input class="input" list="schools" name="<%= Parameter.SCHOOL_ID%>>" placeholder="<fmt:message key="choose.school"/>"/>
                 <datalist id="schools">
                     <c:forEach var="school" items="${requestScope.schools}">
                         <option value="${school.id}">${school.name}, ${school.city}, ${school.region}</option>
                     </c:forEach>
                 </datalist>
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit"><fmt:message key="register.button"/></button>
+            <a href="<%= Url.LOGIN_FORWARD%>"><fmt:message key="back.to.login"/></a>
         </div>
     </form>
 <script>

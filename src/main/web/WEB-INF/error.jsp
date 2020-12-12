@@ -1,9 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="directive/directive.jsp"%>
 <html>
 <head>
-    <title>$Title$</title>
+    <title><fmt:message key="error.title"/></title>
 </head>
 <body>
-$END$
+
 </body>
 </html>
