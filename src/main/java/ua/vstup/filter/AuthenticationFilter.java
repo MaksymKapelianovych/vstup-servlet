@@ -1,5 +1,7 @@
 package ua.vstup.filter;
 
+import ua.vstup.constantutils.Attribute;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -7,8 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-import static ua.vstup.constantutils.url.Url.ROOT;
-import static ua.vstup.constantutils.url.Url.LOGIN_FORWARD;
+import static ua.vstup.constantutils.Url.ROOT;
+import static ua.vstup.constantutils.Url.LOGIN_FORWARD;
 
 @WebFilter(urlPatterns = {ROOT + "/*"})
 public class AuthenticationFilter implements Filter {
@@ -17,7 +19,7 @@ public class AuthenticationFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession(false);
-        if (!(session != null && (session.getAttribute("entrant") != null))) {
+        if (!(session != null && (session.getAttribute(Attribute.SUBJECT_NAMES) != null))) {
             response.sendRedirect(LOGIN_FORWARD);
         }else {
             filterChain.doFilter(request, response);

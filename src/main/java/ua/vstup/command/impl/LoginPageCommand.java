@@ -2,7 +2,7 @@ package ua.vstup.command.impl;
 
 import ua.vstup.annotation.CommandMapping;
 import ua.vstup.command.Command;
-import ua.vstup.constantutils.url.Url;
+import ua.vstup.constantutils.Url;
 
 import javax.servlet.http.HttpServletRequest;
 

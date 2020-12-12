@@ -20,8 +20,6 @@ public class FacultyDaoImpl extends AbstractDao<FacultyEntity> implements Facult
     private static final String UPDATE_QUERY = "UPDATE faculty SET name=?, maxBudgetPlace=?, maxPlace=?, requirement_id=?, active=? WHERE id=?";
     private static final String FIND_BY_ID_QUERY = "SELECT * FROM faculty WHERE id=?";
 
-    private RequirementDao requirementDao;
-
     public FacultyDaoImpl(ConnectionHolder connectionHolder) { super(connectionHolder); }
 
     @Override

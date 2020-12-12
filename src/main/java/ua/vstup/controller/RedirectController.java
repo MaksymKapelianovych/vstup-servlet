@@ -1,6 +1,6 @@
 package ua.vstup.controller;
 
-import static ua.vstup.constantutils.url.Url.*;
+import static ua.vstup.constantutils.Url.*;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
