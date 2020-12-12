@@ -3,12 +3,12 @@ package ua.vstup.domain;
 import ua.vstup.entity.SubjectNameEntity;
 
 public class Requirement {
-    private final Integer id;
-    private final Integer firstSubjectId;
-    private final Integer secondSubjectId;
-    private final Integer thirdSubjectId;
-    private final Integer fourthSubjectId;
-    private final Integer fifthSubjectId;
+    private Integer id;
+    private Integer firstSubjectId;
+    private Integer secondSubjectId;
+    private Integer thirdSubjectId;
+    private Integer fourthSubjectId;
+    private Integer fifthSubjectId;
 
     private Requirement(Builder builder) {
         id = builder.id;

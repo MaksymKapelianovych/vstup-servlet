@@ -1,12 +1,12 @@
 package ua.vstup.domain;
 
 public class Request {
-    private final Integer id;
-    private final Integer entrantId;
-    private final Integer facultyId;
-    private final Integer firstRate;
-    private final Integer secondRate;
-    private final Integer thirdRate;
+    private Integer id;
+    private Integer entrantId;
+    private Integer facultyId;
+    private Integer firstRate;
+    private Integer secondRate;
+    private Integer thirdRate;
 
     private Request(Builder builder) {
         id = builder.id;

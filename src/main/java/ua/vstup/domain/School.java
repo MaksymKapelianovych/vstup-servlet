@@ -4,11 +4,11 @@ import ua.vstup.entity.RegionEntity;
 import ua.vstup.entity.SchoolEntity;
 
 public class School {
-    private final Integer id;
-    private final String name;
-    private final String city;
-    private final Region region;
-    private final Boolean active;
+    private Integer id;
+    private String name;
+    private String city;
+    private Region region;
+    private Boolean active;
 
     public School(Builder builder) {
         id = builder.id;

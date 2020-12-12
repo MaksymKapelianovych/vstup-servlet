@@ -1,11 +1,11 @@
 package ua.vstup.domain;
 
 public class Faculty {
-    private final Integer id;
-    private final String name;
-    private final Integer maxBudgetPlace;
-    private final Integer maxPlace;
-    private final Requirement requirement;
+    private Integer id;
+    private String name;
+    private Integer maxBudgetPlace;
+    private Integer maxPlace;
+    private Requirement requirement;
 
     private Faculty(Builder builder){
         id = builder.id;

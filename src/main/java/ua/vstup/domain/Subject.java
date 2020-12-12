@@ -3,9 +3,9 @@ package ua.vstup.domain;
 import ua.vstup.entity.SubjectNameEntity;
 
 public class Subject {
-    private final Integer id;
-    private final SubjectName name;
-    private final Integer rate;
+    private Integer id;
+    private SubjectName name;
+    private Integer rate;
 
     public Subject(Integer id, SubjectName name, Integer rate) {
         this.id = id;

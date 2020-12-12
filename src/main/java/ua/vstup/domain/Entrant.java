@@ -4,14 +4,14 @@ package ua.vstup.domain;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 
 public class Entrant {
-    private final Integer id;
-    private final String name;
-    private final String email;
-    private final String password;
-    private final Integer schoolId;
-    private final Role role;
-    private final Integer requirementId;
-    private final Boolean active;
+    private Integer id;
+    private String name;
+    private String email;
+    private String password;
+    private Integer schoolId;
+    private Role role;
+    private Integer requirementId;
+    private Boolean active;
 
     public Integer getId() {
         return id;
@@ -36,6 +36,8 @@ public class Entrant {
     }
 
     public Integer getRequirementId() { return requirementId; }
+
+    public void setRequirementId(Integer id) { this.id = id; }
 
     public Boolean getActive() { return active; }
 
