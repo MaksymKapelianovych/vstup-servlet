@@ -62,4 +62,5 @@ public class SubjectDaoImpl extends AbstractDao<SubjectEntity> implements Subjec
         prepareData(entity, ps);
         ps.setObject(3, entity.getId());
     }
+
 }

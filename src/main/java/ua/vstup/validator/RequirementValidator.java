@@ -1,5 +1,7 @@
 package ua.vstup.validator;
 
-public interface RequirementValidator extends Validator<RequirementValidator>{
+import ua.vstup.domain.Requirement;
+
+public interface RequirementValidator extends Validator<Requirement>{
 
 }

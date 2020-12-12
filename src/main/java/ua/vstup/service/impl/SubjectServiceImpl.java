@@ -8,6 +8,8 @@ import ua.vstup.service.SubjectService;
 import ua.vstup.service.utility.EntityMapper;
 import ua.vstup.validator.SubjectValidator;
 
+import java.util.List;
+
 @Service
 public class SubjectServiceImpl implements SubjectService {
     @Autowired

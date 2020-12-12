@@ -3,11 +3,13 @@ package ua.vstup.dao.impl;
 import ua.vstup.annotation.Dao;
 import ua.vstup.dao.SchoolDao;
 import ua.vstup.dao.db.holder.ConnectionHolder;
+import ua.vstup.domain.School;
 import ua.vstup.entity.SchoolEntity;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Optional;
 
 import static ua.vstup.dao.utility.ResultSetToEntityMapper.extractSchoolEntityFromResultSet;
@@ -18,6 +20,7 @@ public class SchoolDaoImpl extends AbstractDao<SchoolEntity> implements SchoolDa
     private static final String UPDATE_QUERY = "UPDATE school SET name=?, city=?, region=?, active=? WHERE id=?";
     private static final String DELETE_QUERY = "DELETE FROM school WHERE id=?";
     private static final String FIND_BY_ID_QUERY = "SELECT * FROM school WHERE id=?";
+    private static final String FIND_ALL_QUERY = "SELECT * FROM school";
     /**
      * Creates a new dao.
      *
@@ -35,6 +38,12 @@ public class SchoolDaoImpl extends AbstractDao<SchoolEntity> implements SchoolDa
     @Override
     public Optional<SchoolEntity> findById(Integer id) {
         return findByParam(id, FIND_BY_ID_QUERY);
+    }
+
+
+    @Override
+    public List<SchoolEntity> findAll() {
+        return findAll(FIND_ALL_QUERY);
     }
 
     @Override
@@ -63,4 +72,5 @@ public class SchoolDaoImpl extends AbstractDao<SchoolEntity> implements SchoolDa
         prepareData(entity, ps);
         ps.setObject(5, entity.getId());
     }
+
 }

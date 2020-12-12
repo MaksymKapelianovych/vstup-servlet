@@ -1,5 +1,5 @@
 <%@ page import="ua.vstup.domain.Entrant" %>
-<%@ page import="ua.vstup.constantutils.url.Url" %><%--
+<%@ page import="ua.vstup.constantutils.Url" %><%--
   Created by IntelliJ IDEA.
   User: zephyrus
   Date: 08.12.20
