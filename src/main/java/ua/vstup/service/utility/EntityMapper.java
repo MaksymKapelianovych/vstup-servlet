@@ -1,9 +1,6 @@
 package ua.vstup.service.utility;
 
-import ua.vstup.domain.Entrant;
-import ua.vstup.domain.Requirement;
-import ua.vstup.domain.Role;
-import ua.vstup.domain.Subject;
+import ua.vstup.domain.*;
 import ua.vstup.entity.*;
 
 public class EntityMapper {
@@ -24,7 +21,6 @@ public class EntityMapper {
                 .withActive(entrantEntity.getActive())
                 .build();
     }
-
     public static EntrantEntity entrantToEntrantEntity(Entrant entrant){
         if(entrant == null){
             return null;
@@ -61,6 +57,25 @@ public class EntityMapper {
                 .withThirdSubjectId(requirement.getThirdSubjectId())
                 .withFourthSubjectId(requirement.getFourthSubjectId())
                 .withFifthSubjectId(requirement.getFifthSubjectId())
+                .build();
+    }
+
+    public static SchoolEntity schoolToSchoolEntity(School school){
+        return SchoolEntity.builder()
+                .withName(school.getName())
+                .withCity(school.getCity())
+                .withRegionEntity(RegionEntity.valueOf(school.getRegion().name()))
+                .withActive(true)
+                .build();
+    }
+
+    public static School schoolEntityToSchool(SchoolEntity schoolEntity) {
+        return School.builder()
+                .withId(schoolEntity.getId())
+                .withName(schoolEntity.getName())
+                .withCity(schoolEntity.getCity())
+                .withRegion(Region.valueOf(schoolEntity.getRegionEntity().name()))
+                .withActive(schoolEntity.getActive())
                 .build();
     }
 }

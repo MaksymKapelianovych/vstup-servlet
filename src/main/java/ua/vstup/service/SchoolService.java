@@ -1,0 +1,12 @@
+package ua.vstup.service;
+
+import ua.vstup.annotation.Service;
+import ua.vstup.domain.School;
+
+import java.util.List;
+
+@Service
+public interface SchoolService {
+    void add(School school);
+    List<School> getAll();
+}

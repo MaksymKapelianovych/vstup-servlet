@@ -18,6 +18,27 @@ public class School {
         active = builder.active;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public Region getRegion() {
+        return region;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public static Builder builder() { return new Builder(); }
 
     public static class Builder {
         private Integer id;

@@ -1,8 +1,10 @@
 package ua.vstup.command.impl;
 
 import ua.vstup.domain.Entrant;
+import ua.vstup.domain.School;
 import ua.vstup.service.EntrantService;
 import ua.vstup.service.RequirementService;
+import ua.vstup.service.SchoolService;
 import ua.vstup.service.SubjectService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,5 +20,8 @@ public class AbstractCommand {
 
     protected RequirementService getRequirementService(HttpServletRequest request){
         return (RequirementService) request.getServletContext().getAttribute("ua.vstup.service.RequirementService");
+    }
+    protected SchoolService getSchoolService(HttpServletRequest request){
+        return (SchoolService) request.getServletContext().getAttribute("ua.vstup.service.SchoolService");
     }
 }
