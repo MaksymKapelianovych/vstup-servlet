@@ -1,5 +1,7 @@
 package ua.vstup.filter;
 
+import ua.vstup.constantutils.Attribute;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -17,9 +19,8 @@ public class SessionFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
         if (req.getSession(false) == null) {
             HttpSession session = req.getSession(true);
-            session.setAttribute("date", LocalDate.now());
-            session.setAttribute("page", 1);
-            session.setAttribute("locale", "en");
+            session.setAttribute(Attribute.PAGE, 1);
+            session.setAttribute(Attribute.LOCALE, Attribute.EN);
         }
         filterChain.doFilter(req, res);
     }

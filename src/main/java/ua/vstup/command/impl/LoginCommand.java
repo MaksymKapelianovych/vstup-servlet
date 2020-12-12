@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 public class LoginCommand extends AbstractCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
-        Entrant entrant = getEntrantService(request).login(request.getParameter(Parameter.NAME), request.getParameter(Parameter.EMAIL));
+        Entrant entrant = getEntrantService(request).login(request.getParameter(Parameter.EMAIL), request.getParameter(Parameter.PASSWORD));
         request.getSession(false).setAttribute(Attribute.ENTRANT, entrant);
         return Url.HOME_FORWARD;
     }
