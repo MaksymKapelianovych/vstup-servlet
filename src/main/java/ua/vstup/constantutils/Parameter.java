@@ -18,4 +18,5 @@ public interface Parameter {
     String SUBJECT_RATE4 = "subject_rate4";
     String SUBJECT_RATE5 = "subject_rate5";
 
+    String LANGUAGE = "language";
 }
