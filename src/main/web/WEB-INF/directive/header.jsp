@@ -4,9 +4,13 @@
 <%@ page import="ua.vstup.constantutils.Attribute" %>
 <header>
     <div>
-        <a href="<%= Url.HOME_FORWARD%>"><fmt:message key="profile.button"/></a>
+        <c:if test="${sessionScope.entrant!=null}">
+            <a href="<%= Url.HOME_FORWARD%>"><fmt:message key="profile.button"/></a>
+        </c:if>
         <a href="?<%=Parameter.LANGUAGE%>=<%=Attribute.EN%>">EN</a>
         <a href="?<%=Parameter.LANGUAGE%>=<%=Attribute.UA%>">UA</a>
-        <a href="<%= Url.LOGOUT_REDIRECT%>"><fmt:message key="logout.button"/></a>
+        <c:if test="${sessionScope.entrant!=null}">
+            <a href="<%= Url.LOGOUT_REDIRECT%>"><fmt:message key="logout.button"/></a>
+        </c:if>
     </div>
 </header>

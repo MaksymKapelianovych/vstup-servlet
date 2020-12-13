@@ -96,7 +96,6 @@ public class SchoolDaoImplTest {
                 .withNameUa("School №1")
                 .withCityUa("Kyiv")
                 .withRegionEntity(RegionEntity.KYIV)
-                .withActive(true)
                 .build();
 
         testSchoolEntity = SchoolEntity.builder()
@@ -104,7 +103,6 @@ public class SchoolDaoImplTest {
                 .withNameUa("School №1")
                 .withCityUa("Kyiv")
                 .withRegionEntity(RegionEntity.KYIV)
-                .withActive(true)
                 .build();
     }
 }

@@ -34,7 +34,8 @@ public class ResultSetToEntityMapper {
     public static FacultyEntity extractFacultyEntityFromResultSet(ResultSet resultSet) throws SQLException {
         FacultyEntity entity = FacultyEntity.builder()
                 .withId(resultSet.getInt("faculty.id"))
-                .withNameUa(resultSet.getString("faculty.name"))
+                .withNameUa(resultSet.getString("faculty.name_ua"))
+                .withNameEn(resultSet.getString("faculty.name_en"))
                 .withMaxBudgetPlace(resultSet.getInt("faculty.maxBudgetPlace"))
                 .withMaxPlace(resultSet.getInt("faculty.maxPlace"))
                 .withRequirementEntityId(resultSet.getInt("faculty.requirement_id"))
