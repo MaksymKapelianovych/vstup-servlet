@@ -13,4 +13,5 @@ public interface Attribute {
     String SERVLET_ERROR_EXCEPTION = "javax.servlet.error.exception";
 
     String PAGE = "page";
+    String REQUEST_LIST = "requests";
 }

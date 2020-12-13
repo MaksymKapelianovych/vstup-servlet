@@ -80,4 +80,17 @@ public class EntityMapper {
                 .withRegion(Region.valueOf(schoolEntity.getRegionEntity().name()))
                 .build();
     }
+
+    public static Request requestEntityToRequest(RequestEntity requestEntity) {
+        return Request.builder()
+                .withId(requestEntity.getId())
+                .withEntrantId(requestEntity.getEntrantEntityId())
+                .withFacultyId(requestEntity.getFacultyEntityId())
+                .withFirstSubjectId(requestEntity.getFirstSubjectEntityId())
+                .withSecondSubjectId(requestEntity.getSecondSubjectEntityId())
+                .withThirdSubjectId(requestEntity.getThirdSubjectEntityId())
+                .withStatementId(requestEntity.getStatementEntityId())
+                .withState(State.valueOf(requestEntity.getStateEntity().name()))
+                .build();
+    }
 }

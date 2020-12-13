@@ -1,15 +1,17 @@
 package ua.vstup.command.impl;
 
+import ua.vstup.constantutils.Attribute;
 import ua.vstup.domain.Entrant;
 import ua.vstup.domain.School;
-import ua.vstup.service.EntrantService;
-import ua.vstup.service.RequirementService;
-import ua.vstup.service.SchoolService;
-import ua.vstup.service.SubjectService;
+import ua.vstup.service.*;
 
 import javax.servlet.http.HttpServletRequest;
 
 public class AbstractCommand {
+    protected Entrant getEntrant(HttpServletRequest request) {
+        return (Entrant) request.getSession().getAttribute(Attribute.ENTRANT);
+    }
+
     protected EntrantService getEntrantService(HttpServletRequest request){
         return (EntrantService) request.getServletContext().getAttribute("ua.vstup.service.EntrantService");
     }
@@ -23,5 +25,8 @@ public class AbstractCommand {
     }
     protected SchoolService getSchoolService(HttpServletRequest request){
         return (SchoolService) request.getServletContext().getAttribute("ua.vstup.service.SchoolService");
+    }
+    protected RequestService getRequestService(HttpServletRequest request){
+        return (RequestService) request.getServletContext().getAttribute("ua.vstup.service.RequestService");
     }
 }

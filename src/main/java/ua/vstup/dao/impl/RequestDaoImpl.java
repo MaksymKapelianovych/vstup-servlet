@@ -8,6 +8,7 @@ import ua.vstup.entity.RequestEntity;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Optional;
 
 import static ua.vstup.dao.utility.ResultSetToEntityMapper.extractRequestEntityFromResultSet;
@@ -18,6 +19,7 @@ public class RequestDaoImpl extends AbstractDao<RequestEntity> implements Reques
     private final String UPDATE_QUERY = "UPDATE request SET entrant_id=?, faculty_id=?, first_subject_id=?, second_subject_id=?, third_subject_id=?, statement_id=?, state=? WHERE id=?";
     private final String DELETE_QUERY = "DELETE FROM request WHERE id=?";
     private final String FIND_BY_ID_QUERY = "SELECT * FROM request WHERE id=?";
+    private final String FIND_BY_ENTRANT_ID_QUERY = "SELECT * FROM request WHERE entrant_id=?";
 
     /**
      * Creates a new dao.
@@ -37,6 +39,9 @@ public class RequestDaoImpl extends AbstractDao<RequestEntity> implements Reques
     public Optional<RequestEntity> findById(Integer id) {
         return findByParam(id, FIND_BY_ID_QUERY);
     }
+
+    @Override
+    public List<RequestEntity> findAllByEntrantId(Integer entrantId) { return findAllByParam(entrantId, FIND_BY_ENTRANT_ID_QUERY); }
 
     @Override
     public boolean update(RequestEntity entity) {
@@ -70,4 +75,6 @@ public class RequestDaoImpl extends AbstractDao<RequestEntity> implements Reques
         prepareData(entity, ps);
         ps.setObject(8, entity.getId());
     }
+
+
 }
