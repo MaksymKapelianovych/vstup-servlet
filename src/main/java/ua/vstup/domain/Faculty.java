@@ -1,12 +1,14 @@
 package ua.vstup.domain;
 
+import ua.vstup.constantutils.Attribute;
+
 public class Faculty {
     private Integer id;
     private String name_ua;
     private String name_en;
     private Integer maxBudgetPlace;
     private Integer maxPlace;
-    private Requirement requirement;
+    private Integer requirementId;
 
     private Faculty(Builder builder){
         id = builder.id;
@@ -14,7 +16,7 @@ public class Faculty {
         name_en = builder.name_en;
         maxBudgetPlace = builder.maxBudgetPlace;
         maxPlace = builder.maxPlace;
-        requirement = builder.requirement;
+        requirementId = builder.requirementId;
     }
 
     public Integer getId() {
@@ -25,6 +27,19 @@ public class Faculty {
         return name_ua;
     }
 
+    public String getName_en() { return name_en; }
+
+    public String getNameByLocale(String locale){
+        switch (locale){
+            case Attribute.UA:{
+                return name_ua;
+            }
+            default:{
+                return name_en;
+            }
+        }
+    }
+
     public Integer getMaxBudgetPlace() {
         return maxBudgetPlace;
     }
@@ -33,7 +48,7 @@ public class Faculty {
         return maxPlace;
     }
 
-    public Requirement getFacultyRequirement() { return requirement; }
+    public Integer getFacultyRequirementId() { return requirementId; }
 
     public static Builder builder() {
         return new Builder();
@@ -45,7 +60,7 @@ public class Faculty {
         private String name_en;
         private Integer maxBudgetPlace;
         private Integer maxPlace;
-        private Requirement requirement;
+        private Integer requirementId;
 
         private Builder(){}
 
@@ -69,8 +84,8 @@ public class Faculty {
             this.maxPlace = maxPlace;
             return this;
         }
-        public Builder withFacultyRequirement(Requirement requirement){
-            this.requirement = requirement;
+        public Builder withFacultyRequirementId(Integer requirementId){
+            this.requirementId = requirementId;
             return this;
         }
         public Faculty build(){ return new Faculty(this);}

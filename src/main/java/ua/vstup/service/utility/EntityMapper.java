@@ -93,4 +93,19 @@ public class EntityMapper {
                 .withState(State.valueOf(requestEntity.getStateEntity().name()))
                 .build();
     }
+
+    public static Faculty facultyEntityToFaculty(FacultyEntity facultyEntity) {
+        return Faculty.builder()
+                .withId(facultyEntity.getId())
+                .withNameUa(facultyEntity.getName_ua())
+                .withNameEn(facultyEntity.getName_en())
+                .withMaxBudgetPlace(facultyEntity.getMaxBudgetPlace())
+                .withMaxPlace(facultyEntity.getMaxPlace())
+                .withFacultyRequirementId(facultyEntity.getRequirementEntityId())
+                .build();
+    }
+
+    public static Subject subjectEntityToSubject(SubjectEntity subjectEntity) {
+        return new Subject(subjectEntity.getId(), SubjectName.valueOf(subjectEntity.getName().name()), subjectEntity.getRate());
+    }
 }

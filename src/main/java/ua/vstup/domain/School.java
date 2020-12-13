@@ -1,5 +1,7 @@
 package ua.vstup.domain;
 
+import ua.vstup.constantutils.Attribute;
+
 public class School {
     private Integer id;
     private String name_ua;
@@ -36,6 +38,28 @@ public class School {
     public String getName_en() { return name_en; }
 
     public String getCity_en() { return city_en; }
+
+    public String getNameByLocale(String locale){
+        switch (locale){
+            case Attribute.UA:{
+                return name_ua;
+            }
+            default:{
+                return name_en;
+            }
+        }
+    }
+
+    public String getCityByLocale(String locale){
+        switch (locale){
+            case Attribute.UA:{
+                return city_ua;
+            }
+            default:{
+                return city_en;
+            }
+        }
+    }
 
     public static Builder builder() { return new Builder(); }
 

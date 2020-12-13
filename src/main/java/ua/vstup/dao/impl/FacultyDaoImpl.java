@@ -8,6 +8,7 @@ import ua.vstup.entity.FacultyEntity;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Optional;
 
 import static ua.vstup.dao.utility.ResultSetToEntityMapper.extractFacultyEntityFromResultSet;
@@ -18,6 +19,7 @@ public class FacultyDaoImpl extends AbstractDao<FacultyEntity> implements Facult
     private static final String DELETE_QUERY = "DELETE FROM faculty WHERE id=?";
     private static final String UPDATE_QUERY = "UPDATE faculty SET name_ua=?, name_en=?, maxBudgetPlace=?, maxPlace=?, requirement_id=?, active=? WHERE id=?";
     private static final String FIND_BY_ID_QUERY = "SELECT * FROM faculty WHERE id=?";
+    private static final String FIND_QUERY = "SELECT * FROM faculty";
 
     public FacultyDaoImpl(ConnectionHolder connectionHolder) { super(connectionHolder); }
 
@@ -28,6 +30,9 @@ public class FacultyDaoImpl extends AbstractDao<FacultyEntity> implements Facult
 
     @Override
     public Optional<FacultyEntity> findById(Integer id) { return findByParam(id, FIND_BY_ID_QUERY); }
+
+    @Override
+    public List<FacultyEntity> findAll() { return findAll(FIND_QUERY); }
 
     @Override
     public boolean update(FacultyEntity entity) {

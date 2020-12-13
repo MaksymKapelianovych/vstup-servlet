@@ -44,15 +44,7 @@
             <input class="input" list="schools" name="<%= Parameter.SCHOOL_ID%>>" placeholder="<fmt:message key="choose.school"/>"/>
                 <datalist id="schools">
                     <c:forEach var="school" items="${requestScope.schools}">
-                        <c:choose>
-                            <c:when test="${sessionScope.locale=='en'}">
-                                <option value="${school.id}">${school.name_en}, ${school.city_en}, ${school.region.getNameByLocale(sessionScope.locale)}</option>                                <br />
-                            </c:when>
-                            <c:otherwise>
-                                <option value="${school.id}">${school.name_ua}, ${school.city_ua}, ${school.region.getNameByLocale(sessionScope.locale)}</option>                                <br />
-                            </c:otherwise>
-                        </c:choose>
-
+                        <option value="${school.id}">${school.getNameByLocale(sessionScope.locale)}, ${school.getCityByLocale(sessionScope.locale)}, ${school.region.getNameByLocale(sessionScope.locale)}</option>
                     </c:forEach>
                 </datalist>
             </div>

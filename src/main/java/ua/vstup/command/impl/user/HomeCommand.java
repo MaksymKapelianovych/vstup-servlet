@@ -8,6 +8,7 @@ import ua.vstup.constantutils.Attribute;
 import ua.vstup.constantutils.Url;
 import ua.vstup.domain.Entrant;
 import ua.vstup.domain.Request;
+import ua.vstup.domain.RequestInfoForEntrant;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -17,7 +18,7 @@ public class HomeCommand extends AbstractCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         Entrant entrant = getEntrant(request);
-        List<Request> requests = getRequestService(request).getAll(entrant);
+        List<RequestInfoForEntrant> requests = getRequestService(request).getAllInfoByEntrant(entrant);
         request.setAttribute(Attribute.REQUEST_LIST, requests);
         return "/home/home.jsp";
     }

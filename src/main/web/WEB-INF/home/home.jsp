@@ -12,10 +12,10 @@
     <c:forEach var="request" items="${requestScope.requests}">
         <div>
             <tr>
-                <td>${request.facultyId}</td>
-                <td>${request.firstSubjectId}</td>
-                <td>${request.secondSubjectId}</td>
-                <td>${request.thirdSubjectId}</td>
+                <td>${request.faculty.getNameByLocale(sessionScope.locale)}</td>
+                <td>${request.firstSubject.name.getNameByLocale(sessionScope.locale)}</td>
+                <td>${request.secondSubject.name.getNameByLocale(sessionScope.locale)}</td>
+                <td>${request.thirdSubject.name.getNameByLocale(sessionScope.locale)}</td>
                 <td>${request.state.getNameByLocale(sessionScope.locale)}</td>
             </tr>
         </div>
