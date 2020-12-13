@@ -34,7 +34,7 @@ public class ResultSetToEntityMapper {
     public static FacultyEntity extractFacultyEntityFromResultSet(ResultSet resultSet) throws SQLException {
         FacultyEntity entity = FacultyEntity.builder()
                 .withId(resultSet.getInt("faculty.id"))
-                .withName(resultSet.getString("faculty.name"))
+                .withNameUa(resultSet.getString("faculty.name"))
                 .withMaxBudgetPlace(resultSet.getInt("faculty.maxBudgetPlace"))
                 .withMaxPlace(resultSet.getInt("faculty.maxPlace"))
                 .withRequirementEntityId(resultSet.getInt("faculty.requirement_id"))
@@ -75,10 +75,11 @@ public class ResultSetToEntityMapper {
     public static SchoolEntity extractSchoolEntityFromResultSet(ResultSet resultSet) throws SQLException {
         SchoolEntity entity = SchoolEntity.builder()
                 .withId(resultSet.getInt("school.id"))
-                .withName(resultSet.getString("school.name"))
-                .withCity(resultSet.getString("school.city"))
+                .withNameUa(resultSet.getString("school.name_ua"))
+                .withNameEn(resultSet.getString("school.name_en"))
+                .withCityUa(resultSet.getString("school.city_ua"))
+                .withCityEn(resultSet.getString("school.city_en"))
                 .withRegionEntity(RegionEntity.valueOf(resultSet.getString("school.region")))
-                .withActive(resultSet.getBoolean("school.active"))
                 .build();
         if(entity.getId() == 0){
             throw new DatabaseInteractionException(ERROR_MESSAGE);

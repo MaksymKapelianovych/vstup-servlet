@@ -2,7 +2,8 @@ package ua.vstup.entity;
 
 public class FacultyEntity {
     private final Integer id;
-    private final String name;
+    private final String name_ua;
+    private final String name_en;
     private final Integer maxBudgetPlace;
     private final Integer maxPlace;
     private final Integer requirementEntityId;
@@ -10,7 +11,8 @@ public class FacultyEntity {
 
     private FacultyEntity(Builder builder){
         id = builder.id;
-        name = builder.name;
+        name_ua = builder.name_ua;
+        name_en = builder.name_en;
         maxBudgetPlace = builder.maxBudgetPlace;
         maxPlace = builder.maxPlace;
         requirementEntityId = builder.requirementEntityId;
@@ -21,9 +23,11 @@ public class FacultyEntity {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getName_ua() {
+        return name_ua;
     }
+
+    public String getName_en() { return name_en; }
 
     public Integer getMaxBudgetPlace() {
         return maxBudgetPlace;
@@ -43,7 +47,8 @@ public class FacultyEntity {
 
     public static class Builder{
         private Integer id;
-        private String name;
+        private String name_ua;
+        private String name_en;
         private Integer maxBudgetPlace;
         private Integer maxPlace;
         private Integer requirementEntityId;
@@ -56,8 +61,12 @@ public class FacultyEntity {
             this.id = id;
             return this;
         }
-        public Builder withName(String name){
-            this.name = name;
+        public Builder withNameUa(String name){
+            this.name_ua = name;
+            return this;
+        }
+        public Builder withNameEn(String name){
+            this.name_en = name;
             return this;
         }
         public Builder withMaxBudgetPlace(Integer maxBudgetPlace){

@@ -3,7 +3,6 @@ package ua.vstup.dao.impl;
 import ua.vstup.annotation.Dao;
 import ua.vstup.dao.SchoolDao;
 import ua.vstup.dao.db.holder.ConnectionHolder;
-import ua.vstup.domain.School;
 import ua.vstup.entity.SchoolEntity;
 
 import java.sql.PreparedStatement;
@@ -16,8 +15,8 @@ import static ua.vstup.dao.utility.ResultSetToEntityMapper.extractSchoolEntityFr
 
 @Dao
 public class SchoolDaoImpl extends AbstractDao<SchoolEntity> implements SchoolDao {
-    private static final String INSERT_QUERY = "INSERT INTO school VALUES (DEFAULT,?,?,?,?)";
-    private static final String UPDATE_QUERY = "UPDATE school SET name=?, city=?, region=?, active=? WHERE id=?";
+    private static final String INSERT_QUERY = "INSERT INTO school VALUES (DEFAULT,?,?,?,?,?)";
+    private static final String UPDATE_QUERY = "UPDATE school SET name_ua=?, name_en=?, city_ua=?, city_en=?, region=? WHERE id=?";
     private static final String DELETE_QUERY = "DELETE FROM school WHERE id=?";
     private static final String FIND_BY_ID_QUERY = "SELECT * FROM school WHERE id=?";
     private static final String FIND_ALL_QUERY = "SELECT * FROM school";
@@ -61,16 +60,17 @@ public class SchoolDaoImpl extends AbstractDao<SchoolEntity> implements SchoolDa
 
     @Override
     protected void prepareData(SchoolEntity entity, PreparedStatement ps) throws SQLException {
-        ps.setObject(1, entity.getName());
-        ps.setObject(2, entity.getCity());
-        ps.setObject(3, entity.getRegionEntity().name());
-        ps.setObject(4, entity.getActive());
+        ps.setObject(1, entity.getName_ua());
+        ps.setObject(2, entity.getName_en());
+        ps.setObject(3, entity.getCity_ua());
+        ps.setObject(4, entity.getCity_en());
+        ps.setObject(5, entity.getRegionEntity().name());
     }
 
     @Override
     protected void prepareDataWithId(SchoolEntity entity, PreparedStatement ps) throws SQLException {
         prepareData(entity, ps);
-        ps.setObject(5, entity.getId());
+        ps.setObject(6, entity.getId());
     }
 
 }

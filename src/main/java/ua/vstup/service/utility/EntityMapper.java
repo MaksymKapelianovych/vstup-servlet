@@ -62,20 +62,22 @@ public class EntityMapper {
 
     public static SchoolEntity schoolToSchoolEntity(School school){
         return SchoolEntity.builder()
-                .withName(school.getName())
-                .withCity(school.getCity())
+                .withNameUa(school.getName_ua())
+                .withNameEn(school.getName_en())
+                .withCityUa(school.getCity_ua())
+                .withCityEn(school.getCity_en())
                 .withRegionEntity(RegionEntity.valueOf(school.getRegion().name()))
-                .withActive(true)
                 .build();
     }
 
     public static School schoolEntityToSchool(SchoolEntity schoolEntity) {
         return School.builder()
                 .withId(schoolEntity.getId())
-                .withName(schoolEntity.getName())
-                .withCity(schoolEntity.getCity())
+                .withNameUa(schoolEntity.getName_ua())
+                .withNameEn(schoolEntity.getName_en())
+                .withCityUa(schoolEntity.getCity_ua())
+                .withCityEn(schoolEntity.getCity_en())
                 .withRegion(Region.valueOf(schoolEntity.getRegionEntity().name()))
-                .withActive(schoolEntity.getActive())
                 .build();
     }
 }

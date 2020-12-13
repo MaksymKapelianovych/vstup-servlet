@@ -2,7 +2,6 @@ package ua.vstup.dao.impl;
 
 import ua.vstup.annotation.Dao;
 import ua.vstup.dao.FacultyDao;
-import ua.vstup.dao.RequirementDao;
 import ua.vstup.dao.db.holder.ConnectionHolder;
 import ua.vstup.entity.FacultyEntity;
 
@@ -15,9 +14,9 @@ import static ua.vstup.dao.utility.ResultSetToEntityMapper.extractFacultyEntityF
 
 @Dao
 public class FacultyDaoImpl extends AbstractDao<FacultyEntity> implements FacultyDao {
-    private static final String INSERT_QUERY = "INSERT INTO faculty VALUES (DEFAULT,?,?,?,?,?)";
+    private static final String INSERT_QUERY = "INSERT INTO faculty VALUES (DEFAULT,?,?,?,?,?,?)";
     private static final String DELETE_QUERY = "DELETE FROM faculty WHERE id=?";
-    private static final String UPDATE_QUERY = "UPDATE faculty SET name=?, maxBudgetPlace=?, maxPlace=?, requirement_id=?, active=? WHERE id=?";
+    private static final String UPDATE_QUERY = "UPDATE faculty SET name_ua=?, name_en=?, maxBudgetPlace=?, maxPlace=?, requirement_id=?, active=? WHERE id=?";
     private static final String FIND_BY_ID_QUERY = "SELECT * FROM faculty WHERE id=?";
 
     public FacultyDaoImpl(ConnectionHolder connectionHolder) { super(connectionHolder); }
@@ -45,16 +44,17 @@ public class FacultyDaoImpl extends AbstractDao<FacultyEntity> implements Facult
 
     @Override
     protected void prepareData(FacultyEntity entity, PreparedStatement ps) throws SQLException {
-        ps.setObject(1, entity.getName());
-        ps.setObject(2, entity.getMaxBudgetPlace());
-        ps.setObject(3, entity.getMaxPlace());
-        ps.setObject(4, entity.getRequirementEntityId());
-        ps.setObject(5, entity.getActive());
+        ps.setObject(1, entity.getName_ua());
+        ps.setObject(2, entity.getName_en());
+        ps.setObject(3, entity.getMaxBudgetPlace());
+        ps.setObject(4, entity.getMaxPlace());
+        ps.setObject(5, entity.getRequirementEntityId());
+        ps.setObject(6, entity.getActive());
     }
 
     @Override
     protected void prepareDataWithId(FacultyEntity entity, PreparedStatement ps) throws SQLException {
         prepareData(entity, ps);
-        ps.setObject(6, entity.getId());
+        ps.setObject(7, entity.getId());
     }
 }

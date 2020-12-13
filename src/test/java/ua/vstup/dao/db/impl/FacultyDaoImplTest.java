@@ -11,7 +11,6 @@ import ua.vstup.dao.db.holder.ThreadLocalConnectionHolder;
 import ua.vstup.dao.db.manager.DbManager;
 import ua.vstup.dao.impl.FacultyDaoImpl;
 import ua.vstup.entity.FacultyEntity;
-import ua.vstup.entity.RequirementEntity;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -100,7 +99,7 @@ public class FacultyDaoImplTest {
     private void initEntity(){
         preparedFacultyEntity = FacultyEntity.builder()
                 .withId(1)
-                .withName("Faculty of computer science and cybernetics")
+                .withNameUa("Faculty of computer science and cybernetics")
                 .withMaxBudgetPlace(90)
                 .withMaxPlace(130)
                 .withRequirementEntityId(1)
@@ -108,7 +107,7 @@ public class FacultyDaoImplTest {
 
         testFacultyEntity = FacultyEntity.builder()
                 .withId(10)
-                .withName("Faculty of computer science and cybernetics")
+                .withNameUa("Faculty of computer science and cybernetics")
                 .withMaxBudgetPlace(90)
                 .withMaxPlace(120)
                 .withRequirementEntityId(0)

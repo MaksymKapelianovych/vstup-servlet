@@ -93,16 +93,16 @@ public class SchoolDaoImplTest {
     private void initEntity(){
         preparedSchoolEntity = SchoolEntity.builder()
                 .withId(1)
-                .withName("School №1")
-                .withCity("Kyiv")
+                .withNameUa("School №1")
+                .withCityUa("Kyiv")
                 .withRegionEntity(RegionEntity.KYIV)
                 .withActive(true)
                 .build();
 
         testSchoolEntity = SchoolEntity.builder()
                 .withId(0)
-                .withName("School №1")
-                .withCity("Kyiv")
+                .withNameUa("School №1")
+                .withCityUa("Kyiv")
                 .withRegionEntity(RegionEntity.KYIV)
                 .withActive(true)
                 .build();

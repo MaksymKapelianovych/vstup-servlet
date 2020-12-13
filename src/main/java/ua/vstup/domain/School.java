@@ -1,51 +1,51 @@
 package ua.vstup.domain;
 
-import ua.vstup.entity.RegionEntity;
-import ua.vstup.entity.SchoolEntity;
-
 public class School {
     private Integer id;
-    private String name;
-    private String city;
+    private String name_ua;
+    private String name_en;
+    private String city_ua;
+    private String city_en;
     private Region region;
-    private Boolean active;
 
     public School(Builder builder) {
         id = builder.id;
-        name = builder.name;
-        city = builder.city;
+        name_ua = builder.name_ua;
+        name_en = builder.name_en;
+        city_ua = builder.city_ua;
+        city_en = builder.city_en;
         region = builder.region;
-        active = builder.active;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getName_ua() {
+        return name_ua;
     }
 
-    public String getCity() {
-        return city;
+    public String getCity_ua() {
+        return city_ua;
     }
 
     public Region getRegion() {
         return region;
     }
 
-    public Boolean getActive() {
-        return active;
-    }
+    public String getName_en() { return name_en; }
+
+    public String getCity_en() { return city_en; }
 
     public static Builder builder() { return new Builder(); }
 
     public static class Builder {
         private Integer id;
-        private String name;
-        private String city;
+        private String name_ua;
+        private String name_en;
+        private String city_ua;
+        private String city_en;
         private Region region;
-        private Boolean active;
 
         private Builder() {
         }
@@ -55,23 +55,27 @@ public class School {
             return this;
         }
 
-        public Builder withName(String name) {
-            this.name = name;
+        public Builder withNameUa(String name) {
+            this.name_ua = name;
             return this;
         }
 
-        public Builder withCity(String city) {
-            this.city = city;
+        public Builder withNameEn(String name) {
+            this.name_en = name;
+            return this;
+        }
+
+        public Builder withCityUa(String city) {
+            this.city_ua = city;
+            return this;
+        }
+        public Builder withCityEn(String city) {
+            this.city_en = city;
             return this;
         }
 
         public Builder withRegion(Region region) {
             this.region = region;
-            return this;
-        }
-
-        public Builder withActive(Boolean active) {
-            this.active = active;
             return this;
         }
 
