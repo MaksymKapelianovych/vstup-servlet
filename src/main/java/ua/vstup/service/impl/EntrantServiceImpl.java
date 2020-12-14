@@ -6,6 +6,7 @@ import ua.vstup.dao.EntrantDao;
 import ua.vstup.dao.RequirementDao;
 import ua.vstup.dao.SubjectDao;
 import ua.vstup.domain.Entrant;
+import ua.vstup.domain.EntrantInfo;
 import ua.vstup.domain.Requirement;
 import ua.vstup.domain.Subject;
 import ua.vstup.entity.EntrantEntity;
@@ -71,5 +72,11 @@ public class EntrantServiceImpl implements EntrantService {
     @Override
     public void edit(Entrant entrant) {
 
+    }
+
+    @Override
+    public EntrantInfo getEntrantInfo(Entrant entrant) {
+
+        return null;
     }
 }

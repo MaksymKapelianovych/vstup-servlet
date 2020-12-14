@@ -2,10 +2,7 @@ package ua.vstup.filter;
 
 
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import ua.vstup.constantutils.Attribute;
-import ua.vstup.constantutils.Parameter;
+import ua.vstup.constantutils.Constants;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -22,22 +19,22 @@ public class LocaleFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
-        String locale = req.getParameter(Parameter.LANGUAGE);
+        String locale = req.getParameter(Constants.Parameters.LANGUAGE);
         final HttpSession session = req.getSession(false);
 
         if (session != null){
-            Object currentLocale = session.getAttribute(Attribute.LOCALE);
+            Object currentLocale = session.getAttribute(Constants.Attributes.LOCALE);
 
             if (currentLocale == null) {
                 if (locale == null) {
-                    session.setAttribute(Attribute.LOCALE, Attribute.EN);
+                    session.setAttribute(Constants.Attributes.LOCALE, Constants.Attributes.EN);
                 } else {
                     //LOGGER.info(String.format("Locale filter set locale to %s", locale));
-                    session.setAttribute(Attribute.LOCALE, locale);
+                    session.setAttribute(Constants.Attributes.LOCALE, locale);
                 }
             } else if (locale != null && !currentLocale.toString().equals(locale)) {
                 // LOGGER.info(String.format("Locale filter set locale to %s", locale));
-                session.setAttribute(Attribute.LOCALE, locale);
+                session.setAttribute(Constants.Attributes.LOCALE, locale);
             }
 
         }

@@ -1,6 +1,6 @@
 package ua.vstup.controller;
 
-import static ua.vstup.constantutils.Url.*;
+import ua.vstup.constantutils.Constants;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {LOGIN_FORWARD, REGISTER_FORWARD, ERROR, HOME_FORWARD})
+@WebServlet(urlPatterns = {Constants.Urls.LOGIN_FORWARD, Constants.Urls.REGISTER_FORWARD,
+        Constants.Urls.ERROR, Constants.Urls.REQUESTS_FORWARD, Constants.Urls.FACULTIES_FORWARD,
+        Constants.Urls.PROFILE_FORWARD})
 public class ForwardController extends AbstractController {
     @Override
     public void service(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

@@ -1,6 +1,6 @@
 package ua.vstup.domain;
 
-import ua.vstup.constantutils.Attribute;
+import ua.vstup.constantutils.Constants;
 
 public enum Region {
     KYIV("Kyiv", "Київ"),
@@ -19,7 +19,7 @@ public enum Region {
 
     public String getNameByLocale(String locale){
         switch (locale){
-            case Attribute.UA:{
+            case Constants.Attributes.UA:{
                 return name_ua;
             }
             default:{

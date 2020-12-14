@@ -1,6 +1,6 @@
 package ua.vstup.domain;
 
-import ua.vstup.constantutils.Attribute;
+import ua.vstup.constantutils.Constants;
 
 public class School {
     private Integer id;
@@ -41,7 +41,7 @@ public class School {
 
     public String getNameByLocale(String locale){
         switch (locale){
-            case Attribute.UA:{
+            case Constants.Attributes.UA:{
                 return name_ua;
             }
             default:{
@@ -52,7 +52,7 @@ public class School {
 
     public String getCityByLocale(String locale){
         switch (locale){
-            case Attribute.UA:{
+            case Constants.Attributes.UA:{
                 return city_ua;
             }
             default:{

@@ -2,6 +2,7 @@ package ua.vstup.service;
 
 import ua.vstup.annotation.Transactional;
 import ua.vstup.domain.Entrant;
+import ua.vstup.domain.EntrantInfo;
 import ua.vstup.domain.Requirement;
 import ua.vstup.domain.Subject;
 
@@ -14,4 +15,7 @@ public interface EntrantService {
     void register(Entrant entrant, List<Subject> subjectList);
 
     void edit(Entrant entrant);
+
+    @Transactional
+    EntrantInfo getEntrantInfo(Entrant entrant);
 }
