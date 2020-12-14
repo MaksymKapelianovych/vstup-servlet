@@ -32,10 +32,10 @@
     </table>
 
     <div>
-        <a href="/home/home/faculties"><fmt:message key="faculty.list"/></a>
+        <a href="/home/faculty"><fmt:message key="faculty.list"/></a>
     </div>
     <div>
-        <a href="/home/home/add-request"><fmt:message key="add.request"/></a>
+        <a href="/home/request/add-request"><fmt:message key="add.request"/></a>
     </div>
 </body>
 </html>

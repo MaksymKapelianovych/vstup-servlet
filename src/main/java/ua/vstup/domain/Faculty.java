@@ -9,6 +9,7 @@ public class Faculty {
     private Integer maxBudgetPlace;
     private Integer maxPlace;
     private Integer requirementId;
+    private Boolean active;
 
     private Faculty(Builder builder){
         id = builder.id;
@@ -17,6 +18,7 @@ public class Faculty {
         maxBudgetPlace = builder.maxBudgetPlace;
         maxPlace = builder.maxPlace;
         requirementId = builder.requirementId;
+        active = builder.active;
     }
 
     public Integer getId() {
@@ -50,6 +52,12 @@ public class Faculty {
 
     public Integer getFacultyRequirementId() { return requirementId; }
 
+    public Boolean getActive() { return active; }
+
+    public void setRequirementId(Integer requirementId) {
+        this.requirementId = requirementId;
+    }
+
     public static Builder builder() {
         return new Builder();
     }
@@ -61,6 +69,7 @@ public class Faculty {
         private Integer maxBudgetPlace;
         private Integer maxPlace;
         private Integer requirementId;
+        private Boolean active;
 
         private Builder(){}
 
@@ -86,6 +95,10 @@ public class Faculty {
         }
         public Builder withFacultyRequirementId(Integer requirementId){
             this.requirementId = requirementId;
+            return this;
+        }
+        public Builder withActive(Boolean active){
+            this.active = active;
             return this;
         }
         public Faculty build(){ return new Faculty(this);}

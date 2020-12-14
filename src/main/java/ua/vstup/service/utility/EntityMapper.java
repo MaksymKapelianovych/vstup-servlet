@@ -105,6 +105,17 @@ public class EntityMapper {
                 .build();
     }
 
+    public static FacultyEntity facultyToFacultyEntity(Faculty faculty) {
+        return FacultyEntity.builder()
+                .withNameUa(faculty.getName_ua())
+                .withNameEn(faculty.getName_en())
+                .withMaxBudgetPlace(faculty.getMaxBudgetPlace())
+                .withMaxPlace(faculty.getMaxPlace())
+                .withRequirementEntityId(faculty.getFacultyRequirementId())
+                .withActive(faculty.getActive())
+                .build();
+    }
+
     public static Subject subjectEntityToSubject(SubjectEntity subjectEntity) {
         return new Subject(subjectEntity.getId(), SubjectName.valueOf(subjectEntity.getName().name()), subjectEntity.getRate());
     }

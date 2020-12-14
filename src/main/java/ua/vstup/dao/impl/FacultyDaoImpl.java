@@ -17,7 +17,7 @@ import static ua.vstup.dao.utility.ResultSetToEntityMapper.extractFacultyEntityF
 public class FacultyDaoImpl extends AbstractDao<FacultyEntity> implements FacultyDao {
     private static final String INSERT_QUERY = "INSERT INTO faculty VALUES (DEFAULT,?,?,?,?,?,?)";
     private static final String DELETE_QUERY = "DELETE FROM faculty WHERE id=?";
-    private static final String UPDATE_QUERY = "UPDATE faculty SET name_ua=?, name_en=?, maxBudgetPlace=?, maxPlace=?, requirement_id=?, active=? WHERE id=?";
+    private static final String UPDATE_QUERY = "UPDATE faculty SET name_en=?, name_ua=?, maxBudgetPlace=?, maxPlace=?, requirement_id=?, active=? WHERE id=?";
     private static final String FIND_BY_ID_QUERY = "SELECT * FROM faculty WHERE id=?";
     private static final String FIND_QUERY = "SELECT * FROM faculty";
 

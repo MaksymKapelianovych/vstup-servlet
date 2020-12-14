@@ -1,6 +1,3 @@
-<%@ page import="ua.vstup.constantutils.Parameter" %>
-<%@ page import="ua.vstup.constantutils.Url" %>
-
 <%@ include file="directive/directive.jsp"%>
 <html>
 <head>

@@ -9,7 +9,7 @@ import ua.vstup.domain.Faculty;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-@CommandMapping(url = Constants.Urls.FACULTIES_FORWARD)
+@CommandMapping(url = Constants.Urls.FACULTY_FORWARD)
 public class FacultiesPageCommand extends AbstractCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {

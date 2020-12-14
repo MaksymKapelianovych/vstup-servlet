@@ -14,7 +14,7 @@ public class ContextLoadListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         loader = new ContextLoader(new ThreadLocalConnectionHolder(), new DbManager(DB_FILENAME), sce.getServletContext());
-        loader.load("ua.vstup.dao", "ua.vstup.command", "ua.vstup.service");
+        loader.load("ua.vstup.dao", "ua.vstup.command", "ua.vstup.service", "ua.vstup.validator");
     }
 
     @Override

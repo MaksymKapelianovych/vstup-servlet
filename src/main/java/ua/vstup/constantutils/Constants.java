@@ -12,8 +12,13 @@ public final class Constants {
         public static final String LOGOUT_REDIRECT = ROOT + "/logout";
 
         public static final String ADD_REQUEST_REDIRECT = REQUESTS_FORWARD + "/add-request";
-        public static final String FACULTIES_FORWARD = REQUESTS_FORWARD + "/faculties";
+        public static final String FACULTY_FORWARD = ROOT + "/faculty";
         public static final String PROFILE_FORWARD = ROOT + "/profile";
+
+        public static final String ADD_FACULTY_FORWARD = FACULTY_FORWARD + "/add-faculty-page";
+        public static final String ADD_FACULTY_REDIRECT = FACULTY_FORWARD + "/add-faculty";
+        public static final String EDIT_FACULTY_FORWARD = FACULTY_FORWARD + "/edit-faculty-page";
+        public static final String EDIT_FACULTY_REDIRECT = FACULTY_FORWARD + "/edit-faculty";
     }
 
     public final class Attributes{
@@ -54,5 +59,9 @@ public final class Constants {
 
         public static final String LANGUAGE = "language";
         public static final String FACULTY_ID = "faculty_id";
+        public static final String NAME_EN = "name_en";
+        public static final String NAME_UA = "name_ua";
+        public static final String MAX_BUDGET_PLACES = "maxBudgetPlaces";
+        public static final String MAX_PLACES = "maxPlaces";
     }
 }

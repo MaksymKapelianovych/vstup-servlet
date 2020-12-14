@@ -9,7 +9,8 @@ import java.io.IOException;
 
 
 @WebServlet(urlPatterns = {Constants.Urls.LOGIN_REDIRECT, Constants.Urls.REGISTER_REDIRECT,
-        Constants.Urls.LOGOUT_REDIRECT, Constants.Urls.ADD_REQUEST_REDIRECT})
+        Constants.Urls.LOGOUT_REDIRECT, Constants.Urls.ADD_REQUEST_REDIRECT,
+        Constants.Urls.ADD_FACULTY_REDIRECT})
 public class RedirectController  extends AbstractController{
     @Override
     public void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
