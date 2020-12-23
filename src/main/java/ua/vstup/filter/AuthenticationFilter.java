@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
-@WebFilter(urlPatterns = {Constants.Urls.ENTRANT + "/*"})
+@WebFilter(urlPatterns = {Constants.Urls.ENTRANT + "/*", Constants.Urls.ADMIN + "/*"})
 public class AuthenticationFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
@@ -19,8 +19,13 @@ public class AuthenticationFilter implements Filter {
         HttpSession session = request.getSession(false);
         if (!(session != null && (session.getAttribute(Constants.Attributes.ENTRANT) != null))) {
             response.sendRedirect(Constants.Urls.LOGIN_FORWARD);
-        }else {
-            filterChain.doFilter(request, response);
         }
+
+        if(response.isCommitted()){
+            return;
+        }
+
+        filterChain.doFilter(request, response);
+
     }
 }

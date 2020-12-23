@@ -16,6 +16,11 @@ import java.io.IOException;
 public class AdminFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        filterChain.doFilter(servletRequest, servletResponse);
+        if(servletResponse.isCommitted()){
+            return;
+        }
+
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession(false);
@@ -26,8 +31,6 @@ public class AdminFilter implements Filter {
             }else{
                 filterChain.doFilter(request, response);
             }
-        }else{
-            filterChain.doFilter(request, response);
         }
     }
 }

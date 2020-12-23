@@ -1,4 +1,4 @@
-package ua.vstup.command.impl.entrant;
+package ua.vstup.command.impl;
 
 import ua.vstup.annotation.CommandMapping;
 import ua.vstup.command.Command;
