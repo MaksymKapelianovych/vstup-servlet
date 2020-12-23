@@ -40,6 +40,9 @@ public class EntrantServiceImpl implements EntrantService {
     @Override
     public Entrant login(String email, String password) {
         Optional<EntrantEntity> entrantByEmail = entrantDao.findByEmail(email);
+
+
+
         if(entrantByEmail.isPresent() && entrantByEmail.get().getPassword().equals(password)){
             return EntityMapper.entrantEntityToEntrant(entrantByEmail.get());
         }

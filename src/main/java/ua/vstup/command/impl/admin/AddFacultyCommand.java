@@ -1,4 +1,4 @@
-package ua.vstup.command.impl.user;
+package ua.vstup.command.impl.admin;
 
 import ua.vstup.annotation.CommandMapping;
 import ua.vstup.command.Command;
@@ -43,6 +43,6 @@ public class AddFacultyCommand extends AbstractCommand implements Command {
                 .build();
 
         getFacultyService(request).add(faculty, subjectList);
-        return Constants.Urls.FACULTY_FORWARD;
+        return Constants.Urls.ADMIN_FACULTY_FORWARD;
     }
 }

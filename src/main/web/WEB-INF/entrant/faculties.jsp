@@ -1,3 +1,4 @@
+<%@ page import="ua.vstup.domain.Role" %>
 <%@include file="../directive/directive.jsp"%>
 <html>
 <head>
@@ -20,15 +21,10 @@
                 <td>${faculty.getNameByLocale(sessionScope.locale)}</td>
                 <td>${faculty.maxBudgetPlace}</td>
                 <td>${faculty.maxPlace}</td>
-                <c:if test="${sessionScope.entrant.role == USER}">
-                    <td><a href="/home/request/add-request?faculty_id=${faculty.id}"><fmt:message key="add.request"/></a></td>
-                </c:if>
+                <td><a href="/entrant/add-request?faculty_id=${faculty.id}"><fmt:message key="add.request"/></a></td>
             </tr>
         </c:forEach>
     </tbody>
     </table>
-    <c:if test="${sessionScope.entrant.role == ADMIN}">
-        <a href="/home/faculty/add-faculty-page"><fmt:message key="add.faculty"/></a>
-    </c:if>
 </body>
 </html>

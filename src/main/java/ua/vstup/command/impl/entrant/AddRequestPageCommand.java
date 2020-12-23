@@ -1,4 +1,4 @@
-package ua.vstup.command.impl.user;
+package ua.vstup.command.impl.entrant;
 
 import ua.vstup.annotation.CommandMapping;
 import ua.vstup.command.Command;
@@ -17,6 +17,6 @@ public class AddRequestPageCommand extends AbstractCommand implements Command {
             request.setAttribute(Constants.Attributes.FACULTY_ID, faculty_id);
         }
 
-        return "/home/add-request.jsp";
+        return "/entrant/add-request.jsp";
     }
 }

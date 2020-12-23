@@ -7,18 +7,20 @@ public final class Constants {
         public static final String REGISTER_FORWARD = "/register-page";
         public static final String REGISTER_REDIRECT = "/register";
         public static final String ERROR = "/error";
-        public static final String ROOT = "/home";
-        public static final String REQUESTS_FORWARD = ROOT + "/request";
-        public static final String LOGOUT_REDIRECT = ROOT + "/logout";
+        public static final String ENTRANT = "/entrant";
+        public static final String ADMIN = "/admin";
+        public static final String REQUESTS_FORWARD = ENTRANT + "/request";
+        public static final String LOGOUT_REDIRECT = ENTRANT + "/logout";
 
         public static final String ADD_REQUEST_REDIRECT = REQUESTS_FORWARD + "/add-request";
-        public static final String FACULTY_FORWARD = ROOT + "/faculty";
-        public static final String PROFILE_FORWARD = ROOT + "/profile";
+        public static final String ENTRANT_FACULTY_FORWARD = ENTRANT + "/faculty";
+        public static final String ADMIN_FACULTY_FORWARD = ADMIN + "/faculty";
+        public static final String PROFILE_FORWARD = ENTRANT + "/profile";
 
-        public static final String ADD_FACULTY_FORWARD = FACULTY_FORWARD + "/add-faculty-page";
-        public static final String ADD_FACULTY_REDIRECT = FACULTY_FORWARD + "/add-faculty";
-        public static final String EDIT_FACULTY_FORWARD = FACULTY_FORWARD + "/edit-faculty-page";
-        public static final String EDIT_FACULTY_REDIRECT = FACULTY_FORWARD + "/edit-faculty";
+        public static final String ADD_FACULTY_FORWARD = ADMIN_FACULTY_FORWARD + "/add-faculty-page";
+        public static final String ADD_FACULTY_REDIRECT = ADMIN_FACULTY_FORWARD + "/add-faculty";
+        public static final String EDIT_FACULTY_FORWARD = ADMIN_FACULTY_FORWARD + "/edit-faculty-page";
+        public static final String EDIT_FACULTY_REDIRECT = ADMIN_FACULTY_FORWARD + "/edit-faculty";
     }
 
     public final class Attributes{
@@ -37,6 +39,7 @@ public final class Constants {
         public static final String REQUEST_LIST = "requests";
         public static final String FACULTY_LIST = "faculties";
         public static final String FACULTY_ID = "faculty_id";
+        public static final String FACULTY = "faculty";
     }
 
     public final class Parameters {

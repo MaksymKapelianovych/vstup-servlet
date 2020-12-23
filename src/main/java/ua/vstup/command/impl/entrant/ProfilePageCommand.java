@@ -1,4 +1,4 @@
-package ua.vstup.command.impl.user;
+package ua.vstup.command.impl.entrant;
 
 import ua.vstup.annotation.CommandMapping;
 import ua.vstup.command.Command;
@@ -13,6 +13,6 @@ public class ProfilePageCommand extends AbstractCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         EntrantInfo entrantInfo = getEntrantService(request).getEntrantInfo(getEntrant(request));
-        return null;
+        return "/entrant/profile.jsp";
     }
 }

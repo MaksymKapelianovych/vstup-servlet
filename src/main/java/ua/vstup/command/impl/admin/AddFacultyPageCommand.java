@@ -1,4 +1,4 @@
-package ua.vstup.command.impl.user;
+package ua.vstup.command.impl.admin;
 
 import ua.vstup.annotation.CommandMapping;
 import ua.vstup.command.Command;
@@ -17,6 +17,6 @@ public class AddFacultyPageCommand extends AbstractCommand implements Command  {
 
         List<SubjectName> subjectNames = Arrays.asList(SubjectName.values());
         request.setAttribute(Constants.Attributes.SUBJECT_NAMES, subjectNames);
-        return "/home/faculty/add-faculty.jsp";
+        return "/admin/faculty/add-faculty.jsp";
     }
 }

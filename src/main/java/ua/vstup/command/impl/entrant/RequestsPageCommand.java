@@ -1,4 +1,4 @@
-package ua.vstup.command.impl.user;
+package ua.vstup.command.impl.entrant;
 
 
 import ua.vstup.annotation.CommandMapping;
@@ -18,6 +18,6 @@ public class RequestsPageCommand extends AbstractCommand implements Command {
         Entrant entrant = getEntrant(request);
         List<RequestInfoForEntrant> requests = getRequestService(request).getAllInfoByEntrant(entrant);
         request.setAttribute(Constants.Attributes.REQUEST_LIST, requests);
-        return "/home/requests.jsp";
+        return "/entrant/requests.jsp";
     }
 }

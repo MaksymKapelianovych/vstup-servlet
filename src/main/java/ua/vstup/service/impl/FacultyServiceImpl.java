@@ -6,9 +6,10 @@ import ua.vstup.dao.EntrantDao;
 import ua.vstup.dao.FacultyDao;
 import ua.vstup.dao.RequirementDao;
 import ua.vstup.dao.SubjectDao;
-import ua.vstup.domain.Faculty;
-import ua.vstup.domain.Requirement;
-import ua.vstup.domain.Subject;
+import ua.vstup.domain.*;
+import ua.vstup.entity.FacultyEntity;
+import ua.vstup.entity.RequirementEntity;
+import ua.vstup.exception.IncorrectDataException;
 import ua.vstup.service.FacultyService;
 import ua.vstup.service.utility.EntityMapper;
 import ua.vstup.validator.EntrantValidator;
@@ -57,5 +58,20 @@ public class FacultyServiceImpl implements FacultyService {
 
         faculty.setRequirementId(requirementDao.save(EntityMapper.requirementToRequirementEntity(requirement)));
         facultyDao.save(EntityMapper.facultyToFacultyEntity(faculty));
+    }
+
+    @Override
+    public Faculty findById(Integer valueOf) {
+        FacultyEntity facultyEntity = facultyDao.findById(valueOf)
+                .orElseThrow(() -> new IncorrectDataException("Faculty not found"));
+        return EntityMapper.facultyEntityToFaculty(facultyEntity);
+    }
+
+    @Override
+    public FacultyInfo getFacultyInto(Faculty faculty) {
+        RequirementEntity requirementEntity = requirementDao.findById(faculty.getId())
+                .orElseThrow(() -> new IncorrectDataException("Requirement for faculty not found"));
+
+        return null;
     }
 }

@@ -1,6 +1,9 @@
 package ua.vstup.filter;
 
+
 import ua.vstup.constantutils.Constants;
+import ua.vstup.domain.Entrant;
+import ua.vstup.domain.Role;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -9,17 +12,21 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-
-@WebFilter(urlPatterns = {Constants.Urls.ENTRANT + "/*"})
-public class AuthenticationFilter implements Filter {
+@WebFilter(urlPatterns = {Constants.Urls.ADMIN + "/*"})
+public class AdminFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession(false);
-        if (!(session != null && (session.getAttribute(Constants.Attributes.ENTRANT) != null))) {
-            response.sendRedirect(Constants.Urls.LOGIN_FORWARD);
-        }else {
+        if(session != null){
+            Entrant obj = (Entrant)session.getAttribute(Constants.Attributes.ENTRANT);
+            if(obj != null && obj.getRole() == Role.USER){
+                response.sendRedirect(Constants.Urls.PROFILE_FORWARD);
+            }else{
+                filterChain.doFilter(request, response);
+            }
+        }else{
             filterChain.doFilter(request, response);
         }
     }
