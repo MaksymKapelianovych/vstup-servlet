@@ -17,5 +17,7 @@ public interface FacultyService {
 
     @Transactional
     FacultyInfo getFacultyInto(Faculty faculty);
+
+    void delete(Integer id);
 }
 

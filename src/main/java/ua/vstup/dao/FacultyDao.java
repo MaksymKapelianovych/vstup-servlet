@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface FacultyDao extends BaseDao<FacultyEntity> {
     List<FacultyEntity> findAll();
+
+    boolean updateActiveById(Integer id, boolean active);
 }

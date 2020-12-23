@@ -20,6 +20,7 @@
             <td>${faculty.getNameByLocale(sessionScope.locale)}</td>
             <td>${faculty.maxBudgetPlace}</td>
             <td>${faculty.maxPlace}</td>
+            <td>${faculty.active}</td>
             <td><a href="/admin/faculty/edit-faculty-page?faculty_id=${faculty.id}"><fmt:message key="edit.faculty"/></a></td>
             <td><a href="/admin/faculty/delete-faculty?faculty_id=${faculty.id}"><fmt:message key="delete.faculty"/></a></td>
         </tr>

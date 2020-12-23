@@ -10,7 +10,7 @@ public final class Constants {
         public static final String ENTRANT = "/entrant";
         public static final String ADMIN = "/admin";
         public static final String REQUESTS_FORWARD = ENTRANT + "/request";
-        public static final String LOGOUT_REDIRECT = ENTRANT + "/logout";
+        public static final String LOGOUT_REDIRECT = "/logout";
 
         public static final String ADD_REQUEST_REDIRECT = REQUESTS_FORWARD + "/add-request";
         public static final String ENTRANT_FACULTY_FORWARD = ENTRANT + "/faculty";
@@ -21,6 +21,7 @@ public final class Constants {
         public static final String ADD_FACULTY_REDIRECT = ADMIN_FACULTY_FORWARD + "/add-faculty";
         public static final String EDIT_FACULTY_FORWARD = ADMIN_FACULTY_FORWARD + "/edit-faculty-page";
         public static final String EDIT_FACULTY_REDIRECT = ADMIN_FACULTY_FORWARD + "/edit-faculty";
+        public static final String DELETE_FACULTY_REDIRECT = ADMIN_FACULTY_FORWARD + "/delete-faculty";
     }
 
     public final class Attributes{

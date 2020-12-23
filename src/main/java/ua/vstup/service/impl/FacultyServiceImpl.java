@@ -74,4 +74,10 @@ public class FacultyServiceImpl implements FacultyService {
 
         return null;
     }
+
+    @Override
+    public void delete(Integer id) {
+        facultyDao.updateActiveById(id, false);
+
+    }
 }
