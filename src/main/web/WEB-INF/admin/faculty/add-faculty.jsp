@@ -43,7 +43,6 @@
         </div>
         <button type="submit"><fmt:message key="register.button"/></button>
         <a href="/admin/faculty"><fmt:message key="back"/></a>
-
     </form>
     <script>
         const inputs = Array.from(document.querySelectorAll(".input_subject"))

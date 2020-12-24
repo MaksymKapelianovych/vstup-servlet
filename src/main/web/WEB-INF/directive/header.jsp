@@ -2,7 +2,14 @@
 <header>
     <div>
         <c:if test="${sessionScope.entrant!=null}">
-            <a href="/entrant/profile"><fmt:message key="profile.button"/></a>
+            <c:choose>
+                <c:when test="${sessionScope.entrant.role.name() == 'ADMIN'}">
+                    <a href="/admin/profile"><fmt:message key="profile.button"/></a>
+                </c:when>
+                <c:otherwise>
+                    <a href="/entrant/profile"><fmt:message key="profile.button"/></a>
+                </c:otherwise>
+            </c:choose>
         </c:if>
         <a href="?language=en">EN</a>
         <a href="?language=ua">UA</a>

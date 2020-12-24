@@ -27,7 +27,7 @@ public class AdminFilter implements Filter {
         if(session != null){
             Entrant obj = (Entrant)session.getAttribute(Constants.Attributes.ENTRANT);
             if(obj != null && obj.getRole() == Role.USER){
-                response.sendRedirect(Constants.Urls.PROFILE_FORWARD);
+                response.sendRedirect(Constants.Urls.ENTRANT_PROFILE_FORWARD);
             }else{
                 filterChain.doFilter(request, response);
             }

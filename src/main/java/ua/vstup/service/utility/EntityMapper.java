@@ -125,7 +125,7 @@ public class EntityMapper {
 
     public static RequirementInfo subjectEntityListToRequirementInfo(SubjectEntity... subjectEntityList){
         return RequirementInfo.builder()
-                .withFifthSubject(subjectEntityToSubject(subjectEntityList[0]))
+                .withFirstSubject(subjectEntityToSubject(subjectEntityList[0]))
                 .withSecondSubject(subjectEntityToSubject(subjectEntityList[1]))
                 .withThirdSubject(subjectEntityToSubject(subjectEntityList[2]))
                 .withFourthSubject(subjectEntityToSubject(subjectEntityList[3]))

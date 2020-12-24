@@ -19,5 +19,7 @@ public interface FacultyService {
     void delete(Integer id);
 
     List<Faculty> getAllActive();
+
+    Faculty get(Integer id);
 }
 

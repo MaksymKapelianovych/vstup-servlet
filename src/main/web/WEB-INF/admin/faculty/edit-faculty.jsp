@@ -7,31 +7,31 @@
 <%@include file="../../directive/header.jsp"%>
 <form class="add-faculty-form" action="/admin/faculty/add-faculty" method="post">
     <div>
-        <input type="text" name="name_en" placeholder="<fmt:message key="faculty.name.en"/>" value="${requestScope.faculty.name_en}"/>
-        <input type="text" name="name_ua" placeholder="<fmt:message key="faculty.name.ua"/>" value="${requestScope.faculty.name_ua}"/>
-        <input type="text" name="maxBudgetPlaces" placeholder="<fmt:message key="faculty.max.budget.places"/>" value="${requestScope.faculty.maxBudgetPlace}"/>
-        <input type="text" name="maxPlaces" placeholder="<fmt:message key="faculty.max.places"/>" value="${requestScope.faculty.maxPlace}">
+        <input type="text" name="name_en" placeholder="<fmt:message key="faculty.name.en"/>" value="${requestScope.faculty_info.name_en}"/>
+        <input type="text" name="name_ua" placeholder="<fmt:message key="faculty.name.ua"/>" value="${requestScope.faculty_info.name_ua}"/>
+        <input type="text" name="maxBudgetPlaces" placeholder="<fmt:message key="faculty.max.budget.places"/>" value="${requestScope.faculty_info.maxBudgetPlace}"/>
+        <input type="text" name="maxPlaces" placeholder="<fmt:message key="faculty.max.places"/>" value="${requestScope.faculty_info.maxPlace}"/>
     </div>
     <div>
         <div>
-            <input class="input_subject" list="subjectNames" name="subject_name1"/>
-            <input class="input" type="number" name="subject_rate1">
+            <input class="input_subject" list="subjectNames" name="subject_name1" value="${requestScope.faculty_info.requirementInfo.firstSubject.name.getNameByLocale(sessionScope.locale)}"/>
+            <input class="input" type="number" name="subject_rate1" value="${requestScope.faculty_info.requirementInfo.firstSubject.rate}"/>
         </div>
         <div>
-            <input class="input_subject" list="subjectNames" name="subject_name2"/>
-            <input class="input" type="number" name="subject_rate2">
+            <input class="input_subject" list="subjectNames" name="subject_name2" value="${requestScope.faculty_info.requirementInfo.secondSubject.name.getNameByLocale(sessionScope.locale)}"/>
+            <input class="input" type="number" name="subject_rate2" value="${requestScope.faculty_info.requirementInfo.secondSubject.rate}"/>
         </div>
         <div>
-            <input class="input_subject" list="subjectNames" name="subject_name3"/>
-            <input class="input" type="number" name="subject_rate3">
+            <input class="input_subject" list="subjectNames" name="subject_name3" value="${requestScope.faculty_info.requirementInfo.thirdSubject.name.getNameByLocale(sessionScope.locale)}"/>
+            <input class="input" type="number" name="subject_rate3" value="${requestScope.faculty_info.requirementInfo.thirdSubject.rate}"/>
         </div>
         <div>
-            <input class="input_subject" list="subjectNames" name="subject_name4"/>
-            <input class="input" type="number" name="subject_rate4">
+            <input class="input_subject" list="subjectNames" name="subject_name4" value="${requestScope.faculty_info.requirementInfo.fourthSubject.name.getNameByLocale(sessionScope.locale)}"/>
+            <input class="input" type="number" name="subject_rate4" value="${requestScope.faculty_info.requirementInfo.fourthSubject.rate}"/>
         </div>
         <div>
-            <input class="input_subject" list="subjectNames" name="subject_name5"/>
-            <input class="input" type="number" name="subject_rate5">
+            <input class="input_subject" list="subjectNames" name="subject_name5" value="${requestScope.faculty_info.requirementInfo.fifthSubject.name.getNameByLocale(sessionScope.locale)}"/>
+            <input class="input" type="number" name="subject_rate5" value="${requestScope.faculty_info.requirementInfo.fifthSubject.rate}"/>
         </div>
         <div>
             <datalist id="subjectNames">

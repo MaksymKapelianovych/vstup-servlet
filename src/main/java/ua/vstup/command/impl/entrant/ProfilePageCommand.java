@@ -8,7 +8,7 @@ import ua.vstup.domain.EntrantInfo;
 
 import javax.servlet.http.HttpServletRequest;
 
-@CommandMapping(url = Constants.Urls.PROFILE_FORWARD)
+@CommandMapping(url = Constants.Urls.ENTRANT_PROFILE_FORWARD)
 public class ProfilePageCommand extends AbstractCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {

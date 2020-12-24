@@ -15,7 +15,8 @@ public final class Constants {
         public static final String ADD_REQUEST_REDIRECT = REQUESTS_FORWARD + "/add-request";
         public static final String ENTRANT_FACULTY_FORWARD = ENTRANT + "/faculty";
         public static final String ADMIN_FACULTY_FORWARD = ADMIN + "/faculty";
-        public static final String PROFILE_FORWARD = ENTRANT + "/profile";
+        public static final String ENTRANT_PROFILE_FORWARD = ENTRANT + "/profile";
+        public static final String ADMIN_PROFILE_FORWARD = ADMIN + "/profile";
 
         public static final String ADD_FACULTY_FORWARD = ADMIN_FACULTY_FORWARD + "/add-faculty-page";
         public static final String ADD_FACULTY_REDIRECT = ADMIN_FACULTY_FORWARD + "/add-faculty";
@@ -25,6 +26,7 @@ public final class Constants {
         public static final String ADMIN_ENTRANT_FORWARD = ADMIN + "/entrant";
         public static final String ADMIN_ENTRANT_DISABLE_REDIRECT = ADMIN_ENTRANT_FORWARD + "/disable";
         public static final String ADMIN_ENTRANT_ENABLE_REDIRECT = ADMIN_ENTRANT_FORWARD + "/enable";
+
     }
 
     public final class Attributes{

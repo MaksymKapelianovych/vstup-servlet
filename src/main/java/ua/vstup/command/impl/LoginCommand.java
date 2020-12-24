@@ -23,9 +23,9 @@ public class LoginCommand extends AbstractCommand implements Command {
 
 
         if(entrant.getRole() == Role.USER){
-            return Constants.Urls.REQUESTS_FORWARD;
+            return Constants.Urls.ENTRANT_PROFILE_FORWARD;
         }else{
-            return Constants.Urls.ADMIN_FACULTY_FORWARD;
+            return Constants.Urls.ADMIN_PROFILE_FORWARD;
         }
 
     }

@@ -8,6 +8,7 @@ public class FacultyInfo {
     private String name_en;
     private Integer maxBudgetPlace;
     private Integer maxPlace;
+    private Boolean active;
     private RequirementInfo requirementInfo;
 
     private FacultyInfo(Builder builder){

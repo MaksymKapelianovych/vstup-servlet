@@ -7,6 +7,7 @@ import ua.vstup.dao.FacultyDao;
 import ua.vstup.dao.RequirementDao;
 import ua.vstup.dao.SubjectDao;
 import ua.vstup.domain.*;
+import ua.vstup.entity.EntrantEntity;
 import ua.vstup.entity.FacultyEntity;
 import ua.vstup.entity.RequirementEntity;
 import ua.vstup.entity.SubjectEntity;
@@ -42,6 +43,14 @@ public class FacultyServiceImpl implements FacultyService {
         return facultyDao.findAll().stream()
                 .map(EntityMapper::facultyEntityToFaculty)
                 .collect(Collectors.toList());
+    }
+
+
+    @Override
+    public Faculty get(Integer id) {
+        FacultyEntity facultyEntity = facultyDao.findById(id)
+                .orElseThrow(() -> new IncorrectDataException("Faculty not found"));
+        return EntityMapper.facultyEntityToFaculty(facultyEntity);
     }
 
     @Override
@@ -108,4 +117,5 @@ public class FacultyServiceImpl implements FacultyService {
                 .map(EntityMapper::facultyEntityToFaculty)
                 .collect(Collectors.toList());
     }
+
 }
