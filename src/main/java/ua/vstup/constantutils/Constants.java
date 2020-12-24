@@ -22,6 +22,9 @@ public final class Constants {
         public static final String EDIT_FACULTY_FORWARD = ADMIN_FACULTY_FORWARD + "/edit-faculty-page";
         public static final String EDIT_FACULTY_REDIRECT = ADMIN_FACULTY_FORWARD + "/edit-faculty";
         public static final String DELETE_FACULTY_REDIRECT = ADMIN_FACULTY_FORWARD + "/delete-faculty";
+        public static final String ADMIN_ENTRANT_FORWARD = ADMIN + "/entrant";
+        public static final String ADMIN_ENTRANT_DISABLE_REDIRECT = ADMIN_ENTRANT_FORWARD + "/disable";
+        public static final String ADMIN_ENTRANT_ENABLE_REDIRECT = ADMIN_ENTRANT_FORWARD + "/enable";
     }
 
     public final class Attributes{
@@ -41,6 +44,9 @@ public final class Constants {
         public static final String FACULTY_LIST = "faculties";
         public static final String FACULTY_ID = "faculty_id";
         public static final String FACULTY = "faculty";
+        public static final String ENTRANT_LIST = "entrants";
+        public static final String ENTRANT_INFO = "entrant_info";
+        public static final String FACULTY_INFO = "faculty_info";
     }
 
     public final class Parameters {
@@ -67,5 +73,7 @@ public final class Constants {
         public static final String NAME_UA = "name_ua";
         public static final String MAX_BUDGET_PLACES = "maxBudgetPlaces";
         public static final String MAX_PLACES = "maxPlaces";
+
+        public static final String ENTRANT_ID = "entrant_id";
     }
 }

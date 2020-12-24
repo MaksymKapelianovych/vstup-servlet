@@ -18,4 +18,9 @@ public interface EntrantService {
 
     @Transactional
     EntrantInfo getEntrantInfo(Entrant entrant);
+
+    List<Entrant> getAllEntrants();
+
+    void disable(Integer id);
+    void enable(Integer id);
 }

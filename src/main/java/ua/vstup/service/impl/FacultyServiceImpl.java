@@ -9,6 +9,7 @@ import ua.vstup.dao.SubjectDao;
 import ua.vstup.domain.*;
 import ua.vstup.entity.FacultyEntity;
 import ua.vstup.entity.RequirementEntity;
+import ua.vstup.entity.SubjectEntity;
 import ua.vstup.exception.IncorrectDataException;
 import ua.vstup.service.FacultyService;
 import ua.vstup.service.utility.EntityMapper;
@@ -38,7 +39,9 @@ public class FacultyServiceImpl implements FacultyService {
 
     @Override
     public List<Faculty> getAll() {
-        return facultyDao.findAll().stream().map(EntityMapper::facultyEntityToFaculty).collect(Collectors.toList());
+        return facultyDao.findAll().stream()
+                .map(EntityMapper::facultyEntityToFaculty)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -61,23 +64,48 @@ public class FacultyServiceImpl implements FacultyService {
     }
 
     @Override
-    public Faculty findById(Integer valueOf) {
-        FacultyEntity facultyEntity = facultyDao.findById(valueOf)
+    public FacultyInfo getFacultyInto(Integer id) {
+        FacultyEntity facultyEntity = facultyDao.findById(id)
                 .orElseThrow(() -> new IncorrectDataException("Faculty not found"));
-        return EntityMapper.facultyEntityToFaculty(facultyEntity);
-    }
 
-    @Override
-    public FacultyInfo getFacultyInto(Faculty faculty) {
-        RequirementEntity requirementEntity = requirementDao.findById(faculty.getId())
-                .orElseThrow(() -> new IncorrectDataException("Requirement for faculty not found"));
+        RequirementEntity requirementEntity = requirementDao.findById(facultyEntity.getRequirementEntityId())
+                .orElseThrow(() -> new IncorrectDataException("Requirement not found"));
+        SubjectEntity subjectEntity1 = subjectDao.findById(requirementEntity.getFirstSubjectId())
+                .orElseThrow(() -> new IncorrectDataException("Subject not found"));
+        SubjectEntity subjectEntity2 = subjectDao.findById(requirementEntity.getSecondSubjectId())
+                .orElseThrow(() -> new IncorrectDataException("Subject not found"));
+        SubjectEntity subjectEntity3 = subjectDao.findById(requirementEntity.getThirdSubjectId())
+                .orElseThrow(() -> new IncorrectDataException("Subject not found"));
+        SubjectEntity subjectEntity4 = subjectDao.findById(requirementEntity.getFourthSubjectId())
+                .orElse(null);
+        SubjectEntity subjectEntity5 = subjectDao.findById(requirementEntity.getFifthSubjectId())
+                .orElse(null);
 
-        return null;
+        RequirementInfo requirementInfo = EntityMapper.subjectEntityListToRequirementInfo(
+                subjectEntity1, subjectEntity2, subjectEntity3, subjectEntity4, subjectEntity5);
+
+
+        return FacultyInfo.builder()
+                .withId(facultyEntity.getId())
+                .withNameEn(facultyEntity.getName_en())
+                .withNameEn(facultyEntity.getName_en())
+                .withNameUa(facultyEntity.getName_ua())
+                .withMaxBudgetPlace(facultyEntity.getMaxBudgetPlace())
+                .withMaxPlace(facultyEntity.getMaxPlace())
+                .withRequirementInfo(requirementInfo)
+                .build();
     }
 
     @Override
     public void delete(Integer id) {
         facultyDao.updateActiveById(id, false);
 
+    }
+
+    @Override
+    public List<Faculty> getAllActive() {
+        return facultyDao.findAllByActive(true).stream()
+                .map(EntityMapper::facultyEntityToFaculty)
+                .collect(Collectors.toList());
     }
 }

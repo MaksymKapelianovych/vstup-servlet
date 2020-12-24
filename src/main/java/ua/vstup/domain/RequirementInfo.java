@@ -1,6 +1,9 @@
 package ua.vstup.domain;
 
 
+import java.util.Arrays;
+import java.util.List;
+
 public class RequirementInfo {
     private Subject firstSubject;
     private Subject secondSubject;
@@ -35,6 +38,9 @@ public class RequirementInfo {
     public Subject getFifthSubject() {
         return fifthSubject;
     }
+
+    public List<Subject> getSubjectList() {
+        return Arrays.asList(fifthSubject, secondSubject, thirdSubject, fourthSubject, fifthSubject);}
 
     public static Builder builder() { return new Builder(); }
 

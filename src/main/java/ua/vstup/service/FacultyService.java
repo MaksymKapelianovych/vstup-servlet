@@ -13,11 +13,11 @@ public interface FacultyService {
     @Transactional
     void add(Faculty faculty, List<Subject> subjectList);
 
-    Faculty findById(Integer valueOf);
-
     @Transactional
-    FacultyInfo getFacultyInto(Faculty faculty);
+    FacultyInfo getFacultyInto(Integer id);
 
     void delete(Integer id);
+
+    List<Faculty> getAllActive();
 }
 

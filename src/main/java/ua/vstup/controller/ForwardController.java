@@ -11,7 +11,7 @@ import java.io.IOException;
 @WebServlet(urlPatterns = {Constants.Urls.LOGIN_FORWARD, Constants.Urls.REGISTER_FORWARD,
         Constants.Urls.ERROR, Constants.Urls.REQUESTS_FORWARD, Constants.Urls.ENTRANT_FACULTY_FORWARD,
         Constants.Urls.ADMIN_FACULTY_FORWARD, Constants.Urls.PROFILE_FORWARD, Constants.Urls.ADD_FACULTY_FORWARD,
-        Constants.Urls.EDIT_FACULTY_FORWARD
+        Constants.Urls.EDIT_FACULTY_FORWARD, Constants.Urls.ADMIN_ENTRANT_FORWARD
 })
 public class ForwardController extends AbstractController {
     @Override

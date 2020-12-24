@@ -4,6 +4,7 @@ import ua.vstup.annotation.CommandMapping;
 import ua.vstup.command.Command;
 import ua.vstup.command.impl.AbstractCommand;
 import ua.vstup.constantutils.Constants;
+import ua.vstup.domain.FacultyInfo;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,11 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 public class AddRequestPageCommand extends AbstractCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
-        String id = request.getParameter(Constants.Parameters.FACULTY_ID);
-        if(id != null){
-            Integer faculty_id = Integer.valueOf(id);
-            request.setAttribute(Constants.Attributes.FACULTY_ID, faculty_id);
-        }
+        Integer id = Integer.valueOf(request.getParameter(Constants.Parameters.FACULTY_ID));
+        FacultyInfo facultyInfo = getFacultyService(request).getFacultyInto(id);
+        request.setAttribute(Constants.Attributes.FACULTY_INFO, facultyInfo);
 
         return "/entrant/add-request.jsp";
     }

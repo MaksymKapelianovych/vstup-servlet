@@ -1,5 +1,7 @@
 package ua.vstup.domain;
 
+import ua.vstup.constantutils.Constants;
+
 public class FacultyInfo {
     private Integer id;
     private String name_ua;
@@ -15,6 +17,41 @@ public class FacultyInfo {
         maxBudgetPlace = builder.maxBudgetPlace;
         maxPlace = builder.maxPlace;
         requirementInfo = builder.requirementInfo;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getName_ua() {
+        return name_ua;
+    }
+
+    public String getName_en() {
+        return name_en;
+    }
+
+    public String getNameByLocale(String locale){
+        switch (locale){
+            case Constants.Attributes.UA:{
+                return name_ua;
+            }
+            default:{
+                return name_en;
+            }
+        }
+    }
+
+    public Integer getMaxBudgetPlace() {
+        return maxBudgetPlace;
+    }
+
+    public Integer getMaxPlace() {
+        return maxPlace;
+    }
+
+    public RequirementInfo getRequirementInfo() {
+        return requirementInfo;
     }
 
     public static Builder builder() {

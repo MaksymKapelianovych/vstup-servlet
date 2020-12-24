@@ -45,6 +45,6 @@ public class RegisterCommand extends AbstractCommand implements Command {
 
         getEntrantService(request).register(entrant, subjectList);
         request.getSession(false).setAttribute("entrant", entrant);
-        return Constants.Urls.REQUESTS_FORWARD;
+        return Constants.Urls.LOGIN_FORWARD;
     }
 }

@@ -1,4 +1,3 @@
-<%@ page import="ua.vstup.domain.Role" %>
 <%@include file="../../directive/directive.jsp"%>
 <html>
 <head>
@@ -12,6 +11,7 @@
         <td><fmt:message key="faculty.name"/></td>
         <td><fmt:message key="faculty.max.budget.places"/></td>
         <td><fmt:message key="faculty.max.places"/></td>
+        <td><fmt:message key="faculty.active"/></td>
     </tr>
     </thead>
     <tbody>
@@ -20,9 +20,13 @@
             <td>${faculty.getNameByLocale(sessionScope.locale)}</td>
             <td>${faculty.maxBudgetPlace}</td>
             <td>${faculty.maxPlace}</td>
-            <td>${faculty.active}</td>
+            <td>${faculty.active ? 'Active' : 'Closed'}</td>
             <td><a href="/admin/faculty/edit-faculty-page?faculty_id=${faculty.id}"><fmt:message key="edit.faculty"/></a></td>
-            <td><a href="/admin/faculty/delete-faculty?faculty_id=${faculty.id}"><fmt:message key="delete.faculty"/></a></td>
+            <c:if test="${faculty.active}">
+                <td>
+                    <a href="/admin/faculty/delete-faculty?faculty_id=${faculty.id}"><fmt:message key="delete.faculty"/></a>
+                </td>
+            </c:if>
         </tr>
     </c:forEach>
     </tbody>

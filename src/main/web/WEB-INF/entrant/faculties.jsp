@@ -1,4 +1,3 @@
-<%@ page import="ua.vstup.domain.Role" %>
 <%@include file="../directive/directive.jsp"%>
 <html>
 <head>

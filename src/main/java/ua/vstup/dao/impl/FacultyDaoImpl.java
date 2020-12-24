@@ -19,9 +19,10 @@ public class FacultyDaoImpl extends AbstractDao<FacultyEntity> implements Facult
     private static final String INSERT_QUERY = "INSERT INTO faculty VALUES (DEFAULT,?,?,?,?,?,?)";
     private static final String DELETE_QUERY = "DELETE FROM faculty WHERE id=?";
     private static final String UPDATE_QUERY = "UPDATE faculty SET name_en=?, name_ua=?, maxBudgetPlace=?, maxPlace=?, requirement_id=?, active=? WHERE id=?";
-    private static final String UPDATE_ACTIVE_QUERY = "UPDATE faculty SET active=? WHERE id=?";
+    private static final String UPDATE_ACTIVE_BY_ID_QUERY = "UPDATE faculty SET active=? WHERE id=?";
     private static final String FIND_BY_ID_QUERY = "SELECT * FROM faculty WHERE id=?";
     private static final String FIND_QUERY = "SELECT * FROM faculty";
+    private static final String FIND_BY_ACTIVE_QUERY = "SELECT * FROM faculty WHERE active=?";
 
     public FacultyDaoImpl(ConnectionHolder connectionHolder) { super(connectionHolder); }
 
@@ -38,16 +39,21 @@ public class FacultyDaoImpl extends AbstractDao<FacultyEntity> implements Facult
 
     @Override
     public boolean updateActiveById(Integer id, boolean active) {
-        try(PreparedStatement ps = getConnection().prepareStatement(UPDATE_ACTIVE_QUERY)){
+        try(PreparedStatement ps = getConnection().prepareStatement(UPDATE_ACTIVE_BY_ID_QUERY)){
             ps.setObject(1, active);
             ps.setObject(2, id);
             if(ps.executeUpdate() > 0){
                 return true;
             }
         }catch (SQLException e){
-            throw new DatabaseInteractionException(getMessage(UPDATE_ACTIVE_QUERY), e);
+            throw new DatabaseInteractionException(getMessage(UPDATE_ACTIVE_BY_ID_QUERY), e);
         }
         return false;
+    }
+
+    @Override
+    public List<FacultyEntity> findAllByActive(boolean active) {
+        return findAllByParam(active, FIND_BY_ACTIVE_QUERY);
     }
 
     @Override

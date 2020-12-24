@@ -13,6 +13,7 @@ public class ProfilePageCommand extends AbstractCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         EntrantInfo entrantInfo = getEntrantService(request).getEntrantInfo(getEntrant(request));
+        request.getSession(false).setAttribute(Constants.Attributes.ENTRANT_INFO, entrantInfo);
         return "/entrant/profile.jsp";
     }
 }

@@ -13,7 +13,7 @@ import java.util.List;
 public class FacultiesPageCommand extends AbstractCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
-        List<Faculty> faculties = getFacultyService(request).getAll();
+        List<Faculty> faculties = getFacultyService(request).getAllActive();
         request.setAttribute(Constants.Attributes.FACULTY_LIST, faculties);
         return "/entrant/faculties.jsp";
     }

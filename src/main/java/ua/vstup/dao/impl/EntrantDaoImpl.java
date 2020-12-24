@@ -4,10 +4,13 @@ import ua.vstup.annotation.Dao;
 import ua.vstup.dao.EntrantDao;
 import ua.vstup.dao.db.holder.ConnectionHolder;
 import ua.vstup.entity.EntrantEntity;
+import ua.vstup.entity.RoleEntity;
+import ua.vstup.exception.DatabaseInteractionException;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Optional;
 
 import static ua.vstup.dao.utility.ResultSetToEntityMapper.extractEntrantEntityFromResultSet;
@@ -17,6 +20,8 @@ public class EntrantDaoImpl extends AbstractDao<EntrantEntity> implements Entran
     private static final String INSERT_QUERY = "INSERT INTO entrant VALUES (DEFAULT,?,?,?,?,?,?,?)"; //TODO add region
     //private static final String DELETE_QUERY = "DELETE FROM entrant WHERE id=?";
     private static final String UPDATE_QUERY = "UPDATE entrant SET name=?, password=?, email=?, school_id=?, role=?, requirement_id=?, active=? WHERE id=?"; //TODO add region
+    private static final String UPDATE_ACTIVE_BY_ID_QUERY = "UPDATE entrant SET active=? WHERE id=?";
+    private static final String FIND_ALL_BY_ROLE_QUERY = "SELECT * FROM entrant WHERE role=?";
     private static final String FIND_BY_ID_QUERY = "SELECT * FROM entrant WHERE id=?";
     private static final String FIND_BY_EMAIL_QUERY = "SELECT * FROM entrant WHERE email=?";
 
@@ -32,6 +37,23 @@ public class EntrantDaoImpl extends AbstractDao<EntrantEntity> implements Entran
 
     @Override
     public Optional<EntrantEntity> findByEmail(String email) { return findByParam(email, FIND_BY_EMAIL_QUERY); }
+
+    @Override
+    public List<EntrantEntity> findAllByRole(RoleEntity roleEntity) { return findAllByParam(roleEntity.name(), FIND_ALL_BY_ROLE_QUERY); }
+
+    @Override
+    public boolean updateActiveById(Integer id, boolean active) {
+        try(PreparedStatement ps = getConnection().prepareStatement(UPDATE_ACTIVE_BY_ID_QUERY)){
+            ps.setObject(1, active);
+            ps.setObject(2, id);
+            if(ps.executeUpdate() > 0){
+                return true;
+            }
+        }catch (SQLException e){
+            throw new DatabaseInteractionException(getMessage(UPDATE_ACTIVE_BY_ID_QUERY), e);
+        }
+        return false;
+    }
 
     @Override
     public boolean update(EntrantEntity entity) { return update(entity, UPDATE_QUERY); }

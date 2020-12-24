@@ -15,7 +15,12 @@ public class LoginCommand extends AbstractCommand implements Command {
         Entrant entrant = getEntrantService(request).login(
                 request.getParameter(Constants.Parameters.EMAIL),
                 request.getParameter(Constants.Parameters.PASSWORD));
+        if(entrant == null){
+            return Constants.Urls.LOGIN_FORWARD;
+        }
+
         request.getSession(false).setAttribute(Constants.Attributes.ENTRANT, entrant);
+
 
         if(entrant.getRole() == Role.USER){
             return Constants.Urls.REQUESTS_FORWARD;

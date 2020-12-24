@@ -3,6 +3,8 @@ package ua.vstup.service.utility;
 import ua.vstup.domain.*;
 import ua.vstup.entity.*;
 
+import java.util.List;
+
 public class EntityMapper {
     private EntityMapper(){}
 
@@ -102,6 +104,7 @@ public class EntityMapper {
                 .withMaxBudgetPlace(facultyEntity.getMaxBudgetPlace())
                 .withMaxPlace(facultyEntity.getMaxPlace())
                 .withFacultyRequirementId(facultyEntity.getRequirementEntityId())
+                .withActive(facultyEntity.getActive())
                 .build();
     }
 
@@ -118,5 +121,15 @@ public class EntityMapper {
 
     public static Subject subjectEntityToSubject(SubjectEntity subjectEntity) {
         return new Subject(subjectEntity.getId(), SubjectName.valueOf(subjectEntity.getName().name()), subjectEntity.getRate());
+    }
+
+    public static RequirementInfo subjectEntityListToRequirementInfo(SubjectEntity... subjectEntityList){
+        return RequirementInfo.builder()
+                .withFifthSubject(subjectEntityToSubject(subjectEntityList[0]))
+                .withSecondSubject(subjectEntityToSubject(subjectEntityList[1]))
+                .withThirdSubject(subjectEntityToSubject(subjectEntityList[2]))
+                .withFourthSubject(subjectEntityToSubject(subjectEntityList[3]))
+                .withFifthSubject(subjectEntityToSubject(subjectEntityList[4]))
+                .build();
     }
 }
