@@ -104,4 +104,12 @@ public class ResultSetToEntityMapper {
         }
         return entity;
     }
+
+    public static StatementEntity extractStatementEntityFromResultSet(ResultSet resultSet) throws SQLException {
+        StatementEntity entity = new StatementEntity(resultSet.getInt("statement.id"), resultSet.getBoolean("statement.finalized"));
+        if(entity.getId() == 0){
+            throw new DatabaseInteractionException(ERROR_MESSAGE);
+        }
+        return entity;
+    }
 }

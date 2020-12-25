@@ -152,4 +152,18 @@ public class EntityMapper {
                 .withFifthSubject(subjectEntityToSubject(subjectEntity5))
                 .build();
     }
+
+    public static Statement statementFromStatementEntity(StatementEntity statementEntity){
+        if(statementEntity == null){
+            return null;
+        }
+        return new Statement(statementEntity.getId(), statementEntity.getFinalized());
+    }
+
+    public static StatementEntity statementEntityFromStatement(Statement statement){
+        if(statement == null){
+            return null;
+        }
+        return new StatementEntity(statement.getId(), statement.getFinalized());
+    }
 }
