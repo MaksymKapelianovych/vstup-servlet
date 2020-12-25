@@ -17,23 +17,27 @@
         <b>${sessionScope.entrant_info.requirementInfo.firstSubject.rate}</b>
     </div>
     <div>
-        <b>${sessionScope.entrant_info.requirementInfo.firstSubject.name.getNameByLocale(sessionScope.locale)}</b>
-        <b>${sessionScope.entrant_info.requirementInfo.firstSubject.rate}</b>
+        <b>${sessionScope.entrant_info.requirementInfo.secondSubject.name.getNameByLocale(sessionScope.locale)}</b>
+        <b>${sessionScope.entrant_info.requirementInfo.secondSubject.rate}</b>
     </div>
     <div>
-        <b>${sessionScope.entrant_info.requirementInfo.firstSubject.name.getNameByLocale(sessionScope.locale)}</b>
-        <b>${sessionScope.entrant_info.requirementInfo.firstSubject.rate}</b>
+        <b>${sessionScope.entrant_info.requirementInfo.thirdSubject.name.getNameByLocale(sessionScope.locale)}</b>
+        <b>${sessionScope.entrant_info.requirementInfo.thirdSubject.rate}</b>
     </div>
+    <c:if test="${sessionScope.entrant_info.requirementInfo.fourthSubject != null}">
+        <div>
+            <b>${sessionScope.entrant_info.requirementInfo.fourthSubject.name.getNameByLocale(sessionScope.locale)}</b>
+            <b>${sessionScope.entrant_info.requirementInfo.fourthSubject.rate}</b>
+        </div>
+    </c:if>
+    <c:if test="${sessionScope.entrant_info.requirementInfo.fifthSubject != null}">
+        <div>
+            <b>${sessionScope.entrant_info.requirementInfo.fifthSubject.name.getNameByLocale(sessionScope.locale)}</b>
+            <b>${sessionScope.entrant_info.requirementInfo.fifthSubject.rate}</b>
+        </div>
+    </c:if>
     <div>
-        <b>${sessionScope.entrant_info.requirementInfo.firstSubject.name.getNameByLocale(sessionScope.locale)}</b>
-        <b>${sessionScope.entrant_info.requirementInfo.firstSubject.rate}</b>
-    </div>
-    <div>
-        <b>${sessionScope.entrant_info.requirementInfo.firstSubject.name.getNameByLocale(sessionScope.locale)}</b>
-        <b>${sessionScope.entrant_info.requirementInfo.firstSubject.rate}</b>
-    </div>
-    <div>
-        <a href="entrant/request"><fmt:message key="request.list"/></a>
+        <a href="/entrant/request"><fmt:message key="request.list"/></a>
     </div>
 </body>
 </html>

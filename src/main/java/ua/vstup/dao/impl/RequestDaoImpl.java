@@ -18,6 +18,7 @@ public class RequestDaoImpl extends AbstractDao<RequestEntity> implements Reques
     private final String INSERT_QUERY = "INSERT INTO request VALUES(DEFAULT,?,?,?,?,?,?,?)";
     private final String UPDATE_QUERY = "UPDATE request SET entrant_id=?, faculty_id=?, first_subject_id=?, second_subject_id=?, third_subject_id=?, statement_id=?, state=? WHERE id=?";
     private final String DELETE_QUERY = "DELETE FROM request WHERE id=?";
+    private final String FIND_QUERY = "SELECT * FROM request";
     private final String FIND_BY_ID_QUERY = "SELECT * FROM request WHERE id=?";
     private final String FIND_BY_ENTRANT_ID_QUERY = "SELECT * FROM request WHERE entrant_id=?";
 
@@ -42,6 +43,9 @@ public class RequestDaoImpl extends AbstractDao<RequestEntity> implements Reques
 
     @Override
     public List<RequestEntity> findAllByEntrantId(Integer entrantId) { return findAllByParam(entrantId, FIND_BY_ENTRANT_ID_QUERY); }
+
+    @Override
+    public List<RequestEntity> findAll() { return findAll(FIND_QUERY); }
 
     @Override
     public boolean update(RequestEntity entity) {

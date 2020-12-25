@@ -23,10 +23,12 @@ public final class Constants {
         public static final String EDIT_FACULTY_FORWARD = ADMIN_FACULTY_FORWARD + "/edit-faculty-page";
         public static final String EDIT_FACULTY_REDIRECT = ADMIN_FACULTY_FORWARD + "/edit-faculty";
         public static final String DELETE_FACULTY_REDIRECT = ADMIN_FACULTY_FORWARD + "/delete-faculty";
+
         public static final String ADMIN_ENTRANT_FORWARD = ADMIN + "/entrant";
         public static final String ADMIN_ENTRANT_DISABLE_REDIRECT = ADMIN_ENTRANT_FORWARD + "/disable";
         public static final String ADMIN_ENTRANT_ENABLE_REDIRECT = ADMIN_ENTRANT_FORWARD + "/enable";
 
+        public static final String ADMIN_REQUEST_FORWARD = ADMIN + "/request";
     }
 
     public final class Attributes{

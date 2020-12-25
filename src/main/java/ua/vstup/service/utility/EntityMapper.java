@@ -63,6 +63,9 @@ public class EntityMapper {
     }
 
     public static SchoolEntity schoolToSchoolEntity(School school){
+        if(school == null){
+            return null;
+        }
         return SchoolEntity.builder()
                 .withNameUa(school.getName_ua())
                 .withNameEn(school.getName_en())
@@ -73,6 +76,9 @@ public class EntityMapper {
     }
 
     public static School schoolEntityToSchool(SchoolEntity schoolEntity) {
+        if(schoolEntity == null){
+            return null;
+        }
         return School.builder()
                 .withId(schoolEntity.getId())
                 .withNameUa(schoolEntity.getName_ua())
@@ -84,6 +90,9 @@ public class EntityMapper {
     }
 
     public static Request requestEntityToRequest(RequestEntity requestEntity) {
+        if(requestEntity == null){
+            return null;
+        }
         return Request.builder()
                 .withId(requestEntity.getId())
                 .withEntrantId(requestEntity.getEntrantEntityId())
@@ -97,6 +106,9 @@ public class EntityMapper {
     }
 
     public static Faculty facultyEntityToFaculty(FacultyEntity facultyEntity) {
+        if(facultyEntity == null){
+            return null;
+        }
         return Faculty.builder()
                 .withId(facultyEntity.getId())
                 .withNameUa(facultyEntity.getName_ua())
@@ -109,6 +121,9 @@ public class EntityMapper {
     }
 
     public static FacultyEntity facultyToFacultyEntity(Faculty faculty) {
+        if(faculty == null){
+            return null;
+        }
         return FacultyEntity.builder()
                 .withNameUa(faculty.getName_ua())
                 .withNameEn(faculty.getName_en())
@@ -120,16 +135,21 @@ public class EntityMapper {
     }
 
     public static Subject subjectEntityToSubject(SubjectEntity subjectEntity) {
+        if(subjectEntity == null){
+            return null;
+        }
         return new Subject(subjectEntity.getId(), SubjectName.valueOf(subjectEntity.getName().name()), subjectEntity.getRate());
     }
 
-    public static RequirementInfo subjectEntityListToRequirementInfo(SubjectEntity... subjectEntityList){
+    public static RequirementInfo subjectEntityListToRequirementInfo(SubjectEntity subjectEntity1, SubjectEntity subjectEntity2,
+                                                                     SubjectEntity subjectEntity3, SubjectEntity subjectEntity4,
+                                                                     SubjectEntity subjectEntity5){
         return RequirementInfo.builder()
-                .withFirstSubject(subjectEntityToSubject(subjectEntityList[0]))
-                .withSecondSubject(subjectEntityToSubject(subjectEntityList[1]))
-                .withThirdSubject(subjectEntityToSubject(subjectEntityList[2]))
-                .withFourthSubject(subjectEntityToSubject(subjectEntityList[3]))
-                .withFifthSubject(subjectEntityToSubject(subjectEntityList[4]))
+                .withFirstSubject(subjectEntityToSubject(subjectEntity1))
+                .withSecondSubject(subjectEntityToSubject(subjectEntity2))
+                .withThirdSubject(subjectEntityToSubject(subjectEntity3))
+                .withFourthSubject(subjectEntityToSubject(subjectEntity4))
+                .withFifthSubject(subjectEntityToSubject(subjectEntity5))
                 .build();
     }
 }

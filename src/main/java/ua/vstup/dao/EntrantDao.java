@@ -4,6 +4,7 @@ import ua.vstup.domain.Entrant;
 import ua.vstup.entity.EntrantEntity;
 import ua.vstup.entity.RoleEntity;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 

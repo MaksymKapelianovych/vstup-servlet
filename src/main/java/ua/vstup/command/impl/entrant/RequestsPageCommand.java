@@ -6,6 +6,7 @@ import ua.vstup.command.Command;
 import ua.vstup.command.impl.AbstractCommand;
 import ua.vstup.constantutils.Constants;
 import ua.vstup.domain.Entrant;
+import ua.vstup.domain.RequestInfo;
 import ua.vstup.domain.RequestInfoForEntrant;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +17,7 @@ public class RequestsPageCommand extends AbstractCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         Entrant entrant = getEntrant(request);
-        List<RequestInfoForEntrant> requests = getRequestService(request).getAllInfoByEntrant(entrant);
+        List<RequestInfo> requests = getRequestService(request).getAllInfoByEntrant(entrant);
         request.setAttribute(Constants.Attributes.REQUEST_LIST, requests);
         return "/entrant/requests.jsp";
     }

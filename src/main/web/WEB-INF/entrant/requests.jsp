@@ -18,7 +18,7 @@
         <tbody>
             <c:forEach var="request" items="${requestScope.requests}">
                 <tr>
-                    <td>${request.faculty.getNameByLocale(sessionScope.locale)}</td>
+                    <td>${request.getFacultyNameByLocale(sessionScope.locale)}</td>
                     <td>${request.firstSubject.name.getNameByLocale(sessionScope.locale)}</td>
                     <td>${request.firstSubject.rate}</td>
                     <td>${request.secondSubject.name.getNameByLocale(sessionScope.locale)}</td>
