@@ -1,5 +1,6 @@
 package ua.vstup.dao.impl;
 
+import ua.vstup.annotation.Dao;
 import ua.vstup.dao.StatementDao;
 import ua.vstup.dao.db.holder.ConnectionHolder;
 import ua.vstup.entity.StatementEntity;
@@ -11,6 +12,7 @@ import java.util.Optional;
 
 import static ua.vstup.dao.utility.ResultSetToEntityMapper.extractStatementEntityFromResultSet;
 
+@Dao
 public class StatementDaoImpl extends AbstractDao<StatementEntity> implements StatementDao {
     private static String FIND_BY_FINALIZED_QUERY = "SELECT * FROM statement WHERE finalized=?";
     private static String FIND_BY_ID_QUERY = "SELECT * FROM statement WHERE id=?";
