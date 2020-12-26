@@ -10,6 +10,7 @@ public class Request {
     private Integer secondSubjectId;
     private Integer thirdSubjectId;
     private Integer statementId;
+    private Integer priority;
     private State state;
 
     private Request(Builder builder) {
@@ -20,6 +21,7 @@ public class Request {
         secondSubjectId = builder.secondSubjectId;
         thirdSubjectId = builder.thirdSubjectId;
         statementId = builder.statementId;
+        priority = builder.priority;
         state = builder.state;
     }
 
@@ -49,6 +51,8 @@ public class Request {
 
     public Integer getStatementId() { return statementId; }
 
+    public Integer getPriority() { return priority; }
+
     public State getState() { return state; }
 
     public static Builder builder() { return new Builder(); }
@@ -61,6 +65,7 @@ public class Request {
         private Integer secondSubjectId;
         private Integer thirdSubjectId;
         private Integer statementId;
+        private Integer priority;
         private State state;
 
         private Builder(){}
@@ -91,6 +96,10 @@ public class Request {
         }
         public Builder withStatementId(Integer statementId){
             this.statementId = statementId;
+            return this;
+        }
+        public Builder withPriority(Integer priority){
+            this.priority = priority;
             return this;
         }
         public Builder withState(State state){

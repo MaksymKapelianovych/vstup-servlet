@@ -10,6 +10,7 @@ public class RequestInfo {
     private Subject firstSubject;
     private Subject secondSubject;
     private Subject thirdSubject;
+    private Integer priority;
     private State state;
 
     public RequestInfo(Builder builder){
@@ -19,6 +20,7 @@ public class RequestInfo {
         firstSubject = builder.firstSubject;
         secondSubject = builder.secondSubject;
         thirdSubject = builder.thirdSubject;
+        priority = builder.priority;
         state = builder.state;
     }
 
@@ -61,6 +63,8 @@ public class RequestInfo {
         return thirdSubject;
     }
 
+    public Integer getPriority() { return priority; }
+
     public State getState() {
         return state;
     }
@@ -75,6 +79,7 @@ public class RequestInfo {
         private Subject firstSubject;
         private Subject secondSubject;
         private Subject thirdSubject;
+        private Integer priority;
         private State state;
 
         private Builder(){}
@@ -107,6 +112,10 @@ public class RequestInfo {
         }
         public Builder withThirdSubject(Subject thirdSubject){
             this.thirdSubject = thirdSubject;
+            return this;
+        }
+        public Builder withPriority(Integer priority){
+            this.priority = priority;
             return this;
         }
         public Builder withState(State state){

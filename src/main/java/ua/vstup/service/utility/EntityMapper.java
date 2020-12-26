@@ -101,7 +101,24 @@ public class EntityMapper {
                 .withSecondSubjectId(requestEntity.getSecondSubjectEntityId())
                 .withThirdSubjectId(requestEntity.getThirdSubjectEntityId())
                 .withStatementId(requestEntity.getStatementEntityId())
+                .withPriority(requestEntity.getPriority())
                 .withState(State.valueOf(requestEntity.getStateEntity().name()))
+                .build();
+    }
+
+    public static RequestEntity requestToRequestEntity(Request request) {
+        if(request == null){
+            return null;
+        }
+        return RequestEntity.builder()
+                .withId(request.getId())
+                .withEntrantEntityId(request.getEntrantId())
+                .withFacultyEntityId(request.getFacultyId())
+                .withFirstSubjectEntityId(request.getFirstSubjectId())
+                .withSecondSubjectEntityId(request.getSecondSubjectId())
+                .withThirdSubjectEntityId(request.getThirdSubjectId())
+                .withPriority(request.getPriority())
+                .withStateEntity(StateEntity.valueOf(request.getState().name()))
                 .build();
     }
 

@@ -10,4 +10,6 @@ public interface RequestDao extends BaseDao<RequestEntity> {
     List<RequestEntity> findAllByEntrantId(Integer entrantId);
 
     List<RequestEntity> findAll();
+
+    List<RequestEntity> findAllByStatementId(Integer id);
 }

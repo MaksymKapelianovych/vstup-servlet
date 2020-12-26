@@ -8,6 +8,7 @@ public class RequestEntity {
     private final Integer secondSubjectEntityId;
     private final Integer thirdSubjectEntityId;
     private final Integer statementEntityId;
+    private final Integer priority;
     private final StateEntity stateEntity;
 
     private RequestEntity(Builder builder) {
@@ -18,6 +19,7 @@ public class RequestEntity {
         secondSubjectEntityId = builder.secondSubjectEntityId;
         thirdSubjectEntityId = builder.thirdSubjectEntityId;
         statementEntityId = builder.statementEntityId;
+        priority = builder.priority;
         stateEntity = builder.stateEntity;
     }
 
@@ -47,6 +49,8 @@ public class RequestEntity {
 
     public Integer getStatementEntityId() { return statementEntityId; }
 
+    public Integer getPriority() { return priority; }
+
     public StateEntity getStateEntity() { return stateEntity; }
 
     public static Builder builder() { return new Builder(); }
@@ -59,6 +63,7 @@ public class RequestEntity {
         private Integer secondSubjectEntityId;
         private Integer thirdSubjectEntityId;
         private Integer statementEntityId;
+        private Integer priority;
         private StateEntity stateEntity;
 
         private Builder(){}
@@ -89,6 +94,10 @@ public class RequestEntity {
         }
         public Builder withStatementEntityId(Integer statementId){
             this.statementEntityId = statementId;
+            return this;
+        }
+        public Builder withPriority(Integer priority){
+            this.priority = priority;
             return this;
         }
         public Builder withStateEntity(StateEntity stateEntity){

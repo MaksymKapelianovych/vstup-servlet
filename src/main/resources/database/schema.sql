@@ -86,6 +86,7 @@ CREATE TABLE request
     second_subject_id int(11) NOT NULL,
     third_subject_id int(11) NOT NULL,
     statement_id int(11) DEFAULT NULL,
+    priority int(1) NOT NULL,
     state varchar(255) NOT NULL,
     PRIMARY KEY (id),
     CONSTRAINT request_fk_entrant_id FOREIGN KEY (entrant_id) REFERENCES entrant (id) ON UPDATE CASCADE,
