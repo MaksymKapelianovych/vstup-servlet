@@ -5,6 +5,7 @@ import ua.vstup.annotation.Service;
 import ua.vstup.dao.SchoolDao;
 import ua.vstup.domain.School;
 import ua.vstup.entity.SchoolEntity;
+import ua.vstup.exception.IncorrectDataException;
 import ua.vstup.service.SchoolService;
 import ua.vstup.service.utility.EntityMapper;
 
@@ -19,7 +20,10 @@ public class SchoolServiceImpl implements SchoolService {
 
     @Override
     public void add(School school) {
-        schoolDao.save(EntityMapper.schoolToSchoolEntity(school));
+
+        if(schoolDao.save(EntityMapper.schoolToSchoolEntity(school)) == 0){
+            throw new IncorrectDataException("Incorrect data");
+        }
     }
 
     @Override
