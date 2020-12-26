@@ -97,6 +97,7 @@ public class ResultSetToEntityMapper {
                 .withSecondSubjectEntityId(resultSet.getInt("request.second_subject_id"))
                 .withThirdSubjectEntityId(resultSet.getInt("request.third_subject_id"))
                 .withStatementEntityId(resultSet.getInt("request.statement_id"))
+                .withPriority(resultSet.getInt("request.priority"))
                 .withStateEntity(StateEntity.valueOf(resultSet.getString("request.state")))
                 .build();
         if(entity.getId() == 0){
