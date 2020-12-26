@@ -69,7 +69,10 @@ public class FacultyServiceImpl implements FacultyService {
         requirementValidator.validate(requirement);
 
         faculty.setRequirementId(requirementDao.save(EntityMapper.requirementToRequirementEntity(requirement)));
-        facultyDao.save(EntityMapper.facultyToFacultyEntity(faculty));
+
+        if(facultyDao.save(EntityMapper.facultyToFacultyEntity(faculty)) == 0){
+            throw new IncorrectDataException("Incorrect data");
+        }
     }
 
     @Override

@@ -5,6 +5,6 @@ import ua.vstup.domain.Subject;
 import java.util.List;
 
 public interface SubjectService {
-    Integer add(Subject subject);
+    void add(Subject subject);
 
 }

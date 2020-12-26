@@ -75,7 +75,9 @@ public class EntrantServiceImpl implements EntrantService {
         requirementValidator.validate(requirement);
 
         entrant.setRequirementId(requirementDao.save(EntityMapper.requirementToRequirementEntity(requirement)));
-        entrantDao.save(EntityMapper.entrantToEntrantEntity(entrant));
+        if(entrantDao.save(EntityMapper.entrantToEntrantEntity(entrant)) == 0){
+            throw new IncorrectDataException("Incorrect data");
+        }
     }
 
     @Override
