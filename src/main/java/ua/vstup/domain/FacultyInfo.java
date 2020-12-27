@@ -17,6 +17,7 @@ public class FacultyInfo {
         name_en = builder.name_en;
         maxBudgetPlace = builder.maxBudgetPlace;
         maxPlace = builder.maxPlace;
+        active = builder.active;
         requirementInfo = builder.requirementInfo;
     }
 
@@ -65,6 +66,7 @@ public class FacultyInfo {
         private String name_en;
         private Integer maxBudgetPlace;
         private Integer maxPlace;
+        private Boolean active;
         private RequirementInfo requirementInfo;
 
         private Builder() {
@@ -92,6 +94,11 @@ public class FacultyInfo {
 
         public Builder withMaxPlace(Integer maxPlace) {
             this.maxPlace = maxPlace;
+            return this;
+        }
+
+        public Builder withActive(Boolean active){
+            this.active = active;
             return this;
         }
 

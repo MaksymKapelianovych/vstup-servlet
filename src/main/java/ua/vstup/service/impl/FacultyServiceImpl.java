@@ -76,7 +76,7 @@ public class FacultyServiceImpl implements FacultyService {
     }
 
     @Override
-    public FacultyInfo getFacultyInto(Integer id) {
+    public FacultyInfo getFacultyInfo(Integer id) {
         FacultyEntity facultyEntity = facultyDao.findById(id)
                 .orElseThrow(() -> new IncorrectDataException("Faculty not found"));
 
@@ -105,6 +105,7 @@ public class FacultyServiceImpl implements FacultyService {
                 .withMaxBudgetPlace(facultyEntity.getMaxBudgetPlace())
                 .withMaxPlace(facultyEntity.getMaxPlace())
                 .withRequirementInfo(requirementInfo)
+                .withActive(facultyEntity.getActive())
                 .build();
     }
 

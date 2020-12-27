@@ -70,7 +70,7 @@ public class EntrantInfo {
             return this;
         }
         public Builder withEmail(String email){
-            this.name = name;
+            this.email = email;
             return this;
         }
         public Builder withSchool(School school){

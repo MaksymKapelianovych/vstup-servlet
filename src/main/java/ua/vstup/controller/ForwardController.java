@@ -12,7 +12,8 @@ import java.io.IOException;
         Constants.Urls.ERROR, Constants.Urls.REQUESTS_FORWARD, Constants.Urls.ENTRANT_FACULTY_FORWARD,
         Constants.Urls.ADMIN_FACULTY_FORWARD, Constants.Urls.ENTRANT_PROFILE_FORWARD, Constants.Urls.ADD_FACULTY_FORWARD,
         Constants.Urls.EDIT_FACULTY_FORWARD, Constants.Urls.ADMIN_ENTRANT_FORWARD,
-        Constants.Urls.ADMIN_PROFILE_FORWARD, Constants.Urls.ADMIN_REQUEST_FORWARD
+        Constants.Urls.ADMIN_PROFILE_FORWARD, Constants.Urls.ADMIN_REQUEST_FORWARD,
+        Constants.Urls.ADMIN_STATEMENT_FORWARD, Constants.Urls.ADD_REQUEST_FORWARD
 })
 public class ForwardController extends AbstractController {
     @Override

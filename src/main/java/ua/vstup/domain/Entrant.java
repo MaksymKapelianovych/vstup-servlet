@@ -1,8 +1,5 @@
 package ua.vstup.domain;
 
-
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
 public class Entrant {
     private Integer id;
     private String name;
@@ -37,7 +34,7 @@ public class Entrant {
 
     public Integer getRequirementId() { return requirementId; }
 
-    public void setRequirementId(Integer id) { this.id = id; }
+    public void setRequirementId(Integer requirementId) { this.requirementId = requirementId; }
 
     public Boolean getActive() { return active; }
 

@@ -14,7 +14,7 @@ public interface FacultyService {
     void add(Faculty faculty, List<Subject> subjectList);
 
     @Transactional
-    FacultyInfo getFacultyInto(Integer id);
+    FacultyInfo getFacultyInfo(Integer id);
 
     void delete(Integer id);
 
