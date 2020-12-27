@@ -17,5 +17,6 @@ public interface RequestService {
 
     void updateStateById(Integer id, State state);
 
+    @Transactional
     void add(Request entrantRequest);
 }

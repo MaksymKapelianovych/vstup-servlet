@@ -63,6 +63,10 @@ public class RequestServiceImpl implements RequestService {
 
     @Override
     public void add(Request entrantRequest) {
+        Optional<RequestEntity> requestEntity = requestDao.findByEntrantIdAndFacultyId(entrantRequest.getEntrantId(), entrantRequest.getFacultyId());
+        if(requestEntity.isPresent()){
+            throw new IncorrectDataException("Request to this faculty already exist");
+        }
         if(requestDao.save(EntityMapper.requestToRequestEntity(entrantRequest)) == 0){
             throw new IncorrectDataException("Incorrect data");
         }

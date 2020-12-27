@@ -25,6 +25,7 @@ public class RequestDaoImpl extends AbstractDao<RequestEntity> implements Reques
     private final String FIND_QUERY = "SELECT * FROM request";
     private final String FIND_BY_ID_QUERY = "SELECT * FROM request WHERE id=?";
     private final String FIND_BY_ENTRANT_ID_QUERY = "SELECT * FROM request WHERE entrant_id=?";
+    private final String FIND_BY_ENTRANT_ID_AND_FACULTY_ID_QUERY = "SELECT * FROM request WHERE entrant_id=? and faculty_id=?";
     private final String FIND_BY_STATEMENT_ID_QUERY = "SELECT * FROM request WHERE statement_id=?";
 
     /**
@@ -48,6 +49,11 @@ public class RequestDaoImpl extends AbstractDao<RequestEntity> implements Reques
 
     @Override
     public List<RequestEntity> findAllByEntrantId(Integer entrantId) { return findAllByParam(entrantId, FIND_BY_ENTRANT_ID_QUERY); }
+
+    @Override
+    public Optional<RequestEntity> findByEntrantIdAndFacultyId(Integer entrantId, Integer facultyId) {
+        return findByParams(FIND_BY_ENTRANT_ID_AND_FACULTY_ID_QUERY, entrantId, facultyId);
+    }
 
     @Override
     public List<RequestEntity> findAll() { return findAll(FIND_QUERY); }
