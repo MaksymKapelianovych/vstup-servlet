@@ -24,10 +24,11 @@ CREATE TABLE statement
 CREATE TABLE school
 (
     id int(11) NOT NULL AUTO_INCREMENT,
-    name varchar(255) NOT NULL,
-    city varchar(255) NOT NULL,
+    name_en varchar(255) NOT NULL,
+    name_ua varchar(255) NOT NULL,
+    city_en varchar(255) NOT NULL,
+    city_ua varchar(255) NOT NULL,
     region varchar(255) NOT NULL,
-    active boolean DEFAULT TRUE,
     PRIMARY KEY (id)
 );
 
@@ -66,7 +67,8 @@ CREATE TABLE entrant
 CREATE TABLE faculty
 (
     id int(11) NOT NULL AUTO_INCREMENT,
-    name varchar(255) NOT NULL UNIQUE,
+    name_en varchar(255) NOT NULL UNIQUE,
+    name_ua varchar(255) NOT NULL UNIQUE,
     maxBudgetPlace int(11) NOT NULL,
     maxPlace int(11) NOT NULL,
     requirement_id int(11) NOT NULL UNIQUE,
@@ -84,6 +86,7 @@ CREATE TABLE request
     second_subject_id int(11) NOT NULL,
     third_subject_id int(11) NOT NULL,
     statement_id int(11) DEFAULT NULL,
+    priority int(1) NOT NULL,
     state varchar(255) NOT NULL,
     PRIMARY KEY (id),
     CONSTRAINT request_fk_entrant_id FOREIGN KEY (entrant_id) REFERENCES entrant (id) ON UPDATE CASCADE,
