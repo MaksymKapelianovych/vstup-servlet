@@ -29,10 +29,12 @@ public final class Constants {
         public static final String ADMIN_ENTRANT_ENABLE_REDIRECT = ADMIN_ENTRANT_FORWARD + "/enable";
 
         public static final String ADMIN_REQUEST_FORWARD = ADMIN + "/request";
+        public static final String ADMIN_STATEMENT_FORWARD = ADMIN + "/statement";
+        public static final String ADMIN_STATEMENT_FINALIZE_REDIRECT = ADMIN_STATEMENT_FORWARD + "/finalize";
+        public static final String ADMIN_STATEMENT_ADD_REDIRECT = ADMIN_STATEMENT_FORWARD + "/add-statement";
     }
 
     public final class Attributes{
-        public static final String ENTRANT = "entrant";
         public static final String SUBJECT_NAMES = "subjectNames";
 
         public static final String ALL_SCHOOL = "schools";
@@ -51,6 +53,8 @@ public final class Constants {
         public static final String ENTRANT_LIST = "entrants";
         public static final String ENTRANT_INFO = "entrant_info";
         public static final String FACULTY_INFO = "faculty_info";
+
+        public static final String STATEMENT = "statement";
     }
 
     public final class Parameters {

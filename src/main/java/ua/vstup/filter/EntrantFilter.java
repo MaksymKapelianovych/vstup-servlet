@@ -24,7 +24,7 @@ public class EntrantFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession(false);
         if(session != null){
-            Entrant obj = (Entrant)session.getAttribute(Constants.Attributes.ENTRANT);
+            Entrant obj = (Entrant)session.getAttribute(Constants.Attributes.ENTRANT_INFO);
             if(obj != null && obj.getRole() == Role.ADMIN){
                 response.sendRedirect(Constants.Urls.ADMIN_FACULTY_FORWARD);
             }else{

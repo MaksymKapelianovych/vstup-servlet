@@ -17,7 +17,7 @@ public class AuthenticationFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession(false);
-        if (!(session != null && (session.getAttribute(Constants.Attributes.ENTRANT) != null))) {
+        if (!(session != null && (session.getAttribute(Constants.Attributes.ENTRANT_INFO) != null))) {
             response.sendRedirect(Constants.Urls.LOGIN_FORWARD);
         }
 

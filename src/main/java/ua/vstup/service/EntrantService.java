@@ -9,7 +9,7 @@ import ua.vstup.domain.Subject;
 import java.util.List;
 
 public interface EntrantService {
-    Entrant login(String email, String password);
+    EntrantInfo login(String email, String password);
 
     @Transactional
     void register(Entrant entrant, List<Subject> subjectList);

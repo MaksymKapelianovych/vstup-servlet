@@ -38,7 +38,7 @@ public class EntrantServiceImpl implements EntrantService {
     private RequirementValidator requirementValidator;
 
     @Override
-    public Entrant login(String email, String password) {
+    public EntrantInfo login(String email, String password) {
         EntrantEntity entrantByEmail = entrantDao.findByEmail(email)
                 .orElseThrow(() -> new IncorrectDataException("Entrant not found"));
 
@@ -46,7 +46,7 @@ public class EntrantServiceImpl implements EntrantService {
 
         if(entrant.getActive()) {
             if (entrant.getPassword().equals(password)) {
-                return EntityMapper.entrantEntityToEntrant(entrantByEmail);
+                return getEntrantInfo(entrant);
             }
         }
         return null;
@@ -111,6 +111,7 @@ public class EntrantServiceImpl implements EntrantService {
                 .withName(entrant.getName())
                 .withEmail(entrant.getEmail())
                 .withSchool(school)
+                .withRole(entrant.getRole())
                 .withRequirementInfo(requirementInfo)
                 .build();
     }

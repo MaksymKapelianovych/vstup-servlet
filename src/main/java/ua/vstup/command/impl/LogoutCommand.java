@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 public class LogoutCommand  extends AbstractCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
-        request.getSession().removeAttribute(Constants.Attributes.ENTRANT);
+        request.getSession().removeAttribute(Constants.Attributes.ENTRANT_INFO);
         return Constants.Urls.LOGIN_FORWARD;
     }
 }

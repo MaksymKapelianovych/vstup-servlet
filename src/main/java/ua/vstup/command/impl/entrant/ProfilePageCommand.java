@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 public class ProfilePageCommand extends AbstractCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
-        EntrantInfo entrantInfo = getEntrantService(request).getEntrantInfo(getEntrant(request));
+        EntrantInfo entrantInfo = getEntrant(request);
         request.getSession(false).setAttribute(Constants.Attributes.ENTRANT_INFO, entrantInfo);
         return "/entrant/profile.jsp";
     }

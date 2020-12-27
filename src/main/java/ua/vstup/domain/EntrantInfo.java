@@ -5,13 +5,16 @@ public class EntrantInfo {
     private String name;
     private String email;
     private School school;
+    private Role role;
     private RequirementInfo requirementInfo;
+    private boolean passed;
 
     public EntrantInfo(Builder builder){
         id = builder.id;
         name = builder.name;
         email = builder.email;
         school = builder.school;
+        role = builder.role;
         requirementInfo = builder.requirementInfo;
     }
 
@@ -35,13 +38,26 @@ public class EntrantInfo {
         return requirementInfo;
     }
 
+    public boolean isPassed() {
+        return passed;
+    }
+
+    public void setPassed(boolean passed) {
+        this.passed = passed;
+    }
+
     public static Builder builder() {return new Builder(); }
+
+    public Role getRole() {
+        return role;
+    }
 
     public static class Builder{
         private Integer id;
         private String name;
         private String email;
         private School school;
+        private Role role;
         private RequirementInfo requirementInfo;
 
         private Builder(){}
@@ -59,6 +75,10 @@ public class EntrantInfo {
         }
         public Builder withSchool(School school){
             this.school = school;
+            return this;
+        }
+        public Builder withRole(Role role){
+            this.role = role;
             return this;
         }
         public Builder withRequirementInfo(RequirementInfo requirementInfo){

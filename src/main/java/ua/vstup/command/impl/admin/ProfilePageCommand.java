@@ -5,6 +5,7 @@ import ua.vstup.command.Command;
 import ua.vstup.command.impl.AbstractCommand;
 import ua.vstup.constantutils.Constants;
 import ua.vstup.domain.Entrant;
+import ua.vstup.domain.EntrantInfo;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,8 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 public class ProfilePageCommand extends AbstractCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
-        Entrant entrant = getEntrant(request);
-        request.setAttribute(Constants.Attributes.ENTRANT, entrant);
+        EntrantInfo entrant = getEntrant(request);
+        request.setAttribute(Constants.Attributes.ENTRANT_INFO, entrant);
         return "/admin/profile.jsp";
     }
 }
