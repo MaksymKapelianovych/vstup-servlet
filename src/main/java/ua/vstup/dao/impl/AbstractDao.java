@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -96,6 +97,20 @@ public abstract class AbstractDao<E> implements BaseDao<E> {
         return Optional.empty();
     }
 
+    protected Optional<E> findByParams(String query, Object... params){
+        try(final PreparedStatement ps = getConnection().prepareStatement(query)){
+            setObjects(ps, params);
+            try(final ResultSet resultSet = ps.executeQuery()){
+                if(resultSet.next()){
+                    return Optional.of(extractFromResultSet(resultSet));
+                }
+            }
+        }catch (SQLException e){
+            throw new DatabaseInteractionException(getMessage(query), e);
+        }
+        return Optional.empty();
+    }
+
     protected List<E> findAll(String query){
         try(PreparedStatement ps = getConnection().prepareStatement(query)){
             try(ResultSet resultSet = ps.executeQuery()){
@@ -143,4 +158,10 @@ public abstract class AbstractDao<E> implements BaseDao<E> {
     protected abstract void prepareData(E entity, PreparedStatement ps) throws SQLException;
 
     protected abstract void prepareDataWithId(E entity, PreparedStatement ps) throws SQLException;
+
+    private void setObjects(PreparedStatement ps, Object[] objects) throws SQLException {
+        for(int i = 0; i < objects.length; ++i){
+            ps.setObject(i+1, objects[i]);
+        }
+    }
 }
