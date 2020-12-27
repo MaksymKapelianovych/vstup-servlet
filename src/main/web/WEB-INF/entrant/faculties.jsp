@@ -20,7 +20,7 @@
                 <td>${faculty.getNameByLocale(sessionScope.locale)}</td>
                 <td>${faculty.maxBudgetPlace}</td>
                 <td>${faculty.maxPlace}</td>
-                <td><a href="/entrant/add-request?faculty_id=${faculty.id}"><fmt:message key="add.request"/></a></td>
+                <td><a href="/entrant/request/add-request-page?faculty_id=${faculty.id}"><fmt:message key="add.request"/></a></td>
             </tr>
         </c:forEach>
     </tbody>

@@ -40,7 +40,7 @@ public class RequirementInfo {
     }
 
     public List<Subject> getSubjectList() {
-        return Arrays.asList(fifthSubject, secondSubject, thirdSubject, fourthSubject, fifthSubject);}
+        return Arrays.asList(firstSubject, secondSubject, thirdSubject, fourthSubject, fifthSubject);}
 
     public static Builder builder() { return new Builder(); }
 

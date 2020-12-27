@@ -10,6 +10,7 @@
             <tr>
                 <td><fmt:message key="faculty.name"/></td>
                 <td><fmt:message key="subject.name"/></td>
+                <td><fmt:message key="subject.rate"/></td>
                 <td><fmt:message key="subject.name"/></td>
                 <td><fmt:message key="subject.name"/></td>
                 <td><fmt:message key="request.state"/></td>
@@ -18,7 +19,7 @@
         <tbody>
             <c:forEach var="request" items="${requestScope.requests}">
                 <tr>
-                    <td>${request.getFacultyNameByLocale(sessionScope.locale)}</td>
+                    <td>${request.faculty.getNameByLocale(sessionScope.locale)}</td>
                     <td>${request.firstSubject.name.getNameByLocale(sessionScope.locale)}</td>
                     <td>${request.firstSubject.rate}</td>
                     <td>${request.secondSubject.name.getNameByLocale(sessionScope.locale)}</td>
@@ -35,7 +36,7 @@
         <a href="/entrant/faculty"><fmt:message key="faculty.list"/></a>
     </div>
     <div>
-        <a href="/entrant/request/add-request"><fmt:message key="add.request"/></a>
+        <a href="/entrant/request/add-request-page"><fmt:message key="add.request"/></a>
     </div>
 </body>
 </html>

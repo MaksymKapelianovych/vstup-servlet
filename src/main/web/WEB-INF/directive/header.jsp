@@ -1,9 +1,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <header>
     <div>
-        <c:if test="${sessionScope.entrant!=null}">
+        <c:if test="${sessionScope.entrant_info != null}">
             <c:choose>
-                <c:when test="${sessionScope.entrant.role.name() == 'ADMIN'}">
+                <c:when test="${sessionScope.entrant_info.role.name() == 'ADMIN'}">
                     <a href="/admin/profile"><fmt:message key="profile.button"/></a>
                 </c:when>
                 <c:otherwise>
@@ -13,7 +13,7 @@
         </c:if>
         <a href="?language=en">EN</a>
         <a href="?language=ua">UA</a>
-        <c:if test="${sessionScope.entrant!=null}">
+        <c:if test="${sessionScope.entrant_info!=null}">
             <a href="/logout"><fmt:message key="logout.button"/></a>
         </c:if>
     </div>

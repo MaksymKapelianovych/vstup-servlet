@@ -1,5 +1,6 @@
 package ua.vstup.service.impl;
 
+import com.sun.istack.internal.NotNull;
 import ua.vstup.annotation.Autowired;
 import ua.vstup.annotation.Service;
 import ua.vstup.dao.EntrantDao;
@@ -7,12 +8,12 @@ import ua.vstup.dao.FacultyDao;
 import ua.vstup.dao.RequestDao;
 import ua.vstup.dao.SubjectDao;
 import ua.vstup.domain.*;
-import ua.vstup.entity.EntrantEntity;
-import ua.vstup.entity.FacultyEntity;
-import ua.vstup.entity.RequestEntity;
-import ua.vstup.entity.RoleEntity;
+import ua.vstup.entity.*;
 import ua.vstup.exception.IncorrectDataException;
+import ua.vstup.service.EntrantService;
+import ua.vstup.service.FacultyService;
 import ua.vstup.service.RequestService;
+import ua.vstup.service.SubjectService;
 import ua.vstup.service.utility.EntityMapper;
 
 import java.util.List;
@@ -26,12 +27,14 @@ import java.util.stream.Collectors;
 public class RequestServiceImpl implements RequestService {
     @Autowired
     private RequestDao requestDao;
+
     @Autowired
-    private FacultyDao facultyDao;
+    private FacultyService facultyService;
     @Autowired
-    private SubjectDao subjectDao;
+    private EntrantService entrantService;
     @Autowired
-    private EntrantDao entrantDao;
+    private SubjectService subjectService;
+
     @Override
     public List<Request> getAllByEntrant(Entrant entrant) {
         return requestDao.findAllByEntrantId(entrant.getId()).stream()
@@ -42,47 +45,55 @@ public class RequestServiceImpl implements RequestService {
     @Override
     public List<RequestInfo> getAll() {
         List<RequestEntity> requestEntities = requestDao.findAll();
-        Map<Integer, FacultyEntity> facultyEntities = facultyDao.findAll().stream()
-                .collect(Collectors.toMap(FacultyEntity::getId, Function.identity()));
-        Map<Integer, EntrantEntity> entrantEntities = entrantDao.findAllByRole(RoleEntity.USER).stream()
-                .collect(Collectors.toMap(EntrantEntity::getId, Function.identity()));
+        return getInfoByRequestEntity(requestEntities);
+    }
+
+    @Override
+    public List<RequestInfo> getAllInfoByStatementId(Integer id) {
+        List<RequestEntity> requestEntities = requestDao.findAllByStatementId(id);
+        return getInfoByRequestEntity(requestEntities);
+    }
+
+    @Override
+    public void updateStateById(Integer id,State state) {
+        if(!requestDao.updateStateById(id, StateEntity.valueOf(state.name()))){
+            throw new IncorrectDataException("");
+        }
+    }
+
+    @Override
+    public void add(Request entrantRequest) {
+        if(requestDao.save(EntityMapper.requestToRequestEntity(entrantRequest)) == 0){
+            throw new IncorrectDataException("Incorrect data");
+        }
+    }
+
+    @Override
+    public List<RequestInfo> getAllInfoByEntrant(EntrantInfo entrant) {
+        List<RequestEntity> requestEntities = requestDao.findAllByEntrantId(entrant.getId());
+        return getInfoByRequestEntity(requestEntities);
+    }
+
+    private List<RequestInfo> getInfoByRequestEntity(List<RequestEntity> requestEntities){
+        Map<Integer, Faculty> facultyEntities = facultyService.getAllActive().stream()
+                .collect(Collectors.toMap(Faculty::getId, Function.identity()));
+        Map<Integer, EntrantInfo> entrantInfoMap = entrantService.getAllEntrants().stream()
+                .map(entrant -> entrantService.getEntrantInfo(entrant))
+                .collect(Collectors.toMap(EntrantInfo::getId, Function.identity()));
+
 
         return requestEntities.stream().map(requestEntity ->
                 RequestInfo.builder()
                         .withId(requestEntity.getId())
-                        .withEntrantName(entrantEntities.get(requestEntity.getEntrantEntityId()).getName())
-                        .withFacultyNameEn(facultyEntities.get(requestEntity.getFacultyEntityId()).getName_en())
-                        .withFacultyNameUa(facultyEntities.get(requestEntity.getFacultyEntityId()).getName_ua())
-                        .withFirstSubject(EntityMapper.subjectEntityToSubject(subjectDao.findById(requestEntity.getFirstSubjectEntityId()).get()))
-                        .withSecondSubject(EntityMapper.subjectEntityToSubject(subjectDao.findById(requestEntity.getSecondSubjectEntityId()).get()))
-                        .withThirdSubject(EntityMapper.subjectEntityToSubject(subjectDao.findById(requestEntity.getThirdSubjectEntityId()).get()))
+                        .withEntrant(entrantInfoMap.get(requestEntity.getEntrantEntityId()))
+                        .withFaculty(facultyEntities.get(requestEntity.getFacultyEntityId()))
+                        .withFirstSubject(subjectService.getById(requestEntity.getFirstSubjectEntityId()))
+                        .withSecondSubject(subjectService.getById(requestEntity.getSecondSubjectEntityId()))
+                        .withThirdSubject(subjectService.getById(requestEntity.getThirdSubjectEntityId()))
                         .withState(State.valueOf(requestEntity.getStateEntity().name()))
+                        .withPriority(requestEntity.getPriority())
                         .build()
         ).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<RequestInfo> getAllInfoByEntrant(Entrant entrant) {
-        List<RequestEntity> requestEntities = requestDao.findAllByEntrantId(entrant.getId());
-        Map<Integer, FacultyEntity> facultyEntities = facultyDao.findAll().stream()
-                .collect(Collectors.toMap(FacultyEntity::getId, Function.identity()));
-
-        return requestEntities.stream().map(requestEntity ->
-            RequestInfo.builder()
-                    .withId(requestEntity.getId())
-                    .withEntrantName(entrant.getName())
-                    .withFacultyNameEn(facultyEntities.get(requestEntity.getFacultyEntityId()).getName_en())
-                    .withFacultyNameUa(facultyEntities.get(requestEntity.getFacultyEntityId()).getName_ua())
-                    .withFirstSubject(EntityMapper.subjectEntityToSubject(subjectDao.findById(requestEntity.getFirstSubjectEntityId()).get()))
-                    .withSecondSubject(EntityMapper.subjectEntityToSubject(subjectDao.findById(requestEntity.getSecondSubjectEntityId()).get()))
-                    .withThirdSubject(EntityMapper.subjectEntityToSubject(subjectDao.findById(requestEntity.getThirdSubjectEntityId()).get()))
-                    .withState(State.valueOf(requestEntity.getStateEntity().name()))
-                    .build()
-        ).collect(Collectors.toList());
-    }
-
-    private <T> T fromOptional(Optional<T> optional){
-        return optional.orElseThrow(() -> new IncorrectDataException("Record not found"));
     }
 
 }

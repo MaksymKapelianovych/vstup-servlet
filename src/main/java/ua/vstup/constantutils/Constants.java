@@ -12,6 +12,7 @@ public final class Constants {
         public static final String REQUESTS_FORWARD = ENTRANT + "/request";
         public static final String LOGOUT_REDIRECT = "/logout";
 
+        public static final String ADD_REQUEST_FORWARD = REQUESTS_FORWARD + "/add-request-page";
         public static final String ADD_REQUEST_REDIRECT = REQUESTS_FORWARD + "/add-request";
         public static final String ENTRANT_FACULTY_FORWARD = ENTRANT + "/faculty";
         public static final String ADMIN_FACULTY_FORWARD = ADMIN + "/faculty";
@@ -74,6 +75,11 @@ public final class Constants {
         public static final String SUBJECT_RATE3 = "subject_rate3";
         public static final String SUBJECT_RATE4 = "subject_rate4";
         public static final String SUBJECT_RATE5 = "subject_rate5";
+
+        public static final String SUBJECT_ID1 = "subject_id1";
+        public static final String SUBJECT_ID2 = "subject_id2";
+        public static final String SUBJECT_ID3 = "subject_id3";
+
 
         public static final String LANGUAGE = "language";
         public static final String FACULTY_ID = "faculty_id";

@@ -11,7 +11,8 @@ import java.io.IOException;
 @WebServlet(urlPatterns = {Constants.Urls.LOGIN_REDIRECT, Constants.Urls.REGISTER_REDIRECT,
         Constants.Urls.LOGOUT_REDIRECT, Constants.Urls.ADD_REQUEST_REDIRECT,
         Constants.Urls.ADD_FACULTY_REDIRECT, Constants.Urls.DELETE_FACULTY_REDIRECT,
-        Constants.Urls.ADMIN_ENTRANT_DISABLE_REDIRECT, Constants.Urls.ADMIN_ENTRANT_ENABLE_REDIRECT
+        Constants.Urls.ADMIN_ENTRANT_DISABLE_REDIRECT, Constants.Urls.ADMIN_ENTRANT_ENABLE_REDIRECT,
+        Constants.Urls.ADMIN_STATEMENT_FINALIZE_REDIRECT, Constants.Urls.ADMIN_STATEMENT_ADD_REDIRECT
 })
 public class RedirectController  extends AbstractController{
     @Override

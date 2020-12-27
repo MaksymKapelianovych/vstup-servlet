@@ -1,12 +1,9 @@
 package ua.vstup.domain;
 
-import ua.vstup.constantutils.Constants;
-
 public class RequestInfo {
     private Integer id;
-    private String entrantName;
-    private String facultyNameUa;
-    private String facultyNameEn;
+    private EntrantInfo entrant;
+    private Faculty faculty;
     private Subject firstSubject;
     private Subject secondSubject;
     private Subject thirdSubject;
@@ -14,9 +11,9 @@ public class RequestInfo {
     private State state;
 
     public RequestInfo(Builder builder){
-        entrantName = builder.entrantName;
-        facultyNameUa = builder.facultyNameUa;
-        facultyNameEn = builder.facultyNameEn;
+        id = builder.id;
+        entrant = builder.entrant;
+        faculty = builder.faculty;
         firstSubject = builder.firstSubject;
         secondSubject = builder.secondSubject;
         thirdSubject = builder.thirdSubject;
@@ -28,27 +25,12 @@ public class RequestInfo {
         return id;
     }
 
-    public String getEntrantName() {
-        return entrantName;
+    public EntrantInfo getEntrant() {
+        return entrant;
     }
 
-    public String getFacultyNameUa() {
-        return facultyNameUa;
-    }
-
-    public String getFacultyNameEn() {
-        return facultyNameEn;
-    }
-
-    public String getFacultyNameByLocale(String locale){
-        switch (locale){
-            case Constants.Attributes.UA:{
-                return facultyNameUa;
-            }
-            default:{
-                return facultyNameEn;
-            }
-        }
+    public Faculty getFaculty() {
+        return faculty;
     }
 
     public Subject getFirstSubject() {
@@ -63,6 +45,12 @@ public class RequestInfo {
         return thirdSubject;
     }
 
+    public Integer getRate() {
+        return getFirstSubject().getRate() +
+                getSecondSubject().getRate() +
+                getThirdSubject().getRate();
+    }
+
     public Integer getPriority() { return priority; }
 
     public State getState() {
@@ -71,11 +59,14 @@ public class RequestInfo {
 
     public static Builder builder(){return new Builder();};
 
+    public void setState(State state) {
+        this.state = state;
+    }
+
     public static class Builder{
         private Integer id;
-        private String entrantName;
-        private String facultyNameUa;
-        private String facultyNameEn;
+        private EntrantInfo entrant;
+        private Faculty faculty;
         private Subject firstSubject;
         private Subject secondSubject;
         private Subject thirdSubject;
@@ -89,17 +80,13 @@ public class RequestInfo {
             return this;
         }
 
-        public Builder withEntrantName(String entrantName){
-            this.entrantName = entrantName;
+        public Builder withEntrant(EntrantInfo entrant){
+            this.entrant = entrant;
             return this;
         }
 
-        public Builder withFacultyNameUa(String facultyNameUa){
-            this.facultyNameUa = facultyNameUa;
-            return this;
-        }
-        public Builder withFacultyNameEn(String facultyNameEn){
-            this.facultyNameEn = facultyNameEn;
+        public Builder withFaculty(Faculty faculty){
+            this.faculty = faculty;
             return this;
         }
         public Builder withFirstSubject(Subject firstSubject){
