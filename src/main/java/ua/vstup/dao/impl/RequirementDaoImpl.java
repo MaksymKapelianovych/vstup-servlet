@@ -14,8 +14,8 @@ import static ua.vstup.dao.utility.ResultSetToEntityMapper.extractRequirementEnt
 
 @Dao
 public class RequirementDaoImpl extends AbstractDao<RequirementEntity> implements RequirementDao {
-    private static String INSERT_QUERY = "INSERT INTO requirement VALUES(DEFAULT,?,?,?,?,?)";
-    private static String UPDATE_QUERY = "UPDATE requirement SET id=?, first_subject_id=?, second_subject_id=?, third_subject_id=?, fourth_subject_id=?, fifth_subject_id=? WHERE id=?";
+    private static String INSERT_QUERY = "INSERT INTO requirement VALUES(DEFAULT,?,?,?)";
+    private static String UPDATE_QUERY = "UPDATE requirement SET first_subject_id=?, second_subject_id=?, third_subject_id=? WHERE id=?";
     //private static String DELETE_QUERY = "DELETE FROM requirement WHERE id=?";
     private static String FIND_BY_ID_QUERY = "SELECT * FROM requirement WHERE id=?";
 
@@ -53,17 +53,14 @@ public class RequirementDaoImpl extends AbstractDao<RequirementEntity> implement
 
     @Override
     protected void prepareData(RequirementEntity entity, PreparedStatement ps) throws SQLException {
-        ps.setObject(1, entity.getId());
-        ps.setObject(2, entity.getFirstSubjectId());
-        ps.setObject(3, entity.getSecondSubjectId());
-        ps.setObject(4, entity.getThirdSubjectId());
-        ps.setObject(5, entity.getFourthSubjectId());
-        ps.setObject(6, entity.getFifthSubjectId());
+        ps.setObject(1, entity.getFirstSubjectId());
+        ps.setObject(2, entity.getSecondSubjectId());
+        ps.setObject(3, entity.getThirdSubjectId());
     }
 
     @Override
     protected void prepareDataWithId(RequirementEntity entity, PreparedStatement ps) throws SQLException {
         prepareData(entity, ps);
-        ps.setObject(7, entity.getId());
+        ps.setObject(4, entity.getId());
     }
 }

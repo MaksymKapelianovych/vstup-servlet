@@ -1,104 +1,98 @@
 package ua.vstup.domain;
 
-
 public class Entrant {
-    private final Integer id;
-    private final String firstname;
-    private final String lastname;
-    private final String surname;
-    private final String email;
-    private final String city;
+    private Integer id;
+    private String name;
+    private String email;
+    private String password;
+    private Integer schoolId;
+    private Role role;
+    private Integer requirementId;
+    private Boolean active;
 
     public Integer getId() {
         return id;
     }
 
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public String getSurname() {
-        return surname;
+    public String getName() {
+        return name;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public String getCity() {
-        return city;
-    }
+    public String getPassword() { return password; }
 
-    public String getSchool() {
-        return school;
+    public Integer getSchoolId() {
+        return schoolId;
     }
 
     public Role getRole() {
         return role;
     }
 
-    private final String school;
-    private final Role role;
+    public Integer getRequirementId() { return requirementId; }
+
+    public void setRequirementId(Integer requirementId) { this.requirementId = requirementId; }
+
+    public Boolean getActive() { return active; }
 
     private Entrant(Builder builder) {
         id = builder.id;
-        firstname = builder.firstname;
-        lastname = builder.lastname;
-        surname = builder.surname;
+        name = builder.name;
         email = builder.email;
-        city = builder.city;
-        school = builder.school;
+        password = builder.password;
+        schoolId = builder.schoolId;
         role = builder.role;
+        requirementId = builder.requirementId;
+        active = builder.active;
     }
 
     public static Entrant.Builder builder() { return new Entrant.Builder(); }
 
     public static class Builder {
         private Integer id;
-        private String firstname;
-        private String lastname;
-        private String surname;
+        private String name;
         private String email;
-        private String city;
-        private String school;
+        private String password;
+        private Integer schoolId;
         private Role role;
+        private Integer requirementId;
+        private Boolean active;
 
         private Builder(){}
 
-        public Entrant.Builder withId(Integer id){
+        public Builder withId(Integer id){
             this.id = id;
             return this;
         }
-        public Entrant.Builder withFirstname(String firstname){
-            this.firstname = firstname;
+        public Builder withName(String name){
+            this.name = name;
             return this;
         }
-        public Entrant.Builder withLastname(String lastname){
-            this.lastname = lastname;
-            return this;
-        }
-        public Entrant.Builder withSurname(String surname){
-            this.surname = surname;
-            return this;
-        }
-        public Entrant.Builder withEmail(String email){
+        public Builder withEmail(String email){
             this.email = email;
             return this;
         }
-        public Entrant.Builder withCity(String city){
-            this.city = city;
+        public Builder withPassword(String password){
+            this.password = password;
             return this;
         }
-        public Entrant.Builder withSchool(String school){
-            this.school = school;
+        public Builder withSchoolId(Integer schoolId){
+            this.schoolId = schoolId;
             return this;
         }
-        public Entrant.Builder withRole(Role role){
+        public Builder withRole(Role role){
             this.role = role;
+            return this;
+        }
+        public Builder withRequirementId(Integer requirementId){
+            this.requirementId = requirementId;
+            return this;
+        }
+        public Builder withActive(Boolean active){
+            this.active = active;
             return this;
         }
 

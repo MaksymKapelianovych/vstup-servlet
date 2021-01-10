@@ -95,8 +95,6 @@ public class RequirementDaoImplTest {
                 .withFirstSubjectId(6)
                 .withSecondSubjectId(7)
                 .withThirdSubjectId(8)
-                .withFourthSubjectId(9)
-                .withFifthSubjectId(null)
                 .build();
 
         testRequirementEntity = RequirementEntity.builder()
@@ -104,8 +102,6 @@ public class RequirementDaoImplTest {
                 .withFirstSubjectId(0)
                 .withSecondSubjectId(0)
                 .withThirdSubjectId(0)
-                .withFourthSubjectId(null)
-                .withFifthSubjectId(null)
                 .build();
     }
 }

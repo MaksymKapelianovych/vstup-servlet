@@ -1,26 +1,45 @@
 package ua.vstup.domain;
 
+import ua.vstup.constantutils.Constants;
+
 public class Faculty {
-    private final Integer id;
-    private final String name;
-    private final Integer maxBudgetPlace;
-    private final Integer maxPlace;
-    private final Requirement requirement;
+    private Integer id;
+    private String name_ua;
+    private String name_en;
+    private Integer maxBudgetPlace;
+    private Integer maxPlace;
+    private Integer requirementId;
+    private Boolean active;
 
     private Faculty(Builder builder){
         id = builder.id;
-        name = builder.name;
+        name_ua = builder.name_ua;
+        name_en = builder.name_en;
         maxBudgetPlace = builder.maxBudgetPlace;
         maxPlace = builder.maxPlace;
-        requirement = builder.requirement;
+        requirementId = builder.requirementId;
+        active = builder.active;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getName_ua() {
+        return name_ua;
+    }
+
+    public String getName_en() { return name_en; }
+
+    public String getNameByLocale(String locale){
+        switch (locale){
+            case Constants.Attributes.UA:{
+                return name_ua;
+            }
+            default:{
+                return name_en;
+            }
+        }
     }
 
     public Integer getMaxBudgetPlace() {
@@ -31,18 +50,27 @@ public class Faculty {
         return maxPlace;
     }
 
-    public Requirement getFacultyRequirement() { return requirement; }
+    public Integer getFacultyRequirementId() { return requirementId; }
+
+    public Boolean getActive() { return active; }
+
+    public void setRequirementId(Integer requirementId) {
+        this.requirementId = requirementId;
+    }
 
     public static Builder builder() {
         return new Builder();
     }
 
+
     public static class Builder{
         private Integer id;
-        private String name;
+        private String name_ua;
+        private String name_en;
         private Integer maxBudgetPlace;
         private Integer maxPlace;
-        private Requirement requirement;
+        private Integer requirementId;
+        private Boolean active;
 
         private Builder(){}
 
@@ -50,8 +78,12 @@ public class Faculty {
             this.id = id;
             return this;
         }
-        public Builder withName(String name){
-            this.name = name;
+        public Builder withNameUa(String name){
+            this.name_ua = name;
+            return this;
+        }
+        public Builder withNameEn(String name){
+            this.name_en = name;
             return this;
         }
         public Builder withMaxBudgetPlace(Integer maxBudgetPlace){
@@ -62,8 +94,12 @@ public class Faculty {
             this.maxPlace = maxPlace;
             return this;
         }
-        public Builder withFacultyRequirement(Requirement requirement){
-            this.requirement = requirement;
+        public Builder withFacultyRequirementId(Integer requirementId){
+            this.requirementId = requirementId;
+            return this;
+        }
+        public Builder withActive(Boolean active){
+            this.active = active;
             return this;
         }
         public Faculty build(){ return new Faculty(this);}

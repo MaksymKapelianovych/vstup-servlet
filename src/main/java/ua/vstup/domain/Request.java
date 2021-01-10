@@ -1,20 +1,28 @@
 package ua.vstup.domain;
 
+import ua.vstup.entity.StateEntity;
+
 public class Request {
-    private final Integer id;
-    private final Integer entrantId;
-    private final Integer facultyId;
-    private final Integer firstRate;
-    private final Integer secondRate;
-    private final Integer thirdRate;
+    private Integer id;
+    private Integer entrantId;
+    private Integer facultyId;
+    private Integer firstSubjectId;
+    private Integer secondSubjectId;
+    private Integer thirdSubjectId;
+    private Integer statementId;
+    private Integer priority;
+    private State state;
 
     private Request(Builder builder) {
         id = builder.id;
         entrantId = builder.entrantId;
         facultyId = builder.facultyId;
-        firstRate = builder.firstRate;
-        secondRate = builder.secondRate;
-        thirdRate = builder.thirdRate;
+        firstSubjectId = builder.firstSubjectId;
+        secondSubjectId = builder.secondSubjectId;
+        thirdSubjectId = builder.thirdSubjectId;
+        statementId = builder.statementId;
+        priority = builder.priority;
+        state = builder.state;
     }
 
     public Integer getId() {
@@ -29,25 +37,36 @@ public class Request {
         return facultyId;
     }
 
-    public Integer getFirstRate() {
-        return firstRate;
+    public Integer getFirstSubjectId() {
+        return firstSubjectId;
     }
 
-    public Integer getSecondRate() {
-        return secondRate;
+    public Integer getSecondSubjectId() {
+        return secondSubjectId;
     }
 
-    public Integer getThirdRate() {
-        return thirdRate;
+    public Integer getThirdSubjectId() {
+        return thirdSubjectId;
     }
+
+    public Integer getStatementId() { return statementId; }
+
+    public Integer getPriority() { return priority; }
+
+    public State getState() { return state; }
+
+    public static Builder builder() { return new Builder(); }
 
     public static class Builder{
         private Integer id;
         private Integer entrantId;
         private Integer facultyId;
-        private Integer firstRate;
-        private Integer secondRate;
-        private Integer thirdRate;
+        private Integer firstSubjectId;
+        private Integer secondSubjectId;
+        private Integer thirdSubjectId;
+        private Integer statementId;
+        private Integer priority;
+        private State state;
 
         private Builder(){}
 
@@ -63,16 +82,28 @@ public class Request {
             this.facultyId = facultyId;
             return this;
         }
-        public Builder withFirstRate(Integer firstRate){
-            this.firstRate = firstRate;
+        public Builder withFirstSubjectId(Integer firstSubjectId){
+            this.firstSubjectId = firstSubjectId;
             return this;
         }
-        public Builder withSecondRate(Integer secondRate){
-            this.secondRate = secondRate;
+        public Builder withSecondSubjectId(Integer secondSubjectId){
+            this.secondSubjectId = secondSubjectId;
             return this;
         }
-        public Builder withThirdRate(Integer thirdRate){
-            this.thirdRate = thirdRate;
+        public Builder withThirdSubjectId(Integer thirdSubjectId){
+            this.thirdSubjectId = thirdSubjectId;
+            return this;
+        }
+        public Builder withStatementId(Integer statementId){
+            this.statementId = statementId;
+            return this;
+        }
+        public Builder withPriority(Integer priority){
+            this.priority = priority;
+            return this;
+        }
+        public Builder withState(State state){
+            this.state = state;
             return this;
         }
 

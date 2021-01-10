@@ -2,7 +2,8 @@ package ua.vstup.dao.db.manager;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -13,7 +14,7 @@ import java.util.ResourceBundle;
  * An implementation of {@link ConnectionManager}
  */
 public class DbManager implements ConnectionManager {
-    private static final Logger LOGGER = Logger.getLogger(DbManager.class);
+    //private static final Logger LOGGER = LogManager.getLogger(DbManager.class);
 
     private static final String DB_URL = "db.url";
     private static final String DB_USERNAME = "db.username";
@@ -29,9 +30,8 @@ public class DbManager implements ConnectionManager {
     /**
      * Instantiates new manager from resource file
      * @param filename path to resource file
-     * @throws SQLException
      */
-    public DbManager(String filename) throws SQLException {
+    public DbManager(String filename) {
         ResourceBundle resource = ResourceBundle.getBundle(filename);
         config.setDriverClassName(resource.getString(DB_DRIVER));
         config.setJdbcUrl(resource.getString(DB_URL));
@@ -48,7 +48,7 @@ public class DbManager implements ConnectionManager {
         try{
             return dataSource.getConnection();
         }catch (SQLException exception){
-            LOGGER.error(ERROR_MESSAGE, exception);
+            //LOGGER.error(ERROR_MESSAGE, exception);
             throw new IllegalStateException(String.format(ERROR_MESSAGE, ""), exception);
         }
     }

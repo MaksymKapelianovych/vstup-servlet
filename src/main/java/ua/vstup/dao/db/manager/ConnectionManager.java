@@ -20,5 +20,5 @@ public interface ConnectionManager {
     /**
      * Closes connection.
      */
-    void shutdown() throws SQLException;
+    void shutdown();
 }

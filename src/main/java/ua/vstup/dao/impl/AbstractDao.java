@@ -1,6 +1,7 @@
 package ua.vstup.dao.impl;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ua.vstup.dao.BaseDao;
 import ua.vstup.dao.db.holder.ConnectionHolder;
 import ua.vstup.exception.DatabaseInteractionException;
@@ -10,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +19,7 @@ import java.util.Optional;
  * Provides a base functionality for all dao.
  */
 public abstract class AbstractDao<E> implements BaseDao<E> {
-    protected static final Logger LOGGER = Logger.getLogger(AbstractDao.class);
+    //protected static final Logger LOGGER = LogManager.getLogger(AbstractDao.class);
 
     protected static final String ERROR_MESSAGE = "Cannot handle sql ['%s']; Message:%s";
 
@@ -46,7 +48,7 @@ public abstract class AbstractDao<E> implements BaseDao<E> {
             ps.setObject(1, id);
             return id != 0 && ps.executeUpdate() != 0;
         } catch (SQLException e){
-            LOGGER.warn(String.format(ERROR_MESSAGE, query, e));
+            //LOGGER.warn(String.format(ERROR_MESSAGE, query, e));
             throw new DatabaseInteractionException(getMessage(query), e);
         }
     }
@@ -61,7 +63,7 @@ public abstract class AbstractDao<E> implements BaseDao<E> {
                 }
             }
         }catch (SQLException e){
-            LOGGER.warn(String.format(ERROR_MESSAGE, query, e));
+            //LOGGER.warn(String.format(ERROR_MESSAGE, query, e));
             throw new DatabaseInteractionException(getMessage(query), e);
         }
         throw new DatabaseInteractionException(getMessage(query));
@@ -74,7 +76,7 @@ public abstract class AbstractDao<E> implements BaseDao<E> {
                 return true;
             }
         }catch(SQLException e){
-            LOGGER.warn(String.format(ERROR_MESSAGE, query, e));
+            //LOGGER.warn(String.format(ERROR_MESSAGE, query, e));
             throw new DatabaseInteractionException(getMessage(query), e);
         }
         return false;
@@ -89,7 +91,21 @@ public abstract class AbstractDao<E> implements BaseDao<E> {
                 }
             }
         }catch(SQLException e){
-            LOGGER.warn(String.format(ERROR_MESSAGE, query, e));
+            //LOGGER.warn(String.format(ERROR_MESSAGE, query, e));
+            throw new DatabaseInteractionException(getMessage(query), e);
+        }
+        return Optional.empty();
+    }
+
+    protected Optional<E> findByParams(String query, Object... params){
+        try(final PreparedStatement ps = getConnection().prepareStatement(query)){
+            setObjects(ps, params);
+            try(final ResultSet resultSet = ps.executeQuery()){
+                if(resultSet.next()){
+                    return Optional.of(extractFromResultSet(resultSet));
+                }
+            }
+        }catch (SQLException e){
             throw new DatabaseInteractionException(getMessage(query), e);
         }
         return Optional.empty();
@@ -105,7 +121,7 @@ public abstract class AbstractDao<E> implements BaseDao<E> {
                 return list;
             }
         }catch(SQLException e){
-            LOGGER.warn(String.format(ERROR_MESSAGE, query, e));
+            //LOGGER.warn(String.format(ERROR_MESSAGE, query, e));
             throw new DatabaseInteractionException(getMessage(query), e);
         }
     }
@@ -122,7 +138,7 @@ public abstract class AbstractDao<E> implements BaseDao<E> {
 
             }
         }catch(SQLException e){
-            LOGGER.warn(String.format(ERROR_MESSAGE, query, e));
+            //LOGGER.warn(String.format(ERROR_MESSAGE, query, e));
             throw new DatabaseInteractionException(getMessage(query), e);
         }
     }
@@ -142,4 +158,10 @@ public abstract class AbstractDao<E> implements BaseDao<E> {
     protected abstract void prepareData(E entity, PreparedStatement ps) throws SQLException;
 
     protected abstract void prepareDataWithId(E entity, PreparedStatement ps) throws SQLException;
+
+    private void setObjects(PreparedStatement ps, Object[] objects) throws SQLException {
+        for(int i = 0; i < objects.length; ++i){
+            ps.setObject(i+1, objects[i]);
+        }
+    }
 }

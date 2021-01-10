@@ -1,11 +1,5 @@
 package ua.vstup.entity;
 
-//TODO додати таблицю шкіл, редагує адмін, область винести в таблицю школи, міста просто колонка
-//TODO мінімально на факультет 3 предмети, максимально 5
-//TODO відомість зберігати після фіналізації
-
-
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
 public class EntrantEntity {
     private final Integer id;

@@ -19,9 +19,9 @@ INSERT INTO `statement`
 VALUES (1, false);
 
 INSERT INTO `school`
-VALUES (1, 'School №1', 'Kyiv', 'KYIV', true),
-       (2, 'School №1', 'Brovary', 'KYIV', true),
-       (3, 'School №6', 'Lviv', 'LVIV', false);
+VALUES (1, 'School №1', 'Школа 1', 'Kyiv', 'Київ', 'KYIV'),
+       (2, 'School №1', 'Школа 1', 'Brovary', 'Бровари', 'KYIV'),
+       (3, 'School №6', 'Школа 6', 'Lviv', 'Львів', 'LVIV');
 
 INSERT INTO `requirement`
 VALUES (1, 1, 2, 3, 4, 5),
@@ -30,8 +30,8 @@ VALUES (1, 1, 2, 3, 4, 5),
        (4, 13, 14, 15, null, null);
 
 INSERT INTO `faculty`
-VALUES (1, 'Faculty of computer science and cybernetics', 90, 120, 1, true),
-       (2, 'Faculty of Mechanics and Mathematics', 50, 100, 2, true);
+VALUES (1, 'Faculty of computer science and cybernetics', 'Факультет комп\'ютерних наук та кібернетики', 90, 120, 1, true),
+       (2, 'Faculty of Mechanics and Mathematics', 'Механіко-математичний факультет', 50, 100, 2, true);
 
 INSERT INTO `entrant`
 VALUES (1, 'Maksym Kapelianovych Volodymyrovych', 'admin', 'vfrc.zomby30@gmail.com', 1, 'ADMIN', 3, true),

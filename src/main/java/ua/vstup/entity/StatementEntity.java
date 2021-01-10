@@ -1,8 +1,8 @@
 package ua.vstup.entity;
 
 public class StatementEntity {
-    private final Integer id;
-    private final Boolean finalized;
+    private Integer id;
+    private Boolean finalized;
 
     public StatementEntity(Integer id, Boolean finalized){
         this.id = id;
@@ -15,5 +15,9 @@ public class StatementEntity {
 
     public Boolean getFinalized() {
         return finalized;
+    }
+
+    public void setFinalized(boolean b) {
+        finalized = b;
     }
 }
