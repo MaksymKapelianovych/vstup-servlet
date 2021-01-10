@@ -38,13 +38,9 @@ CREATE TABLE requirement
     first_subject_id int(11) NOT NULL UNIQUE,
     second_subject_id int(11) NOT NULL UNIQUE,
     third_subject_id int(11) NOT NULL UNIQUE,
-    fourth_subject_id int(11) DEFAULT NULL UNIQUE,
-    fifth_subject_id int(11) DEFAULT NULL UNIQUE,
     CONSTRAINT requirement_fk1_subject_id FOREIGN KEY (first_subject_id) REFERENCES subject (id) ON UPDATE CASCADE,
     CONSTRAINT requirement_fk2_subject_id FOREIGN KEY (second_subject_id) REFERENCES subject (id) ON UPDATE CASCADE,
     CONSTRAINT requirement_fk3_subject_id FOREIGN KEY (third_subject_id) REFERENCES subject (id) ON UPDATE CASCADE,
-    CONSTRAINT requirement_fk4_subject_id FOREIGN KEY (fourth_subject_id) REFERENCES subject (id) ON UPDATE CASCADE,
-    CONSTRAINT requirement_fk5_subject_id FOREIGN KEY (fifth_subject_id) REFERENCES subject (id) ON UPDATE CASCADE,
     PRIMARY KEY (id)
 );
 
