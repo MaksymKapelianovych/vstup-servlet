@@ -29,7 +29,7 @@ public class FacultyDaoImpl extends AbstractDao<FacultyEntity> implements Facult
     @Override
     public Integer save(FacultyEntity entity) {
         return save(entity, INSERT_QUERY);
-    } //TODO save faculty requirements
+    }
 
     @Override
     public Optional<FacultyEntity> findById(Integer id) { return findByParam(id, FIND_BY_ID_QUERY); }

@@ -1,12 +1,11 @@
-<%@ include file="/fragment/directive.jsp"%>
+<%@ include file="fragment/directive.jsp"%>
 <html>
 <head>
-    <%@include file="/fragment/head.jsp"%>
-    <link href="login.css" rel="stylesheet">
+    <%@include file="/WEB-INF/fragment/head.jsp"%>
     <title><fmt:message key="login.title"/> </title>
 </head>
 <body>
-<%@include file="/fragment/header.jsp"%>
+<%@include file="fragment/header.jsp"%>
 <main>
     <form class="login-form" action="/login" method="post">
         <label><fmt:message key="login.title"/></label>

@@ -14,6 +14,6 @@ public class EditFacultyPageCommand extends AbstractCommand implements Command {
     public String execute(HttpServletRequest request) {
         FacultyInfo faculty = getFacultyService(request).getFacultyInfo(Integer.valueOf(request.getParameter(Constants.Parameters.FACULTY_ID)));
         request.setAttribute(Constants.Attributes.FACULTY_INFO, faculty);
-        return "/admin/faculty/edit-faculty.jsp";
+        return "/WEB-INF/admin/faculty/edit-faculty.jsp";
     }
 }

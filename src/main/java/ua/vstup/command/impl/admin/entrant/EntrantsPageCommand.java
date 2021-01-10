@@ -15,6 +15,6 @@ public class EntrantsPageCommand extends AbstractCommand implements Command {
     public String execute(HttpServletRequest request) {
         List<Entrant> entrantList = getEntrantService(request).getAllEntrants();
         request.setAttribute(Constants.Attributes.ENTRANT_LIST, entrantList);
-        return "/admin/entrant/entrants.jsp";
+        return "/WEB-INF/admin/entrant/entrants.jsp";
     }
 }

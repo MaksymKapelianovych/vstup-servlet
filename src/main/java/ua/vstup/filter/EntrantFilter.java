@@ -2,6 +2,7 @@ package ua.vstup.filter;
 
 import ua.vstup.constantutils.Constants;
 import ua.vstup.domain.Entrant;
+import ua.vstup.domain.EntrantInfo;
 import ua.vstup.domain.Role;
 
 import javax.servlet.*;
@@ -24,7 +25,7 @@ public class EntrantFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession(false);
         if(session != null){
-            Entrant obj = (Entrant)session.getAttribute(Constants.Attributes.ENTRANT_INFO);
+            EntrantInfo obj = (EntrantInfo)session.getAttribute(Constants.Attributes.ENTRANT_INFO);
             if(obj != null && obj.getRole() == Role.ADMIN){
                 response.sendRedirect(Constants.Urls.ADMIN_FACULTY_FORWARD);
             }else{

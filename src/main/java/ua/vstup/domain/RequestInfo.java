@@ -3,7 +3,7 @@ package ua.vstup.domain;
 public class RequestInfo {
     private Integer id;
     private EntrantInfo entrant;
-    private Faculty faculty;
+    private FacultyInfo faculty;
     private Subject firstSubject;
     private Subject secondSubject;
     private Subject thirdSubject;
@@ -29,7 +29,7 @@ public class RequestInfo {
         return entrant;
     }
 
-    public Faculty getFaculty() {
+    public FacultyInfo getFaculty() {
         return faculty;
     }
 
@@ -63,10 +63,14 @@ public class RequestInfo {
         this.state = state;
     }
 
+    public void setFaculty(FacultyInfo faculty) {
+        this.faculty = faculty;
+    }
+
     public static class Builder{
         private Integer id;
         private EntrantInfo entrant;
-        private Faculty faculty;
+        private FacultyInfo faculty;
         private Subject firstSubject;
         private Subject secondSubject;
         private Subject thirdSubject;
@@ -85,7 +89,7 @@ public class RequestInfo {
             return this;
         }
 
-        public Builder withFaculty(Faculty faculty){
+        public Builder withFaculty(FacultyInfo faculty){
             this.faculty = faculty;
             return this;
         }

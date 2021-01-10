@@ -1,13 +1,11 @@
-<%@ include file="/fragment/directive.jsp"%>
+<%@ include file="/WEB-INF/fragment/directive.jsp"%>
 <html>
 <head>
-    <%@include file="/fragment/head.jsp"%>
-    <link href="/styles/input-form.css" rel="stylesheet">
+    <%@include file="/WEB-INF/fragment/head.jsp"%>
     <title><fmt:message key="register.title"/></title>
 </head>
 <body>
-
-    <%@include file="/fragment/header.jsp"%>
+    <%@include file="/WEB-INF/fragment/header.jsp"%>
     <main>
     <form class="input-form" action="register" method="post">
         <div class="main-info">
@@ -40,14 +38,6 @@
                 <input class="input_subject form-control" list="subjectNames" name="subject_name3"/>
                 <input class="input form-control" type="number" name="subject_rate3">
             </div>
-            <div class="input-group">
-                <input class="input_subject form-control" list="subjectNames" name="subject_name4"/>
-                <input class="input form-control" type="number" name="subject_rate4">
-            </div>
-            <div class="input-group">
-                <input class="input_subject form-control" list="subjectNames" name="subject_name5"/>
-                <input class="input form-control" type="number" name="subject_rate5">
-            </div>
             <div>
                 <datalist id="subjectNames">
                     <c:forEach var="subject_name" items="${requestScope.subjectNames}">
@@ -58,7 +48,7 @@
 
             <div class="buttons">
                 <button class="btn btn-outline-primary" type="submit"><fmt:message key="register.button"/></button>
-                <a class="btn btn-success" href="/login-page"><fmt:message key="back.to.login"/></a>
+                <a class="btn btn-success" href="/"><fmt:message key="back.to.login"/></a>
             </div>
 
         </div>

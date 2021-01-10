@@ -68,8 +68,6 @@ public class EntrantServiceImpl implements EntrantService {
                 .withFirstSubjectId(subjectDao.save(EntityMapper.subjectToSubjectEntity(subjectList.get(0))))
                 .withSecondSubjectId(subjectDao.save(EntityMapper.subjectToSubjectEntity(subjectList.get(1))))
                 .withThirdSubjectId(subjectDao.save(EntityMapper.subjectToSubjectEntity(subjectList.get(2))))
-                .withFourthSubjectId(subjectDao.save(EntityMapper.subjectToSubjectEntity(subjectList.get(3))))
-                .withFifthSubjectId(subjectDao.save(EntityMapper.subjectToSubjectEntity(subjectList.get(4))))
                 .build();
 
         requirementValidator.validate(requirement);
@@ -97,14 +95,10 @@ public class EntrantServiceImpl implements EntrantService {
                 .orElseThrow(() -> new IncorrectDataException("Subject not found"));
         SubjectEntity subjectEntity3 = subjectDao.findById(requirementEntity.getThirdSubjectId())
                 .orElseThrow(() -> new IncorrectDataException("Subject not found"));
-        SubjectEntity subjectEntity4 = subjectDao.findById(requirementEntity.getFourthSubjectId())
-                .orElse(null);
-        SubjectEntity subjectEntity5 = subjectDao.findById(requirementEntity.getFifthSubjectId())
-                .orElse(null);
 
         School school = EntityMapper.schoolEntityToSchool(schoolEntity);
         RequirementInfo requirementInfo = EntityMapper.subjectEntityListToRequirementInfo(
-                subjectEntity1, subjectEntity2, subjectEntity3, subjectEntity4, subjectEntity5);
+                subjectEntity1, subjectEntity2, subjectEntity3);
 
         return EntrantInfo.builder()
                 .withId(entrant.getId())

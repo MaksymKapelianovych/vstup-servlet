@@ -19,4 +19,6 @@ public interface RequestService {
 
     @Transactional
     void add(Request entrantRequest);
+
+    List<Subject> jointSubjects(RequirementInfo facultyInfo, RequirementInfo entrantInfo);
 }

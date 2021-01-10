@@ -17,6 +17,6 @@ public class AddFacultyPageCommand extends AbstractCommand implements Command  {
 
         List<SubjectName> subjectNames = Arrays.asList(SubjectName.values());
         request.setAttribute(Constants.Attributes.SUBJECT_NAMES, subjectNames);
-        return "/admin/faculty/add-faculty.jsp";
+        return "/WEB-INF/admin/faculty/add-faculty.jsp";
     }
 }

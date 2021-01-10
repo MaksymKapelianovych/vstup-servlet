@@ -57,7 +57,7 @@ CREATE TABLE entrant
     email varchar(255) NOT NULL UNIQUE,
     school_id int(11) DEFAULT NULL,
     role varchar(255) NOT NULL,
-    requirement_id int(11) NOT NULL UNIQUE,
+    requirement_id int(11) DEFAULT NULL,
     active boolean DEFAULT TRUE,
     PRIMARY KEY (id),
     CONSTRAINT entrant_fk_school_id FOREIGN KEY (school_id) REFERENCES school (id) ON UPDATE CASCADE,

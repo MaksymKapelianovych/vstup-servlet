@@ -62,6 +62,7 @@ public class Faculty {
         return new Builder();
     }
 
+
     public static class Builder{
         private Integer id;
         private String name_ua;

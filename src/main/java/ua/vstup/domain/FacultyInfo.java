@@ -56,6 +56,16 @@ public class FacultyInfo {
         return requirementInfo;
     }
 
+
+    public void decreasePlace() {
+        maxPlace--;
+    }
+
+    public void decreaseBudgetPlace() {
+        maxBudgetPlace--;
+        decreasePlace();
+    }
+
     public static Builder builder() {
         return new Builder();
     }

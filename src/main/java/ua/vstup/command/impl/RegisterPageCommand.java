@@ -16,6 +16,6 @@ public class RegisterPageCommand extends AbstractCommand implements Command {
         List<SubjectName> subjectNames = Arrays.asList(SubjectName.values());
         request.setAttribute(Constants.Attributes.SUBJECT_NAMES, subjectNames);
         request.setAttribute(Constants.Attributes.ALL_SCHOOL, getSchoolService(request).getAll());
-        return "/register.jsp";
+        return "/WEB-INF/register.jsp";
     }
 }

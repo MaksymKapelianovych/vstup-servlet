@@ -8,15 +8,12 @@ public class RequirementInfo {
     private Subject firstSubject;
     private Subject secondSubject;
     private Subject thirdSubject;
-    private Subject fourthSubject;
-    private Subject fifthSubject;
 
     private RequirementInfo(Builder builder) {
         firstSubject = builder.firstSubject;
         secondSubject = builder.secondSubject;
         thirdSubject = builder.thirdSubject;
-        fourthSubject = builder.fourthSubject;
-        fifthSubject = builder.fifthSubject;
+
     }
 
     public Subject getFirstSubject() {
@@ -31,16 +28,15 @@ public class RequirementInfo {
         return thirdSubject;
     }
 
-    public Subject getFourthSubject() {
-        return fourthSubject;
-    }
 
-    public Subject getFifthSubject() {
-        return fifthSubject;
-    }
+    public List<Subject> getSubjectList() { return Arrays.asList(firstSubject, secondSubject, thirdSubject);}
 
-    public List<Subject> getSubjectList() {
-        return Arrays.asList(firstSubject, secondSubject, thirdSubject, fourthSubject, fifthSubject);}
+    public Subject getSubjectBySubjectName(SubjectName subjectName){
+        return getSubjectList().stream()
+                .filter(subject -> subject.getName().equals(subjectName))
+                .findFirst()
+                .orElse(null);
+    }
 
     public static Builder builder() { return new Builder(); }
 
@@ -48,8 +44,6 @@ public class RequirementInfo {
         private Subject firstSubject;
         private Subject secondSubject;
         private Subject thirdSubject;
-        private Subject fourthSubject;
-        private Subject fifthSubject;
 
         private Builder(){}
 
@@ -63,14 +57,6 @@ public class RequirementInfo {
         }
         public Builder withThirdSubject(Subject thirdSubject){
             this.thirdSubject = thirdSubject;
-            return this;
-        }
-        public Builder withFourthSubject(Subject fourthSubject){
-            this.fourthSubject = fourthSubject;
-            return this;
-        }
-        public Builder withFifthSubject(Subject fifthSubject){
-            this.fifthSubject = fifthSubject;
             return this;
         }
 

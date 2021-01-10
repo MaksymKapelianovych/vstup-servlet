@@ -15,6 +15,6 @@ public class FacultiesPageCommand extends AbstractCommand implements Command {
     public String execute(HttpServletRequest request) {
         List<Faculty> faculties = getFacultyService(request).getAll();
         request.setAttribute(Constants.Attributes.FACULTY_LIST, faculties);
-        return "/admin/faculty/faculties.jsp";
+        return "/WEB-INF/admin/faculty/faculties.jsp";
     }
 }

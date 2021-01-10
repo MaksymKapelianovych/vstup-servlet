@@ -7,16 +7,12 @@ public class Requirement {
     private Integer firstSubjectId;
     private Integer secondSubjectId;
     private Integer thirdSubjectId;
-    private Integer fourthSubjectId;
-    private Integer fifthSubjectId;
 
     private Requirement(Builder builder) {
         id = builder.id;
         firstSubjectId = builder.firstSubjectId;
         secondSubjectId = builder.secondSubjectId;
         thirdSubjectId = builder.thirdSubjectId;
-        fourthSubjectId = builder.fourthSubjectId;
-        fifthSubjectId = builder.fifthSubjectId;
     }
 
     public Integer getId() {
@@ -35,14 +31,6 @@ public class Requirement {
         return thirdSubjectId;
     }
 
-    public Integer getFourthSubjectId() {
-        return fourthSubjectId;
-    }
-
-    public Integer getFifthSubjectId() {
-        return fifthSubjectId;
-    }
-
     public static Builder builder() { return new Builder(); }
 
     public static class Builder{
@@ -50,8 +38,6 @@ public class Requirement {
         private Integer firstSubjectId;
         private Integer secondSubjectId;
         private Integer thirdSubjectId;
-        private Integer fourthSubjectId;
-        private Integer fifthSubjectId;
 
         private Builder(){}
 
@@ -69,14 +55,6 @@ public class Requirement {
         }
         public Builder withThirdSubjectId(Integer thirdSubject){
             this.thirdSubjectId = thirdSubject;
-            return this;
-        }
-        public Builder withFourthSubjectId(Integer fourthSubject){
-            this.fourthSubjectId = fourthSubject;
-            return this;
-        }
-        public Builder withFifthSubjectId(Integer fifthSubject){
-            this.fifthSubjectId = fifthSubject;
             return this;
         }
 

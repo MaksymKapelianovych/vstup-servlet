@@ -16,10 +16,7 @@ import ua.vstup.service.RequestService;
 import ua.vstup.service.SubjectService;
 import ua.vstup.service.utility.EntityMapper;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -73,14 +70,31 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
+    public List<Subject> jointSubjects(RequirementInfo facultyInfo, RequirementInfo entrantInfo) {
+
+        List<Subject> intersectedEntrantSubjects = entrantInfo.getSubjectList().stream()
+                .filter(entrantSubject -> {
+                        Subject subject = facultyInfo.getSubjectBySubjectName(entrantSubject.getName());
+                        return subject != null && entrantSubject.getRate() >= subject.getRate();
+                        }
+                    )
+                .collect(Collectors.toList());
+        if(intersectedEntrantSubjects.size() < 3){
+            throw new IncorrectDataException("Subjects not equal");
+        }
+        return intersectedEntrantSubjects;
+    }
+
+    @Override
     public List<RequestInfo> getAllInfoByEntrant(EntrantInfo entrant) {
         List<RequestEntity> requestEntities = requestDao.findAllByEntrantId(entrant.getId());
         return getInfoByRequestEntity(requestEntities);
     }
 
     private List<RequestInfo> getInfoByRequestEntity(List<RequestEntity> requestEntities){
-        Map<Integer, Faculty> facultyEntities = facultyService.getAllActive().stream()
-                .collect(Collectors.toMap(Faculty::getId, Function.identity()));
+        Map<Integer, FacultyInfo> facultyEntities = facultyService.getAllActive().stream()
+                .map(faculty -> facultyService.getFacultyInfo(faculty.getId()))
+                .collect(Collectors.toMap(FacultyInfo::getId, Function.identity()));
         Map<Integer, EntrantInfo> entrantInfoMap = entrantService.getAllEntrants().stream()
                 .map(entrant -> entrantService.getEntrantInfo(entrant))
                 .collect(Collectors.toMap(EntrantInfo::getId, Function.identity()));

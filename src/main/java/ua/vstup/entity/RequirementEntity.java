@@ -5,16 +5,12 @@ public class RequirementEntity {
     private final Integer firstSubjectId;
     private final Integer secondSubjectId;
     private final Integer thirdSubjectId;
-    private final Integer fourthSubjectId;
-    private final Integer fifthSubjectId;
 
     private RequirementEntity(Builder builder) {
         id = builder.id;
         firstSubjectId = builder.firstSubjectId;
         secondSubjectId = builder.secondSubjectId;
         thirdSubjectId = builder.thirdSubjectId;
-        fourthSubjectId = builder.fourthSubjectId;
-        fifthSubjectId = builder.fifthSubjectId;
     }
 
     public Integer getId() {
@@ -33,10 +29,6 @@ public class RequirementEntity {
         return thirdSubjectId;
     }
 
-    public Integer getFourthSubjectId() { return fourthSubjectId; }
-
-    public Integer getFifthSubjectId() { return fifthSubjectId; }
-
     public static Builder builder() { return new Builder(); }
 
     public static class Builder{
@@ -44,8 +36,7 @@ public class RequirementEntity {
         private Integer firstSubjectId;
         private Integer secondSubjectId;
         private Integer thirdSubjectId;
-        private Integer fourthSubjectId;
-        private Integer fifthSubjectId;
+
 
         private Builder(){}
 
@@ -63,14 +54,6 @@ public class RequirementEntity {
         }
         public Builder withThirdSubjectId(Integer thirdSubject){
             this.thirdSubjectId = thirdSubject;
-            return this;
-        }
-        public Builder withFourthSubjectId(Integer fourthSubject){
-            this.fourthSubjectId = fourthSubject;
-            return this;
-        }
-        public Builder withFifthSubjectId(Integer fifthSubject){
-            this.fifthSubjectId = fifthSubject;
             return this;
         }
 

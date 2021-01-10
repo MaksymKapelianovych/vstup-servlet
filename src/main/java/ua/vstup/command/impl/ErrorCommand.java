@@ -17,6 +17,6 @@ public class ErrorCommand extends AbstractCommand implements Command {
         } else {
             request.setAttribute(Constants.Attributes.ERROR_CAUSE, request.getAttribute(Constants.Attributes.SERVLET_ERROR_EXCEPTION));
         }
-        return "/error.jsp";
+        return "/WEB-INF/error.jsp";
     }
 }

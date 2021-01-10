@@ -22,17 +22,12 @@ public class AddFacultyCommand extends AbstractCommand implements Command {
                 Integer.valueOf(request.getParameter(Constants.Parameters.SUBJECT_RATE2)));
         Subject subject3 = new Subject(null, SubjectName.valueOf(request.getParameter(Constants.Parameters.SUBJECT_NAME3)),
                 Integer.valueOf(request.getParameter(Constants.Parameters.SUBJECT_RATE3)));
-        Subject subject4 = new Subject(null, SubjectName.valueOf(request.getParameter(Constants.Parameters.SUBJECT_NAME4)),
-                Integer.valueOf(request.getParameter(Constants.Parameters.SUBJECT_RATE4)));
-        Subject subject5 = new Subject(null, SubjectName.valueOf(request.getParameter(Constants.Parameters.SUBJECT_NAME5)),
-                Integer.valueOf(request.getParameter(Constants.Parameters.SUBJECT_RATE5)));
+
 
         List<Subject> subjectList = new ArrayList<>();
         subjectList.add(subject1);
         subjectList.add(subject2);
         subjectList.add(subject3);
-        subjectList.add(subject4);
-        subjectList.add(subject5);
 
         Faculty faculty = Faculty.builder()
                 .withNameEn(request.getParameter(Constants.Parameters.NAME_EN))

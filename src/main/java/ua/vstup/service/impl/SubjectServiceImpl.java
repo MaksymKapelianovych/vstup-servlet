@@ -25,4 +25,10 @@ public class SubjectServiceImpl implements SubjectService {
             throw new IncorrectDataException("Incorrect data");
         }
     }
+
+    @Override
+    public Subject getById(Integer id) {
+        return EntityMapper.subjectEntityToSubject(subjectDao.findById(id)
+                .orElseThrow(() -> new IncorrectDataException("Subject not exists")));
+    }
 }

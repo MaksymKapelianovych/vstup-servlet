@@ -1,13 +1,13 @@
-<%@include file="/fragment/directive.jsp"%>
+<%@include file="/WEB-INF/fragment/directive.jsp"%>
 <html>
 <head>
-    <%@include file="/fragment/head.jsp"%>
-    <link href="/styles/input-form.css" rel="stylesheet">
+    <%@include file="/WEB-INF/fragment/head.jsp"%>
+    <link href="/src/main/webapp/assests/css/input-form.css" rel="stylesheet">
     <title><fmt:message key="faculty.title"/> </title>
 </head>
 <body>
-    <%@include file="/fragment/header.jsp"%>
-    <%@include file="/fragment/entrant-links.jsp"%>
+    <%@include file="/WEB-INF/fragment/header.jsp"%>
+    <%@include file="/WEB-INF/fragment/entrant-links.jsp"%>
 
     <main>
         <table class="table table-hover">

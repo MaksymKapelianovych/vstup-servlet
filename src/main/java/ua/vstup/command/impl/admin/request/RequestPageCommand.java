@@ -16,6 +16,6 @@ public class RequestPageCommand extends AbstractCommand implements Command {
     public String execute(HttpServletRequest request) {
         List<RequestInfo> requests = getRequestService(request).getAll();
         request.setAttribute(Constants.Attributes.REQUEST_LIST, requests);
-        return "/admin/request/requests.jsp";
+        return "/WEB-INF/admin/request/requests.jsp";
     }
 }

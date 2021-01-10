@@ -14,6 +14,6 @@ public class ProfilePageCommand extends AbstractCommand implements Command {
     public String execute(HttpServletRequest request) {
         EntrantInfo entrantInfo = getEntrant(request);
         request.getSession(false).setAttribute(Constants.Attributes.ENTRANT_INFO, entrantInfo);
-        return "/entrant/profile.jsp";
+        return "/WEB-INF/entrant/profile.jsp";
     }
 }

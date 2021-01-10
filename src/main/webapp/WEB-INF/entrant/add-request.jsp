@@ -1,12 +1,12 @@
-<%@include file="/fragment/directive.jsp"%>
+<%@include file="/WEB-INF/fragment/directive.jsp"%>
 <html>
 <head>
-    <%@include file="/fragment/head.jsp"%>
+    <%@include file="/WEB-INF/fragment/head.jsp"%>
     <title><fmt:message key="add.request"/></title>
 </head>
 <body>
-    <%@include file="/fragment/header.jsp"%>
-    <%@include file="/fragment/entrant-links.jsp"%>
+    <%@include file="/WEB-INF/fragment/header.jsp"%>
+    <%@include file="/WEB-INF/fragment/entrant-links.jsp"%>
 
     <div>
         <b>${requestScope.faculty_info.getNameByLocale(sessionScope.locale)}</b>

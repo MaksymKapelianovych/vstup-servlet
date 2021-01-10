@@ -1,13 +1,13 @@
-<%@include file="/fragment/directive.jsp"%>
+<%@include file="/WEB-INF/fragment/directive.jsp"%>
 <html>
 <head>
-    <%@include file="/fragment/head.jsp"%>
-    <link href="/styles/input-form.css" rel="stylesheet">
+    <%@include file="/WEB-INF/fragment/head.jsp"%>
+    <link href="/src/main/webapp/assests/css/input-form.css" rel="stylesheet">
     <title><fmt:message key="add.faculty.title"/></title>
 </head>
 <body>
-    <%@include file="/fragment/header.jsp"%>
-    <%@include file="/fragment/admin-links.jsp"%>
+    <%@include file="/WEB-INF/fragment/header.jsp"%>
+    <%@include file="/WEB-INF/fragment/admin-links.jsp"%>
     <main>
         <form class="input-form" action="/admin/faculty/add-faculty" method="post">
             <div class="input-group">
@@ -32,14 +32,6 @@
                 <div class="input-group">
                     <input class="input_subject form-control" list="subjectNames" name="subject_name3"/>
                     <input class="input form-control" type="number" name="subject_rate3"/>
-                </div>
-                <div class="input-group">
-                    <input class="input_subject form-control" list="subjectNames" name="subject_name4"/>
-                    <input class="input form-control" type="number" name="subject_rate4"/>
-                </div>
-                <div class="input-group">
-                    <input class="input_subject form-control" list="subjectNames" name="subject_name5"/>
-                    <input class="input form-control" type="number" name="subject_rate5"/>
                 </div>
                 <div>
                     <datalist id="subjectNames">

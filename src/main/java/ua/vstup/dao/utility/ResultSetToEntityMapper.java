@@ -36,8 +36,8 @@ public class ResultSetToEntityMapper {
                 .withId(resultSet.getInt("faculty.id"))
                 .withNameUa(resultSet.getString("faculty.name_ua"))
                 .withNameEn(resultSet.getString("faculty.name_en"))
-                .withMaxBudgetPlace(resultSet.getInt("faculty.maxBudgetPlace"))
-                .withMaxPlace(resultSet.getInt("faculty.maxPlace"))
+                .withMaxBudgetPlace(resultSet.getInt("faculty.max_budget_place"))
+                .withMaxPlace(resultSet.getInt("faculty.max_place"))
                 .withRequirementEntityId(resultSet.getInt("faculty.requirement_id"))
                 .withActive(resultSet.getBoolean("faculty.active"))
                 .build();
@@ -53,8 +53,6 @@ public class ResultSetToEntityMapper {
                 .withFirstSubjectId(resultSet.getInt("requirement.first_subject_id"))
                 .withSecondSubjectId(resultSet.getInt("requirement.second_subject_id"))
                 .withThirdSubjectId(resultSet.getInt("requirement.third_subject_id"))
-                .withFourthSubjectId(resultSet.getInt("requirement.fourth_subject_id"))
-                .withFifthSubjectId(resultSet.getInt("requirement.fifth_subject_id"))
                 .build();
         if(entity.getId() == 0){
             throw new DatabaseInteractionException(ERROR_MESSAGE);

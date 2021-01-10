@@ -57,8 +57,6 @@ public class EntityMapper {
                 .withFirstSubjectId(requirement.getFirstSubjectId())
                 .withSecondSubjectId(requirement.getSecondSubjectId())
                 .withThirdSubjectId(requirement.getThirdSubjectId())
-                .withFourthSubjectId(requirement.getFourthSubjectId())
-                .withFifthSubjectId(requirement.getFifthSubjectId())
                 .build();
     }
 
@@ -159,14 +157,11 @@ public class EntityMapper {
     }
 
     public static RequirementInfo subjectEntityListToRequirementInfo(SubjectEntity subjectEntity1, SubjectEntity subjectEntity2,
-                                                                     SubjectEntity subjectEntity3, SubjectEntity subjectEntity4,
-                                                                     SubjectEntity subjectEntity5){
+                                                                     SubjectEntity subjectEntity3){
         return RequirementInfo.builder()
                 .withFirstSubject(subjectEntityToSubject(subjectEntity1))
                 .withSecondSubject(subjectEntityToSubject(subjectEntity2))
                 .withThirdSubject(subjectEntityToSubject(subjectEntity3))
-                .withFourthSubject(subjectEntityToSubject(subjectEntity4))
-                .withFifthSubject(subjectEntityToSubject(subjectEntity5))
                 .build();
     }
 
@@ -182,5 +177,21 @@ public class EntityMapper {
             return null;
         }
         return new StatementEntity(statement.getId(), statement.getFinalized());
+    }
+
+    public static RequestEntity requestInfoToRequestEntity(RequestInfo request) {
+        if(request == null){
+            return null;
+        }
+        return RequestEntity.builder()
+                .withId(request.getId())
+                .withEntrantEntityId(request.getEntrant().getId())
+                .withFacultyEntityId(request.getFaculty().getId())
+                .withFirstSubjectEntityId(request.getFirstSubject().getId())
+                .withSecondSubjectEntityId(request.getSecondSubject().getId())
+                .withThirdSubjectEntityId(request.getThirdSubject().getId())
+                .withStateEntity(StateEntity.valueOf(request.getState().name()))
+                .withPriority(request.getPriority())
+                .build();
     }
 }

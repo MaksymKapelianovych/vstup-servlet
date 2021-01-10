@@ -1,13 +1,13 @@
-<%@include file="/fragment/directive.jsp"%>
+<%@include file="/WEB-INF/fragment/directive.jsp"%>
 <html>
 <head>
-    <%@include file="/fragment/head.jsp"%>
+    <%@include file="/WEB-INF/fragment/head.jsp"%>
 
     <title><fmt:message key="profile.title"/></title>
 </head>
 <body>
-    <%@include file="/fragment/header.jsp"%>
-    <%@include file="/fragment/entrant-links.jsp"%>
+    <%@include file="/WEB-INF/fragment/header.jsp"%>
+    <%@include file="/WEB-INF/fragment/entrant-links.jsp"%>
     <main>
         <div>
             <b>${sessionScope.entrant_info.name}</b>

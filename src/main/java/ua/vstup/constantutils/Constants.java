@@ -2,7 +2,7 @@ package ua.vstup.constantutils;
 
 public final class Constants {
     public final class Urls {
-        public static final String LOGIN_FORWARD = "/login-page";
+        public static final String LOGIN_FORWARD = "/";
         public static final String LOGIN_REDIRECT = "/login";
         public static final String REGISTER_FORWARD = "/register-page";
         public static final String REGISTER_REDIRECT = "/register";
@@ -33,6 +33,7 @@ public final class Constants {
         public static final String ADMIN_STATEMENT_FORWARD = ADMIN + "/statement";
         public static final String ADMIN_STATEMENT_FINALIZE_REDIRECT = ADMIN_STATEMENT_FORWARD + "/finalize";
         public static final String ADMIN_STATEMENT_ADD_REDIRECT = ADMIN_STATEMENT_FORWARD + "/add-statement";
+        public static final String ASSETS = "/assets";
     }
 
     public final class Attributes{

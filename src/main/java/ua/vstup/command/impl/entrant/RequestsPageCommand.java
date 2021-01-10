@@ -19,6 +19,6 @@ public class RequestsPageCommand extends AbstractCommand implements Command {
         EntrantInfo entrant = getEntrant(request);
         List<RequestInfo> requests = getRequestService(request).getAllInfoByEntrant(entrant);
         request.setAttribute(Constants.Attributes.REQUEST_LIST, requests);
-        return "/entrant/requests.jsp";
+        return "/WEB-INF/entrant/requests.jsp";
     }
 }
