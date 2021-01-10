@@ -1,19 +1,22 @@
-<%@ include file="directive/directive.jsp"%>
+<%@ include file="/fragment/directive.jsp"%>
 <html>
 <head>
+    <%@include file="/fragment/head.jsp"%>
+    <link href="login.css" rel="stylesheet">
     <title><fmt:message key="login.title"/> </title>
 </head>
 <body>
-<%@include file="directive/header.jsp"%>
-<p>
+<%@include file="/fragment/header.jsp"%>
+<main>
     <form class="login-form" action="/login" method="post">
-        <div>
-            <input class="input" type="email" name="email" placeholder="<fmt:message key="input.email"/>">
-            <input class="input" type="password" name="password" placeholder="<fmt:message key="input.password"/>">
-            <button type="submit"><fmt:message key="login.button"/> </button>
-            <a href="/register-page"><fmt:message key="register.button"/></a>
+        <label><fmt:message key="login.title"/></label>
+        <input class="input form-control" type="email" name="email" placeholder="<fmt:message key="input.email"/>">
+        <input class="input form-control" type="password" name="password" placeholder="<fmt:message key="input.password"/>">
+        <div class="buttons">
+            <button class="btn btn-outline-primary" type="submit"><fmt:message key="login.button"/> </button>
+            <a class="btn btn-success" href="/register-page"><fmt:message key="register.button"/></a>
         </div>
     </form>
-</p>
+</main>
 </body>
 </html>

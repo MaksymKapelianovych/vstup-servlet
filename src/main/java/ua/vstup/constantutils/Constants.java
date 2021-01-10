@@ -52,6 +52,7 @@ public final class Constants {
         public static final String FACULTY_ID = "faculty_id";
         public static final String FACULTY = "faculty";
         public static final String ENTRANT_LIST = "entrants";
+        public static final String SUBJECT_LIST = "subjects";
         public static final String ENTRANT_INFO = "entrant_info";
         public static final String FACULTY_INFO = "faculty_info";
 

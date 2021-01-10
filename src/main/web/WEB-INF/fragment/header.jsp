@@ -13,8 +13,9 @@
         </c:if>
         <a href="?language=en">EN</a>
         <a href="?language=ua">UA</a>
-        <c:if test="${sessionScope.entrant_info!=null}">
-            <a href="/logout"><fmt:message key="logout.button"/></a>
-        </c:if>
     </div>
+
+    <c:if test="${sessionScope.entrant_info!=null}">
+        <a href="/logout"><fmt:message key="logout.button"/></a>
+    </c:if>
 </header>
